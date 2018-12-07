@@ -94,16 +94,19 @@ index_with_subtitle: false
 menu:
   home: / || home
   #about: /about/ || user
-  tags: /tags/ || tags
-  categories: /categories/ || th
+  # categories: /categories/ || th
   # archives: /archives/ || archive
   # schedule: /schedule/ || calendar
   # sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
+  reactnative: /categories/reactnative/ || th
+  apidoc: /categories/apidoc/ || th
+
+  tags: /tags/ || tags
 
 # Enable/Disable menu icons.
 menu_icons:
-  enable: true
+  enable: false
 
 
 # ---------------------------------------------------------------
