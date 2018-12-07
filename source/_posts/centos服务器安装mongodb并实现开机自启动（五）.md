@@ -3,7 +3,6 @@ title: centos服务器安装mongodb并实现开机自启动（五）
 date: 2018-12-08 00:05:15
 categories:
 - centos
-- mongodb
 tags: 
 - 服务器
 - mongodb

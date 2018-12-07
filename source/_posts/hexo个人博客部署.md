@@ -3,7 +3,6 @@ title: hexo个人博客部署
 date: 2018-12-08 00:12:41
 categories:
 - centos
-- hexo
 tags: 
 - 服务器
 - hexo
@@ -25,7 +24,7 @@ git --work-tree=/root/www/blog --git-dir=/root/git/blog/blog.git checkout -f
 ```
 > 到此服务器配置完成，本地直接ssh到服务器触发git钩子即可
 
-### 本地配置
+## 本地配置
 
 * 安装hexo脚手架
 ```
@@ -61,7 +60,7 @@ hexo deploy //将本地静态页面目录部署到云服务器
 ```
 
 
-### 问题汇总
+## 问题汇总
 * 请使用yarn而不是npm安装
 * ERROR Deployer not found: git
 ```
