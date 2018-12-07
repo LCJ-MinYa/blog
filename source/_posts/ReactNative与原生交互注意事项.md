@@ -2,7 +2,10 @@
 title: ReactNative与原生交互注意事项
 date: 2018-12-07 17:36:05
 categories: reactnative
-tags: reactnative
+tags:
+- reactnative
+- app
+- 跨平台app
 ---
 
 # 项目的基本配置  

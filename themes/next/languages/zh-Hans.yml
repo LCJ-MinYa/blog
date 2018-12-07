@@ -18,6 +18,18 @@ menu:
   commonweal: 公益404
   reactnative: ReactNative
   apidoc: ApiDoc
+  js: Javascript
+  css: Css
+  flutter: Flutter
+  html: Html
+  ios: iOS
+  macos: MacOS
+  mongodb: MongoDB
+  thinkjs: ThinkJS
+  vmware: VMware
+  centos: CentOS
+  hexo: Hexo
+  ide: IDE
 
 sidebar:
   overview: 站点概览

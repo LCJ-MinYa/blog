@@ -2,7 +2,10 @@
 title: ReactNative全面屏适配
 date: 2018-12-07 17:32:15
 categories: reactnative
-tags: reactnative
+tags: 
+- reactnative
+- app
+- 跨平台app
 ---
 
 

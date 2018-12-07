@@ -54,13 +54,13 @@ footer:
   copyright:
   # -------------------------------------------------------------
   # Hexo link (Powered by Hexo).
-  powered: true
+  powered: false
 
   theme:
     # Theme & scheme info link (Theme - NexT.scheme).
-    enable: true
+    enable: false
     # Version info of NexT after scheme info (vX.X.X).
-    version: true
+    version: false
   # -------------------------------------------------------------
   # Any custom text can be defined here.
   #custom_text: Hosted by <a target="_blank" href="https://pages.github.com">GitHub Pages</a>
@@ -93,14 +93,26 @@ index_with_subtitle: false
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
   home: / || home
-  #about: /about/ || user
+  # about: /about/ || user
   # categories: /categories/ || th
   # archives: /archives/ || archive
   # schedule: /schedule/ || calendar
   # sitemap: /sitemap.xml || sitemap
-  #commonweal: /404/ || heartbeat
-  reactnative: /categories/reactnative/ || th
-  apidoc: /categories/apidoc/ || th
+  # commonweal: /404/ || heartbeat
+  centos: /categories/centos/
+  js: /categories/js/
+  css: /categories/css/
+  reactnative: /categories/reactnative/
+  apidoc: /categories/apidoc/
+  flutter: /categories/flutter/
+  html: /categories/html/
+  ios: /categories/ios/
+  macos: /categories/macos/
+  mongodb: /categories/mongodb/
+  thinkjs: /categories/thinkjs/
+  hexo: /categories/hexo/
+  vmware: /categories/vmware/
+  ide: /categories/ide/
 
   tags: /tags/ || tags
 
@@ -115,8 +127,8 @@ menu_icons:
 
 # Schemes
 # scheme: Muse
-scheme: Mist
-# scheme: Pisces
+# scheme: Mist
+scheme: Pisces
 # scheme: Gemini
 
 

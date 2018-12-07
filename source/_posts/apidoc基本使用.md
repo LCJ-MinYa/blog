@@ -2,7 +2,9 @@
 title: apidoc基本使用
 date: 2018-12-07 16:41:48
 categories: apidoc
-tags: apidoc
+tags:
+- apidoc
+- 接口文档
 ---
 
 ## 全局安装apidoc
