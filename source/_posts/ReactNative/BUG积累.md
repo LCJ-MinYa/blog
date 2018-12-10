@@ -160,6 +160,36 @@ class WPTextInput extends Component {
 export default WPTextInput;
 ```
 
+### 0.55 0.56IOS不能输入中文，更新数据源不能更新界面，clear()方法不生效
+```
+/*
+ * 修改node_modules源文件
+ * 位置1: project/node_modules/react-native/Libraries/Text/TextInput/RCTBaseTextInputShadowView.m
+ * 位置2: project/node_modules/react-native/Libraries/Text/TextInput/RCTBaseTextInputView.m
+ */
+
+  RCTBaseTextInputShadowView.m文件修改
+  //26行新增
++   NSString *_text;
+
+  //105行新增
++   - (NSString *)text
++   {
++     return _text;
++   }
++   - (void)setText:(NSString *)text
++   {
++     _text = text;
++     _previousAttributedText = _localAttributedText;
++   }
+
+  RCTBaseTextInputView.m文件修改
+  //340行修改
+  if (_onChange) {
+    ↓↓↓↓
+  if (_onChange && backedTextInputView.markedTextRange == nil) {
+```
+
 ### textinput作为组件，默认值(value为数组中的数据)初次不渲染
 ```javascript
 //强制刷新
