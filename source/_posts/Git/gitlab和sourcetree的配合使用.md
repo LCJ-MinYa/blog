@@ -1,10 +1,11 @@
 ---
 title: gitlab和sourcetree的配合使用
 date: 2018-12-07 23:30:21
-categories: macos
+categories: git
 tags: 
 - 操作系统
 - macos
+- git
 ---
 
 ## gitlab和sourcetree的配合使用

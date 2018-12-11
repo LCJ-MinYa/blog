@@ -100,6 +100,7 @@ menu:
   # sitemap: /sitemap.xml || sitemap
   # commonweal: /404/ || heartbeat
   centos: /categories/centos/
+  git: /categories/git/
   js: /categories/js/
   css: /categories/css/
   reactnative: /categories/reactnative/

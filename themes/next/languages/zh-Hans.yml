@@ -30,6 +30,7 @@ menu:
   centos: CentOS
   hexo: Hexo
   ide: IDE
+  git: Git
 
 sidebar:
   overview: 站点概览

@@ -15,7 +15,10 @@ tags:
 * 1./root/www/下新建blog目录（可新建一个index.html测试访问）
 * 2.配置nginx转发blog.ziyiu.com到/root/www/blog(并配置https，日志文件目录等)
 * 3.yum install -y git(安装git)
-* 4.位置:/root/git/blog/blog.git 命令: git init --bare blog.git(Git 初始化裸库)
+* 4.位置:/root/git/blog/blog.git
+```
+命令: git init --bare blog.git(Git 初始化裸库)
+```
 * 5.位置:/root/git/blog/blog.git/hooks/post-receive 命令: vi post-receive （创建 Git 钩子hook,默认没有该文件，新建）
 * 6.钩子写入内容
 ```

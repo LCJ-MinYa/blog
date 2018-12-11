@@ -2,7 +2,7 @@
 title: gitignore的使用
 date: 2018-12-08 00:23:59
 categories:
-- js
+- git
 tags: 
 - js
 - git
