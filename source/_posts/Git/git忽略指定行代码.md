@@ -71,6 +71,8 @@ git config --global filter.gitignore.smudge 'sed "s/yaowenjie.github.io/localhos
 [filter "gitignore"]
         clean = sed \"s/localhost:4000/blog.ziyiu.com/g\"
         smudge = sed \"s/blog.ziyiu.com/localhost:4000/g\"
+
+尝试执行多次sed
 ```
 
 ## git在mac下用户配置文件
