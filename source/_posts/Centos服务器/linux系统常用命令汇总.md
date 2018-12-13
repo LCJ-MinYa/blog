@@ -60,3 +60,8 @@ auth required pam_tally2.so deny=3 unlock_time=300 even_deny_root root_unlock_ti
 #deny次数
 #unlock_time锁定时间（秒）
 ```
+
+## 移动文件
+```
+mv 文件名当前目录 移动后的目录
+```
