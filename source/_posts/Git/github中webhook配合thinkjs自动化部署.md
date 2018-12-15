@@ -9,6 +9,7 @@ tags:
 - webhook
 - 自动化部署
 - thinkjs
+- centos
 ---
 
 ## 设置github项目中的webhook
@@ -40,15 +41,43 @@ pm2 restart logServer
 在验证成功后执行该脚本
 const exec = require('child_process').exec;
 
-const cmdStr = "sh -x /root/www/logServer/deploy.sh";
-exec(cmdStr, (err, result) => {
-    if (err) {
-        console.log(err);
-        process.exit();
-    }
-    console.log('执行成功');
-    process.exit();
-})
+return new Promise((resolve, reject) => {
+    const cmdStr = "sh -x /root/www/logServer/deploy.sh";
+    let workerProcess = exec(cmdStr);
+    workerProcess.stdout.on('data', function(data) {
+        //console.log('stdout: ' + data);
+        //shell执行日志
+        if (data.indexOf('Applying action restartProcessId on app') > -1) {
+            resolve(data);
+        }
+    });
+
+    workerProcess.stderr.on('data', function(data) {
+        //shell执行命令
+        console.log('stderr: ' + data);
+    });
+    setTimeout(() => {
+        //10秒超时就返回失败
+        reject('fail');
+    }, 10000);
+});
+```
+
+## 遇到的错误处理
+* process.exit();不能使用这一句，会关闭thinkjs的worker进程，导致没有回调;
+* macos和windows本地不会杀死exec进程，centos会杀死进程，需要单独监听
+```
+node.js 中的child_process有一个exec方法，可以调用shell脚本。今天发现exec没有执行回调方法。后来在网上查阅资料，发现exec的输出有大小限制，当输出数据量过大时，系统会杀死进程，因而不会触发回调。
+
+var workerProcess = child_process.exec('node node_modules/webpack/bin/webpack.js', {})
+
+workerProcess.stdout.on('data', function (data) {
+    console.log('stdout: ' + data);
+});
+
+workerProcess.stderr.on('data', function (data) {
+    console.log('stderr: ' + data);
+});
 ```
 
 
