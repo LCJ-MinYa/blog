@@ -9,7 +9,10 @@ tags:
 
 ## mongodb连接数据库
 >mongo命令默认连接27017端口数据库
->要连接特定端口数据库命令: mongo --port 端口号  
+>要连接特定端口数据库命令:
+```
+mongo --port 端口号
+```
 
 ## mongodb开启密码验证怎么登录
 >首先通过上面命令连接数据库，然后use 对应数据库名，比如admin数据库--> use admin
@@ -22,5 +25,27 @@ tags:
 > 2.use你要新添加的数据库，然后创建用户(比如创建一个A的数据库: 
 * use A 
 * db.createUser({user:"Auser",pwd:"password",roles:[{"role":"readWrite","db":"A"}]}) 
+
+## 查看mongo内存占用
+```
+top -p $(pidof mongod)
+```
+
+## 修改mongo默认占用内存大小
+```
+storage:
+  dbPath: /root/mongodb_data
+  journal:
+    enabled: true
+  mmapv1:
+    smallFiles: true
+  wiredTiger:
+    engineConfig:
+      cacheSizeGB: 0.5
+
+net:
+  port: 自己设置的端口
+  bindIp: 127.0.0.1
+```
 
 
