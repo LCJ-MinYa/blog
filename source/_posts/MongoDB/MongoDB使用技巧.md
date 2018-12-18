@@ -31,7 +31,7 @@ mongo --port 端口号
 top -p $(pidof mongod)
 ```
 
-## 修改mongo默认占用内存大小
+## 修改mongo默认占用内存大小(暂未生效，考虑升级版本)
 ```
 storage:
   dbPath: /root/mongodb_data
@@ -41,7 +41,9 @@ storage:
     smallFiles: true
   wiredTiger:
     engineConfig:
-      cacheSizeGB: 0.5
+      configString: cache_size = 512M //3.0写法
+      #cacheSizeGB: 0.5 //3.4以上
+尝试通过命令行追加--wiredTigerCacheSizeGB 0.5失败
 
 net:
   port: 自己设置的端口
