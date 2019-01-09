@@ -73,6 +73,10 @@ sh /volumes/AMD_Ryzen_linjimmy_10.13.3_V4/linjimmy/linjimmy.sh
 ### 6.系统选择macOS
 
 ### 7.安装必要的驱动到SLE,通过Kext Utility重建缓存.(！！！重要，显卡声卡驱动相关问题)
+> SLE => MacOS的驱动目录(/System/Library/Extensions)，每次安装kext都需要使用kext utility修复权限。
+* 1.显卡驱动,下载WebDriver，直接安装即可(pkg格式)
+* 2.声卡驱动,下载驱动Lilu.kext, AppleALC.kext放入SLE目录，Kext Utility重建缓存。（打开系统偏好设置-声音-播放声音效果的设备-切换Line-out即可听到声音，此处怀疑不需要前面声卡驱动，不过未做验证，按照此步骤暂时没有问题）
+![image](/images/macos/黑苹果/line-out.png)
 
 ### 8.安装完成
 * 目前即是双系统（win10 + MacOS）
@@ -86,3 +90,5 @@ sh /volumes/AMD_Ryzen_linjimmy_10.13.3_V4/linjimmy/linjimmy.sh
 [[Ryzen黑苹果系统]10.12.5 安装与镜像下载 完整教程~](http://tieba.baidu.com/p/5179723176)
 [B 站黑苹果安装教程](https://www.sqlsec.com/2018/08/clover.html)
 [U盘改为硬盘EFI引导](https://imac.hk/clover-usb-install-add-boot-menu.html)
+[SLE和EE区别和含义](https://zhidao.baidu.com/question/1959725232130161260.html)
+[声卡驱动问题](https://www.jianshu.com/p/9be5cef1c1d2)
