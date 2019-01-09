@@ -24,9 +24,17 @@ tags:
 ## NodeJs
 * 官网下载安装[NodeJs下载地址](https://nodejs.org/en/download/)
 * <code>npm list -g --depth 0</code>(查看全局安装过的包)
-* sudo npm i nrm@1.0.2 -g
-    * nrm use taobao(切换taobao源)
-    * nrm ls(查看当前源列表和选择的源)
+
+### nrm源切换
+* <code>sudo npm i nrm@版本号 -g</code>1.0.2
+    * <code>nrm use taobao</code>(切换taobao源)
+    * <code>nrm ls</code>(查看当前源列表和选择的源)
+
+### hexo-cli播客
+* <code>sudo npm i hexo-cli@版本号 -g</code>1.1.0
+
+## Sourcetree
+* 官网下载安装[Sourcetree下载地址](https://www.sourcetreeapp.com/)
 
 ## QQ
 * 设置-应用-关闭天气
