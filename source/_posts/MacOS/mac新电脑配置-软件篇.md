@@ -35,6 +35,10 @@ tags:
 
 ## Sourcetree
 * 官网下载安装[Sourcetree下载地址](https://www.sourcetreeapp.com/)
+* 验证关联Github账号，克隆对应项目
+
+## Sublime-Text3
+* 官网下载安装[Sublime-Text3下载地址](http://www.sublimetext.com/)
 
 ## QQ
 * 设置-应用-关闭天气
