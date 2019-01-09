@@ -1,8 +1,8 @@
 ---
-title: mac新电脑配置
+title: mac新电脑配置-优化篇
 date: 2018-12-07 23:32:41
 categories: macos
-tags: 
+tags:
 - 操作系统
 - macos
 ---
