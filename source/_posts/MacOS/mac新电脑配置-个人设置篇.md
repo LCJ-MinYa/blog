@@ -15,7 +15,7 @@ tags:
 ## 底部栏
 
 * 从Dock栏移除 => Siri,Safair,邮件,通讯录,日历,备忘录,提醒事项,地图,照片,信息,FaceTime,iTunes,iBooks,AppStore,下载
-* 增加至Dock栏 => Chrome,TeamViewer,QQ,终端,SourceTree,Sublime Text,Xcode,
+* 增加至Dock栏 => Chrome,TeamViewer,QQ,终端,SourceTree,Sublime Text,Xcode,Robo 3T,Photoshop cc 2017,
 
 ## 系统偏好设置
 * 通用-外观-勾选使用暗色菜单栏和程序坞

@@ -40,6 +40,15 @@ tags:
 ## Sublime-Text3
 * 官网下载安装[Sublime-Text3下载地址](http://www.sublimetext.com/)
 
+## robomongo
+* 官网下载安装[robomongo下载地址](https://robomongo.org/download)
+
+## Microsoft for Mac
+* 从百度云盘下载安装
+
+## Photoshop cc 2017
+* 从百度云盘下载安装
+
 ## QQ
 * 设置-应用-关闭天气
 * 设置-应用-关闭腾讯新闻
