@@ -21,6 +21,8 @@ tags:
 ## 安装极光推送
 
 * 1.安装jpush-react-native, jcore-react-native. <code>npm install jpush-react-native@版本号 jcore-react-native@版本号 --save</code>版本号分别为2.1.3和1.2.1
-
+* 2.<code>react-native link jpush-react-native</code>(针对性的link，避免之前手动配置的其它插件重复配置造成报错)
+* 3.<code>react-native link jcore-react-native</code>(针对性的link，避免之前手动配置的其它插件重复配置造成报错)
+*
 
 ## 问题排查借鉴网址
