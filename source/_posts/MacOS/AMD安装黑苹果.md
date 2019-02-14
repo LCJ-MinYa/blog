@@ -69,6 +69,7 @@ sh /volumes/AMD_Ryzen_linjimmy_10.13.3_V4/linjimmy/linjimmy.sh
 ```
 * 然后会出现很多#####，输入你刚刚安装的系统盘名称后回车,无所谓大小写
 * 然后等大概20秒,完成操作,手动重启正式进入macOS High Sierra系统
+* 暂时不要登陆苹果账号，会报连接不上服务器，然后无法前进后退，只能重启再次安装。
 
 ### 6.系统选择macOS
 
