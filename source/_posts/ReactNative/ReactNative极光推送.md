@@ -178,7 +178,7 @@ public class MainApplication extends Application implements ReactApplication {
 ### Android错误
 
 * 1.sdk相关错误（将android 9.0 = 6.0等都勾选下载sdk）
-* 2.Execution failed for task ':jcore-react-native:verifyReleaseResources'. > com.android.ide.common.process.ProcessException: Failed to execute aap(参考下面问题排查借鉴网址)
+* 2.':jcore-react-native:verifyReleaseResources'. > com.android.ide.common.process.ProcessException: Failed to execute aap(参考下面问题排查借鉴网址)
 > 将node_module中jcore-react-native和jpush-react-native的compileSdkVersion和targetSdkVersion都改为26（目录为/android/build.gradle, buildToolsVersion有些也需要修改为26.0.3）
 * 3.错误: 无法将类 JPushPackage中的构造器 JPushPackage应用到给定类型;
 > MainApplication.java文件中new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG)必须带参数
