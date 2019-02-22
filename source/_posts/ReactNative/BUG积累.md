@@ -245,6 +245,39 @@ ios设置borderTopWidth: 0.5，在ios上会导致border失真(具体表现为bor
 > react-native缓存问题  
 > react-native start --reset-cache  
 
+### main.jsbundle does not exist引发的惨案
+```
+这个报错是在安装极光推送之后编译Archive导致的报错.
+最开始的猜测，因为测试环境真机和模拟器都没有报错，而正是环境main.jsbundle不存在=》以下尝试
+1.尝试手动编译main.jsbundle，
+2.下载推送的正式证书（因为极光推送涉及到推送证书，测试和正式又是不同的证书）
+3.重新npm install
+4.重新react-native link
+5.尝试github上各种解决方法
+都依然编译不能通过，再纠结一个小时之后，偶然看报错信息
+
++ DEST=/Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app
++ [[ Release = \D\e\b\u\g ]]
++ BUNDLE_FILE=/Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle
++ node /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules/react-native/local-cli/cli.js bundle --entry-file index.js --platform ios --dev false --reset-cache --bundle-output /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle --assets-dest /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app
+Scanning folders for symlinks in /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules (12ms)
+Scanning folders for symlinks in /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules (10ms)
+warning: the transform cache was reset.
+Loading dependency graph, done.
+
+/Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules/react-native-root-siblings/index.js: /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules/react-native-root-siblings/index.js: Exporting local "_default", which is not declared. (This is an error on an internal node. Probably an internal error.)（===============最后发现是一个第三方库的依赖文件，导出类的问题================）
+
++ [[ false != true ]]
++ [[ ! -f /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle ]]
++ echo 'error: File /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle does not exist. This must be a bug with'（===============最开始的报错信息，注意力一直在这里================）
+error: File /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle does not exist. This must be a bug with
++ echo 'React Native, please report it here: https://github.com/facebook/react-native/issues'
+React Native, please report it here: https://github.com/facebook/react-native/issues
++ exit 2
+
+结论：看报错信息，一定要一层一层往下面跟，因为反馈在表面的问题，往往是很多中错误的相同报错，特别是RN这种依赖IOS和Android原生的框架（看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！）
+```
+
 
 
 
