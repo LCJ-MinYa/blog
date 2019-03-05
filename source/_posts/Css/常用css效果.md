@@ -161,3 +161,15 @@ div:before{
     transform: scale(0.5);
 }
 ```
+
+## 安卓浏览器字体不垂直居中
+```css
+.banner-box > a:before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 100%;
+    margin-top: 1px;
+}
+```
