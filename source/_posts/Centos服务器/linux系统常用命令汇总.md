@@ -70,3 +70,12 @@ auth required pam_tally2.so deny=3 unlock_time=300 even_deny_root root_unlock_ti
 ```
 mv 文件名当前目录 移动后的目录
 ```
+
+## 查找文件内关键字
+在非i（编辑模式）和非ctrl+:(命令模式下)输入 =>
+```
+/关键字
+```
+
+## 查看端口是否占用
+* 1. lsof -i:80（带:80查询80端口，不带查询所有端口）
