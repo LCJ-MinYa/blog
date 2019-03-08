@@ -31,6 +31,7 @@ menu:
   hexo: Hexo
   ide: IDE
   git: Git
+  docker: Docker
 
 sidebar:
   overview: 站点概览
