@@ -13,7 +13,7 @@ tags:
 include /etc/nginx/conf.d/*.conf;(注意：在阿里云和腾讯云的centos服务器中，这段话已经加入默认配置，所以不需要再添加了)  
 这样你就可以在/etc/nginx/conf.d文件夹中分别设置每个虚拟主机。  
 然后在上面的文件夹下分别新建文件/etc/nginx/conf.d/siteone.conf和/etc/nginx/conf.d/sitetwo.conf，当然文件名siteone，sitetwo随你起。  
-<pre>
+```
 server {
     listen       80;
     server_name  siteone.lichaojun.com;
@@ -29,7 +29,7 @@ server {
         proxy_redirect off;
     }
 }
-</pre>
+```
 其中:  
 server_name: siteone.lichaojun.com;(代表你要监听的域名)  
 access_log /root/log/nginx/siteone_access.log main;(代表你的nginx下该端口转发的日志记录)  

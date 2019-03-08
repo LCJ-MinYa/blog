@@ -51,7 +51,10 @@ Status: Downloaded newer image for docker.io/nextcloud:latest
 ```
 
 ## 4.启用容器
-* <code>docker run -d --restart=always --name nextcloud -p 8080:80 -v /root/www/nextcloud:/data docker.io/nextcloud</code>
+```
+docker run -d --restart=always --name nextcloud -p 8080:80 -v /root/www/nextcloud:/data docker.io/nextcloud
+```
+
 ```
 参考输出：
 ae96013c7f0ab05194a4488d1fa61b1c6274c272a53b3d418418b56a88e2e230
@@ -62,7 +65,7 @@ ae96013c7f0ab05194a4488d1fa61b1c6274c272a53b3d418418b56a88e2e230
 ```
 
 ## 5.浏览器访问ip:8080配置nextcloud
-
+* 数据目录/var/www/html/data不能修改，否则会造成无法创建或修改目录错误
 
 ## 借鉴网址
 [Docker+Nextcloud快速部署个人网盘](https://www.cnblogs.com/Timesi/p/9688463.html)
