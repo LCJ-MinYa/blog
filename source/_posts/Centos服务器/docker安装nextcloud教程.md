@@ -65,5 +65,13 @@ ae96013c7f0ab05194a4488d1fa61b1c6274c272a53b3d418418b56a88e2e230
 ## 5.浏览器访问ip:8080配置nextcloud
 * 数据目录/var/www/html/data不能修改，否则会造成无法创建或修改目录错误
 
+## 问题
+* 大文件上传413错误（即便nextcloud设置了最大上传文件10G）
+```
+原因是因为使用了nginx代理端口，需要设置nginx最大上传文件限制
+vi /etc/nginx/nginx.conf 在http{...}块中加入 =>
+client_max_body_size 10G;
+```
+
 ## 借鉴网址
 [Docker+Nextcloud快速部署个人网盘](https://www.cnblogs.com/Timesi/p/9688463.html)
