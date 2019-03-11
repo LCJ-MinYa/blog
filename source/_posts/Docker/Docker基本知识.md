@@ -18,9 +18,7 @@ tags:
 ## docker查找和下载Nextcloud网盘的镜像(启用命令)
 * <code>docker search nextcloud</code>
 * <code>docker pull docker.io/nextcloud</code>
-```
-docker run -d --restart=always --name nextcloud -p 8080:80 -v /root/www/nextcloud:/data docker.io/nextcloud
-```
+* <code>docker run -d -\-restart=always -\-name nextcloud -p 8080:80 -v /root/www/nextcloud:/data docker.io/nextcloud</code>
 
 ## docker导出某个容器
 * <code>docker export 容器名称</code>

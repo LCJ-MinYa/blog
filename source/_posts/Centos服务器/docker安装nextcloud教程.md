@@ -51,9 +51,7 @@ Status: Downloaded newer image for docker.io/nextcloud:latest
 ```
 
 ## 4.启用容器
-```
-docker run -d --restart=always --name nextcloud -p 8080:80 -v /root/www/nextcloud:/data docker.io/nextcloud
-```
+* <code>docker run -d -\-restart=always -\-name nextcloud -p 8080:80 -v /root/www/nextcloud:/data docker.io/nextcloud</code>
 
 ```
 参考输出：
