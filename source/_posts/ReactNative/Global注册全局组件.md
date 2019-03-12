@@ -35,7 +35,9 @@ global.RenderGlobalComponent = renderGlobalComponent;
 
 
 ## 全局调用
-> 需要调用的页面直接<code><RenderGlobalComponent /></code>即可。
+```
+需要调用的页面直接<RenderGlobalComponent />即可。
+```
 
 ## global.RenderGlobalComponent首字母必须大写
 > 原因是因为react组件的首字母必须大写，全局方法注册也需要大写，否则会报错。
