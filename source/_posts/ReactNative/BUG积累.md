@@ -202,6 +202,11 @@ componentWillReceiveProps(nextProps) {
 }
 ```
 
+### Attempted to redefine property "XXXX"(OrderInvoiceMoney=> 自定义变量, width, fontSize等)
+> 重新定义属性导致的报错，即一个属性定义多次.  
+> 在测试debug模式中不会报错，编译正式包崩溃闪退，查看日志得知.
+
+
 ## 样式
 
 ### 安卓低版本borderRadius属性

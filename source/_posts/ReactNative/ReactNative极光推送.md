@@ -201,6 +201,67 @@ public class MainApplication extends Application implements ReactApplication {
 打开项目里的project.pbxproj工程文件中,把签名TeamID全部手动替换成目标TeamID
 ```
 
+## JS中使用
+* 指定用户推送，服务器提供绑定和解绑RegisterationID接口，需要存储在数据库
+* 只有IOS才能设置Badge，IOS的允许推送注册在原生代码中.
+* Android原生推送没有角标设置，各个厂商有自己的集成
+* Android推送必须自启动（默认未开启自启动，需要用户手动开启）
+* Android推送消息有延迟
+* Android的addReceiveNotificationListener和addReceiveOpenNotificationListener方法可以用，前提是必须先调用initPush和notifyJSDidLoad方法.
+```
+    componentDidMount() {
+        //没有消息中心，所以每次进入默认清除Badge
+        if (Platform.OS === 'ios') {
+            JPushModule.setBadge(0, success => {});
+        } else {
+            JPushModule.initPush();
+            JPushModule.notifyJSDidLoad((resultCode) => {
+                console.log(resultCode);
+            });
+        }
+        AuthStorage.getStorageRegistrationID().then(Registeration_Id => {
+            console.log(Registeration_Id);
+            if (!Registeration_Id) {
+                JPushModule.getRegistrationID(RegisterationID => {
+                    this.doPushRegisterWithAuthToken(RegisterationID);
+                    AuthStorage.setStorageRegistrationID(RegisterationID);
+                })
+            } else {
+                this.doPushRegisterWithAuthToken(Registeration_Id);
+            }
+        })
+
+        // JPushModule.addOpenNotificationLaunchAppListener(result => {
+        //     console.log('点击推送启动应用事件');
+        //     console.log(result);
+        //     JPushModule.setBadge(0, success => {})
+        // })
+        JPushModule.addReceiveNotificationListener(result => {
+            console.log('接收推送事件');
+            console.log(result);
+            if (Platform.OS === 'ios') {
+                JPushModule.setBadge(result.aps && result.aps.badge, success => {})
+            }
+        });
+        JPushModule.addReceiveOpenNotificationListener(result => {
+            console.log('点击推送事件');
+            console.log(result);
+            if (Platform.OS === 'ios') {
+                JPushModule.setBadge(result.aps && result.aps.badge - 1, success => {})
+            }
+        });
+        // JPushModule.addnetworkDidLoginListener(result => {
+        //     console.log('添加网络已登录事件回调');
+        //     console.log(result);
+        // })
+    }
+    componentWillUnmount() {
+        // JPushModule.removeOpenNotificationLaunchAppEventListener();
+        JPushModule.removeReceiveNotificationListener();
+        JPushModule.removeReceiveOpenNotificationListener();
+    }
+```
+
 ## 问题排查借鉴网址
 [Execution failed for task ':jcore-react-native:verifyReleaseResources'.](https://github.com/jpush/jpush-react-native/issues/541)
 [错误: 无法将类 JPushPackage中的构造器 JPushPackage应用到给定类型](https://github.com/jpush/jpush-react-native/issues/168)
