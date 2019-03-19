@@ -8,21 +8,32 @@ tags:
 - centos
 ---
 
-reboot （重启系统）  
-ls (查看当前文件夹目录，不包含隐藏文件)  
-ls -l(查看当前文件夹目录详细信息，不包含隐藏文件)  
-mkfs.ext4 /dev/vdb （格式化vdb这个名称的硬盘，其中ext4为磁盘格式，例如ex2,ex3和window下面的NTFS）  
-df -h（查看生效的系统盘和数据盘）  
-name在下文中统一代表变量，即你自己想要操作的对应的文件或文件名等  
-cd name(移动目录)  
-cat name(输入文件内容，不能编辑)  
-vi name(打开文件编辑，i编辑，ESC退出编辑 :wq保存退出，:q退出不保存 :q!强制退出不保存)  
-mkdir name(创建文件或文件夹)  
-rm -rf name(删除文件夹或文件，且不需要提示用户)  
-cp name1 name2(复制文件1到文件2，文件1必须存在)  
-查看Centos端口命令：  
-# netstat -lntp #查看监听(Listen)的端口  
-# netstat -antp #查看所有建立的TCP连接  
+## 重启系统
+* <code>reboot</code>
+
+## 查看当前文件夹目录
+* <code>ls</code>(不包含隐藏文件)
+* <code>ls -l</code>(查看当前文件夹目录详细信息，不包含隐藏文件)
+* <code>ls -a</code>(包含隐藏文件)
+
+## 格式化硬盘
+* <code>mkfs.ext4 /dev/vdb</code>（格式化vdb这个名称的硬盘，其中ext4为磁盘格式，例如ex2,ex3和window下面的NTFS）
+
+## 查看生效的系统盘和数据盘
+* <code>df -h</code>
+
+## 文件操作
+> name在下文中统一代表变量，即你自己想要操作的对应的文件或文件名等
+* <code>cd name</code>(移动目录)
+* <code>cat name</code>(输入文件内容，不能编辑)
+* <code>vi name</code>(打开文件编辑，i编辑，ESC退出编辑 :wq保存退出，:q退出不保存 :q!强制退出不保存)
+* <code>mkdir name</code>(创建文件或文件夹)
+* <code>rm -rf name</code>(删除文件夹或文件，且不需要提示用户)
+* <code>cp name1 name2</code>(复制文件1到文件2，文件1必须存在)
+
+## 查看Centos端口命令
+* <code>netstat -lntp</code>(查看监听(Listen)的端口)
+* <code>netstat -antp</code>(查看所有建立的TCP连接)
 
 ## 查看文件夹大小
 ```
@@ -81,4 +92,9 @@ mv 文件名当前目录 移动后的目录
 * lsof -i:80（带:80查询80端口，不带查询所有端口）
 
 ## 查看文件
-* <code>find / -name *.psd</code>(全局查找psd后缀的文件)
+* <code>find / -name \*.psd</code>(全局查找psd后缀的文件)
+
+## 命令行利用ssh从远程服务器下载或者上传文件
+> 端口非22的时候scp -P指定端口，注意大写; -r代表复制文件夹
+* <code>ssh -r -P 7777 root@ip:/root/www/xxx /Users/minya/Desktop</code>(下载xxx文件夹)
+* <code>ssh -r /Users/minya/Desktop/xxx -P 7777 root@ip:/root/www/</code>(上传xxx文件夹)
