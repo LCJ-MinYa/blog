@@ -21,7 +21,7 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
-        debugPaintSizeEnabled = !true;
+        debugPaintSizeEnabled = true;
         return new MaterialApp(
             title: 'my app',
             home: new TabNavigation(),
@@ -34,3 +34,6 @@ class MyApp extends StatelessWidget {
 ## vscode中dart devtools插件
 * 在首次运行flutter项目时会提示安装该插件，安装完成后会自动在浏览器中打开，类似React Native开发菜单中Debug JS Remotely.
 * 下次打开时，首先查看->命令面板（快捷键command+shift+p）,输入dart根据提示选择Dart: Open DevTools即可运行.
+
+## 不建议用vscode中通过f5调试flutter,反应延迟
+* 通过命令行工具,flutter run运行
