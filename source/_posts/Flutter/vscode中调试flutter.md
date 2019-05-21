@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
 
 ## vscode中dart devtools插件
 * 在首次运行flutter项目时会提示安装该插件，安装完成后会自动在浏览器中打开，类似React Native开发菜单中Debug JS Remotely.
-* 下次打开时，首先查看->命令面板（快捷键command+shift+p）,输入dart根据提示选择Dart: Open DevTools即可运行.
+* 下次打开时，首先查看->命令面板（快捷键command+shift+p）,输入dart根据提示选择Dart: Open DevTools即可运行.(只能在vscode中f5调试使用,flutter run命令行启动的不能检查到服务启动)
 
 ## 不建议用vscode中通过f5调试flutter,反应延迟
 * 通过命令行工具,flutter run运行
