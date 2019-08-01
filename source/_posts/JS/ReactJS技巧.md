@@ -89,5 +89,5 @@ class App extends Component {
 
 export default withRouter(App);
 ```
-* 最外层嵌套<BrowserRouter></BrowserRouter>导致检测不到
+* 最外层嵌套<code>BrowserRouter</code>导致检测不到
 
