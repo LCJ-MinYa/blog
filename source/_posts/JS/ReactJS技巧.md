@@ -15,6 +15,7 @@ tags:
 ```
 //由路由切换显示loading动画延申出来的BUG
 
+//App.js
 import React, {
     Component
 } from 'react';
@@ -89,5 +90,36 @@ class App extends Component {
 
 export default withRouter(App);
 ```
-* 最外层嵌套<code>BrowserRouter</code>导致检测不到
+
+* 搞忘最外层已经嵌套了一次BrowserRouter了
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import {
+    BrowserRouter,
+    Route
+} from 'react-router-dom';
+import {
+    Provider
+} from 'react-redux';
+import {
+    store
+} from './store';
+//import * as serviceWorker from './serviceWorker';
+
+ReactDOM.render(
+    <Provider store={store}>
+        <BrowserRouter>
+            <Route path='/' component={App}/>
+        </BrowserRouter>
+    </Provider>,
+    document.getElementById('root')
+);
+
+/*是否注册正式环境的离线缓存*/
+//serviceWorker.unregister();
+```
+* 最外层嵌套<code>BrowserRouter</code>两次导致检测不到
 
