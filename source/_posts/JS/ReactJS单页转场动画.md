@@ -254,3 +254,6 @@ export const RouterConfig = [
   }
 ];
 ```
+
+## 借鉴网址
+[github项目react-router-animation-demo](https://github.com/SmallStoneSK/react-router-animation-demo)
