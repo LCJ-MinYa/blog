@@ -12,6 +12,7 @@ tags:
 * 在package.json中修改<code>"start": "set PORT=8001 && react-scripts start"</code>
 
 ## react切换路由不触发componentWillReceiveProps
+* App.js中引入BrowserRouter
 ```
 //由路由切换显示loading动画延申出来的BUG
 
@@ -122,4 +123,9 @@ ReactDOM.render(
 //serviceWorker.unregister();
 ```
 * 最外层嵌套<code>BrowserRouter</code>两次导致检测不到
+
+## ReactJS实现Route下发props到component
+```js
+<Route exact render={props => <NotFoundPage test={123} />} />
+```
 
