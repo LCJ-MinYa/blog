@@ -178,6 +178,10 @@ div:before{
 ```
 //最外层确定高度，第二层容器包含文本，不要确定高度，由内容撑开（table布局vertical-align: middle实现）
 .footerBox {
+    background: #fff;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
     text-align: center;
     height: 3.8rem;
     display: table;
