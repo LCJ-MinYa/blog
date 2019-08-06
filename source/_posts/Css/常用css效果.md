@@ -173,3 +173,26 @@ div:before{
     margin-top: 1px;
 }
 ```
+
+## 确定高度多行文本垂直居中
+```
+//最外层确定高度，第二层容器包含文本，不要确定高度，由内容撑开（table布局vertical-align: middle实现）
+.footerBox {
+    text-align: center;
+    height: 3.8rem;
+    display: table;
+}
+
+.footerTextBox{
+    position: relative;
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.footerTextBox>p {
+    font-size: .5rem;
+    color: #999;
+    line-height: 150%;
+}
+```
