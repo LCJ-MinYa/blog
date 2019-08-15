@@ -1,5 +1,5 @@
 ---
-title: leetcode第四题-两个排序数组的中位数
+title: leetcode第4题-两个排序数组的中位数
 date: 2019-08-13 10:39:17
 categories: js
 tags:

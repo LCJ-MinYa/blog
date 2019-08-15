@@ -1,5 +1,5 @@
 ---
-title: leetcode第五题-最长回文子串
+title: leetcode第5题-最长回文子串
 date: 2019-08-14 09:38:55
 categories: js
 tags:
@@ -106,7 +106,7 @@ var longestPalindrome = function (s) {
 };
 ```
 
-## 学习解法(中心扩展法)
+## 学习解题(中心扩展法)
 * ### 答案
 ```js
 var longestPalindrome = function (s) {
