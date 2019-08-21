@@ -115,6 +115,7 @@ menu:
   vmware: /categories/vmware/
   ide: /categories/ide/
   docker: /categories/docker/
+  android: /categories/android/
 
   tags: /tags/ || tags
 

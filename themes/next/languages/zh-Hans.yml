@@ -32,6 +32,7 @@ menu:
   ide: IDE
   git: Git
   docker: Docker
+  android: Android
 
 sidebar:
   overview: 站点概览
