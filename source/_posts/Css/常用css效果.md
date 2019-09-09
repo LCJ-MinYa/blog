@@ -175,7 +175,7 @@ div:before{
 ```
 
 ## 确定高度多行文本垂直居中
-```
+```css
 //最外层确定高度，第二层容器包含文本，不要确定高度，由内容撑开（table布局vertical-align: middle实现）
 .footerBox {
     background: #fff;
@@ -201,8 +201,8 @@ div:before{
 }
 ```
 
-##input修改placeholder提示文本属性
-```
+## input修改placeholder提示文本属性
+```css
 input::-webkit-input-placeholder{
     color: #999;
 }
