@@ -200,3 +200,19 @@ div:before{
     line-height: 150%;
 }
 ```
+
+##input修改placeholder提示文本属性
+```
+input::-webkit-input-placeholder{
+    color: #999;
+}
+input:-moz-placeholder{
+    color: #999;
+}
+input::-moz-placeholder{
+    color: #999;
+}
+input:-ms-input-placeholder{
+    color: #999;
+}
+```
