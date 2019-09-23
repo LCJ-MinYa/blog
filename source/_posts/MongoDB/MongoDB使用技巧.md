@@ -19,12 +19,23 @@ mongo --port 端口号
 >然后使用 db.auth("账号","密码");  
 
 ## mongodb添加新数据库账号
-> 1.首先登陆admin账号，保证有创建新数据库账号的权限
-* use admin 
-* db.auth("userName","password") 
-> 2.use你要新添加的数据库，然后创建用户(比如创建一个A的数据库: 
-* use A 
-* db.createUser({user:"Auser",pwd:"password",roles:[{"role":"readWrite","db":"A"}]}) 
+* 1.首先登陆admin账号，保证有创建新数据库账号的权限
+```
+use admin 
+db.auth("userName","password") 
+```
+* 2.use你要新添加的数据库，然后创建用户(比如创建一个A的数据库)
+```
+use A 
+db.createUser({user:"Auser",pwd:"password",roles:[{"role":"readWrite","db":"A"}]}) 
+```
+
+## mongodb查看具体数据
+* <code>show dbs</code>查看所有数据库
+* <code>use hotel</code>查看hotel数据库
+* <code>show collections</code>查看hotel数据库下所有集合
+* <code>db.hotel.find()</code>查看hotel数据库hotel集合下所有数据
+* <code>db.hotel.find().count()</cdoe>查看hotel数据库hotel集合下所有数据条数
 
 ## 查看mongo内存占用
 ```
@@ -50,4 +61,8 @@ net:
   bindIp: 127.0.0.1
 ```
 
+## mongodb删除集合
+```
+db.collection.drop()
+```
 
