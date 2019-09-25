@@ -35,7 +35,7 @@ db.createUser({user:"Auser",pwd:"password",roles:[{"role":"readWrite","db":"A"}]
 * <code>use hotel</code> 查看hotel数据库
 * <code>show collections</code> 查看hotel数据库下所有集合
 * <code>db.hotel.find()</code> 查看hotel数据库hotel集合下所有数据
-* <code>db.hotel.find().count()</cdoe> \查看hotel数据库hotel集合下所有数据条数
+* <code>db.hotel.find().count()</cdoe> 查看hotel数据库hotel集合下所有数据条数
 
 ## 查看mongo内存占用
 ```
