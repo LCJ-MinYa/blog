@@ -10,7 +10,7 @@ tags:
 ## 导入注意事项
 * 因为mongodb版本为3.0，--headline参数应为--headerline
 * 导入命令必须在mongodb之外的环境调用
-* 导入的csv数据不能有双引号，否则会报<code> Failed: read error on entry #11923: line 11924, column 55: bare " in non-quoted-field</cdoe>错误
+* 导入的csv数据不能有未关闭或者非法双引号，否则会报<code> Failed: read error on entry #11923: line 11924, column 55: bare " in non-quoted-field</cdoe>错误
 
 ## 导入命令
 ```
