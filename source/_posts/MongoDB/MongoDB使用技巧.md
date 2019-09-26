@@ -26,8 +26,28 @@ db.auth("userName","password")
 ```
 * 2.use你要新添加的数据库，然后创建用户(比如创建一个A的数据库)
 ```
+#添加读写权限用户
 use A 
 db.createUser({user:"Auser",pwd:"password",roles:[{"role":"readWrite","db":"A"}]}) 
+
+#添加超级用户
+use admin
+db.createUser({user:"root",pwd:"pwd",roles:[{role:"root",db:"admin"}]})
+
+#角色类型
+1. 数据库用户角色：read、readWrite;
+2. 数据库管理角色：dbAdmin、dbOwner、userAdmin；
+3. 集群管理角色：clusterAdmin、clusterManager、clusterMonitor、hostManager；
+4. 备份恢复角色：backup、restore；
+5. 所有数据库角色：readAnyDatabase、readWriteAnyDatabase、userAdminAnyDatabase、dbAdminAnyDatabase
+6. 超级用户角色：root  
+// 这里还有几个角色间接或直接提供了系统超级用户的访问（dbOwner 、userAdmin、userAdminAnyDatabase）
+7. 内部角色：__system
+```
+
+## mongodb删除用户
+```
+db.dropUser("root")
 ```
 
 ## mongodb查看具体数据

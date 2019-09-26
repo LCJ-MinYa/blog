@@ -65,6 +65,20 @@ mp:
 ```
 * mongo加入path环境变量<code>D:\mongodb\bin</code>
 
+## mongodb配置
+* 开启外网访问
+```
+bindIp 0.0.0.0
+```
+
+* 开启身份验证(开启前先添加用户)
+```
+security:
+  authorization: enabled
+```
+
+## mongodb服务没有响应控制
+* 一般是由于配置文件.cfg格式错误导致
 
 ## cmder启动mongodb报错
 * 报错信息
@@ -75,13 +89,19 @@ mp:
 
 * 报错原因是因为没有使用管理员方式运行
 
-* 解决方法：
+* 解决方法一临时开启管理员权限：
 ```
 1. 快捷键 Ctrl + t 后勾选
 2. run as administrator
 ```
 ![image](/images/mongodb/3.png)
 
+* 解决方法二永久开启管理员权限：(推荐)
+```
+1. 快捷键：win + alt + p
+2. Startup -> Spedified named task选择{bash::bash as Admin}或者{cmder::cmder as Admin}
+```
+![image](/images/mongodb/4.png)
 
 
 ## windows启动mongodb命令
