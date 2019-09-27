@@ -9,7 +9,7 @@ tags:
 ---
 
 ## 示例
-* 在<code>new Vue()</cdoe> 中，<code>data</cdoe>是可以作为一个对象进行操作的，然而在<code>component</cdoe>中，<cdoe>data</cdoe>只能以函数的形式存在，不能直接将对象赋值给它
+* 在`new Vue()`中，`data`是可以作为一个对象进行操作的，然而在`component`中，`data`只能以函数的形式存在，不能直接将对象赋值给它
 
 ```js
 new Vue({
