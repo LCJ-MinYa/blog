@@ -13,7 +13,7 @@ tags:
 * 会直接以应用程序形式安装mongodb
 
 ## 安装过程
-* 请取消勾选<code>install MongoDB Compass</code>,有墙导致安装缓慢甚至无法安装,可使用Robo 3T或者adminmongo作为界面可视化管理工具
+* 请取消勾选<code>install MongoDB Compass</code>,有墙导致安装缓慢甚至无法安装,可使用Robo 3T或者mongodb compass作为界面可视化管理工具
 ![image](/images/mongodb/1.webp)
 
 * 安装完成后会出现<code>MongoDB Server</code>服务无法启动,原因是因为安装在非系统盘，<code>mongodb/bin/mongod.cfg</code>文件最后多一行<code>mp:</code>导致的，删除即可运行

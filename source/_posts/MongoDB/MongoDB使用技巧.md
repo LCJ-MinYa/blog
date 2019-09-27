@@ -86,3 +86,39 @@ net:
 db.collection.drop()
 ```
 
+## mongodb 索引
+* 创建索引（单字段索引）
+```
+db.collection.createIndex({field: sort})
+#field 字段名称
+#sort 排序方式1升序，-1降序，2(不常用)
+
+#示例
+db.collection.createIndex({name: 1})
+```
+
+* 创建索引（复合索引，查询条件不只一个时使用）
+```
+db.collection.createIndex({field1: sort, field2: sort})
+
+#示例
+db.collection.createIndex({name: 1, id: 1})
+```
+
+* 查看索引
+```
+#查看索引大小
+db.collection.totalIndexSize()
+
+#查看所有索引
+db.collection.getIndexes()
+```
+
+* 删除索引
+```
+#删除指定索引
+db.collection.dropIndex("index-name")
+
+#删除所有索引
+db.collection.dropIndexes()
+```
