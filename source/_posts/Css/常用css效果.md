@@ -216,3 +216,22 @@ input:-ms-input-placeholder{
     color: #999;
 }
 ```
+
+## 超出显示省略号
+```css
+/*---- 单行 ----*/
+p{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+/*---- 多行 ----*/
+p{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+```
