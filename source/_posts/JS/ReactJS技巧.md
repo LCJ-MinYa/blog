@@ -129,3 +129,12 @@ ReactDOM.render(
 <Route exact render={props => <NotFoundPage test={123} />} />
 ```
 
+## 修改资源引用地址从绝对路径到相对路径
+> 如果项目不是放在根目录，打包出来会导致资源加载错误，即路径不对
+```js
+// 修改package.json,在最后加上下面字段
+{
+    "homepage": "./"
+}
+```
+
