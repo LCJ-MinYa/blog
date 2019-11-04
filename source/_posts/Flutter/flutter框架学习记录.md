@@ -78,8 +78,29 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Container不能同时设置border和borderRadius
+## Container不能同时设置border某一边属性（但是可以设置所有）和borderRadius
 * 解决方法时嵌套两个Container
+```dart
+// 可以使用
+decoration: BoxDecoration(
+    border: Border.all(
+        width: UISize.width(1),
+        color: Color(0xffb3b3b3)
+    ),
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+),
+
+// 会报错
+decoration: BoxDecoration(
+    border: Border(
+        bottom: BorderSide(
+            width: UISize.width(1),
+            color: Color(0xffb3b3b3)
+        ),
+    ),
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+),
+```
 
 ## 自适应宽度高度方法
 
@@ -121,5 +142,54 @@ class ListTitleWidget extends StatelessWidget {
         this.borderRadius,
         this.showBottomBorder = true,
     });
+}
+```
+
+## 封装StatefulWidget有状态的组件
+* 参数必须定义初始化在SubmitButton而不是在_SubmitButtonState中。
+* SubmitButton中super不能省略，在StatelessWidget中可以省略。
+* 在_SubmitButtonState中可以通过widget（注意是小写）获取参数值。
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:kjt_bsp/styles/uiSize.dart';
+import '../tap/platformTapWidget.dart';
+
+class SubmitButton extends StatefulWidget {
+    final bool disable;             //是否能点击
+    final Function onTap;           //点击事件
+    final String title;             //标题
+
+    SubmitButton({
+        Key key,
+        this.onTap,
+        this.title,
+        this.disable,
+    }) : super(key: key);
+
+    @override
+    _SubmitButtonState createState() => _SubmitButtonState();
+}
+
+class _SubmitButtonState extends State<SubmitButton> {
+    @override
+    Widget build(BuildContext context) {
+        UISize.init(context);
+
+        return PlatformTapWidget(
+            onTap: widget.onTap,
+            child: Container(
+                margin: EdgeInsets.only(top: UISize.height(360)),
+                width: UISize.width(540),
+                height: UISize.height(88),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(13, 154, 255, 0.3),
+                    borderRadius: BorderRadius.all(Radius.circular(UISize.height(44)))
+                ),
+                child: Text(widget.title, style: TextStyle(color: Colors.white, fontSize: UISize.size(30)),),
+            ),
+        );
+    }
 }
 ```
