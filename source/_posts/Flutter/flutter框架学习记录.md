@@ -78,6 +78,19 @@ Widget build(BuildContext context) {
 }
 ```
 
+
+## 安卓状态栏背景透明设置
+
+```dart
+void main(){
+    runApp(App());
+    if(Platform.isAndroid){
+        SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+        SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+    }
+}
+```
+
 ## Container不能同时设置border某一边属性（但是可以设置所有）和borderRadius
 * 解决方法时嵌套两个Container
 ```dart
@@ -192,4 +205,34 @@ class _SubmitButtonState extends State<SubmitButton> {
         );
     }
 }
+```
+
+## 本地图片资源
+* 在lib下新建一个images文件夹，如果有2倍或者三倍图，再在images文件夹下新建2.0x, 3.0x文件夹
+* 在pubspec.yaml中引入资源
+```yaml
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #  - images/a_dot_burr.jpeg
+  #  - images/a_dot_ham.jpeg
+  
+  assets:
+    - lib/images/banner1.jpg
+    - lib/images/banner2.jpg
+    - lib/images/banner3.jpg
+
+    # 如果有多张图片需要导入，优化写法如下 =>
+    - lib/images/
+
+    # 如果有多个文件夹分类图片需要导入，写法如下 =>
+    - lib/images/main/
+    - lib/images/login/
+    - lib/images/mine/
+```
+* 在需要调用出调用
+```dart
+return new Image.asset(
+    "lib/images/banner${index + 1}.jpg",
+    fit: BoxFit.cover,
+);
 ```
