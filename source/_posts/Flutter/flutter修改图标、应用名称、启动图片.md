@@ -16,3 +16,12 @@ tags:
 * (https://icon.wuruihong.com/)[图标工场]在线生成所有平台,所有尺寸图标
 * ios在 `ios` ▸ `Runner` ▸ `Assets.xcassets` ▸ `AppIcon.appiconset`文件夹中替换相应尺寸的图片,将下载的压缩包中的AppIcon.appiconset直接替换。
 * android 在`android` ▸ `app` ▸ `src` ▸ `res` ▸ `mipmap-...`文件夹中替换相应尺寸的图片,将下载的压缩包中的`mipmap-...`等所有文件夹直接替换。
+
+## 启动页
+1. ios原生设置启动页
+   * 准备三个尺寸图片1x(375×750), 2x(750×1500), 3x(1125×2250)
+   * 替换`ios` ▸ `Runner` ▸ `Assets.xcassets` ▸ `LaunchImage.imageset`下图片即可，保持命名一致
+   * 让启动图全屏, `launchScreen.storyboard` ▸ `View Controller Scene` ▸ `View Controller` ▸ `View` ▸ `LaunchImage` ▸ `Content Mode`改为`Aspect Fill`.
+![image](/images/flutter/launchImage.jpg)
+
+> 刚开始这样设置, 不知道为什么总是先白屏一下然后才显示启动页，然后再进入APP,试过很多方法，最后又按照最初的方法莫名其妙好了。。。。未知。。。
