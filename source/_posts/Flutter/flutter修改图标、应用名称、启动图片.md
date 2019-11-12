@@ -24,4 +24,23 @@ tags:
    * 让启动图全屏, `launchScreen.storyboard` ▸ `View Controller Scene` ▸ `View Controller` ▸ `View` ▸ `LaunchImage` ▸ `Content Mode`改为`Aspect Fill`.
 ![image](/images/flutter/launchImage.jpg)
 
-> 刚开始这样设置, 不知道为什么总是先白屏一下然后才显示启动页，然后再进入APP,试过很多方法，最后又按照最初的方法莫名其妙好了。。。。未知。。。
+> 刚开始这样设置, 不知道为什么总是先白屏一下然后才显示启动页，然后再进入APP,试过很多方法，最后又按照最初的方法莫名其妙好了。。。。未知。。。  
+> `Content Mode`改为`Scale To Fill`,因为在flutter中BoxFit.fill对应此属性，为了与安卓fill统一(在真机ipone5测试中，Scale To Fill与BoxFit.fill最后其实效果还是不一样，所以还是考虑自己封装原生方法给flutter调用)
+
+2. android原生设置启动页
+    * 在android/app/src/main/res/drawable/launch_background.xml中取消注释切修改fill属性
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modify this file to customize your launch splash screen -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/white" />
+
+    <!-- 添加下列代码 -->
+    <item>
+        <bitmap
+            android:gravity="fill"
+            android:src="@mipmap/launch_image" />
+    </item>
+</layer-list>
+```
+ * 然后在mipmap中添加对应的启动图资源即可
