@@ -18,7 +18,8 @@ tags:
 * android 在`android` ▸ `app` ▸ `src` ▸ `res` ▸ `mipmap-...`文件夹中替换相应尺寸的图片,将下载的压缩包中的`mipmap-...`等所有文件夹直接替换。
 
 ## 启动页
-1. ios原生设置启动页
+
+##### ios原生设置启动页
    * 准备三个尺寸图片1x(375×750), 2x(750×1500), 3x(1125×2250)
    * 替换`ios` ▸ `Runner` ▸ `Assets.xcassets` ▸ `LaunchImage.imageset`下图片即可，保持命名一致
    * 让启动图全屏, `launchScreen.storyboard` ▸ `View Controller Scene` ▸ `View Controller` ▸ `View` ▸ `LaunchImage` ▸ `Content Mode`改为`Scale To Fill`.
@@ -26,8 +27,8 @@ tags:
    * ios需要6个约束来达到原生和flutter启动图效果一致`1.centerX 2.centerY 3.top = 0 4.left = 0 5.right = 0 6.bottom = 0`
 > 图中`Content Mode`改为`Scale To Fill`,因为在flutter中BoxFit.fill对应此属性，为了与安卓fill统一
 
-2. android原生设置启动页
-    * 在android/app/src/main/res/drawable/launch_background.xml中取消注释切修改fill属性
+##### android原生设置启动页
+   * 在android/app/src/main/res/drawable/launch_background.xml中取消注释切修改fill属性
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Modify this file to customize your launch splash screen -->
@@ -42,10 +43,10 @@ tags:
     </item>
 </layer-list>
 ```
- * 然后在mipmap中添加对应的启动图资源即可
- * 需要注意的是安卓的启动图片资源需要和flutter使用的启动图片资源比例要保持一致
+   * 然后在mipmap中添加对应的启动图资源即可
+   * 需要注意的是安卓的启动图片资源需要和flutter使用的启动图片资源比例要保持一致
 
- 3. 如果需要自定义启动图时间，在flutter中再模拟一次启动图
+##### 如果需要自定义启动图时间，在flutter中再模拟一次启动图
  ```dart
  import 'package:flutter/material.dart';
 
