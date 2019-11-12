@@ -21,11 +21,10 @@ tags:
 1. ios原生设置启动页
    * 准备三个尺寸图片1x(375×750), 2x(750×1500), 3x(1125×2250)
    * 替换`ios` ▸ `Runner` ▸ `Assets.xcassets` ▸ `LaunchImage.imageset`下图片即可，保持命名一致
-   * 让启动图全屏, `launchScreen.storyboard` ▸ `View Controller Scene` ▸ `View Controller` ▸ `View` ▸ `LaunchImage` ▸ `Content Mode`改为`Aspect Fill`.
+   * 让启动图全屏, `launchScreen.storyboard` ▸ `View Controller Scene` ▸ `View Controller` ▸ `View` ▸ `LaunchImage` ▸ `Content Mode`改为`Scale To Fill`.
 ![image](/images/flutter/launchImage.jpg)
-
-> 刚开始这样设置, 不知道为什么总是先白屏一下然后才显示启动页，然后再进入APP,试过很多方法，最后又按照最初的方法莫名其妙好了。。。。未知。。。  
-> `Content Mode`改为`Scale To Fill`,因为在flutter中BoxFit.fill对应此属性，为了与安卓fill统一(在真机ipone5测试中，Scale To Fill与BoxFit.fill最后其实效果还是不一样，所以还是考虑自己封装原生方法给flutter调用)
+   * ios需要6个约束来达到原生和flutter启动图效果一致`1.centerX 2.centerY 3.top = 0 4.left = 0 5.right = 0 6.bottom = 0`
+> 图中`Content Mode`改为`Scale To Fill`,因为在flutter中BoxFit.fill对应此属性，为了与安卓fill统一
 
 2. android原生设置启动页
     * 在android/app/src/main/res/drawable/launch_background.xml中取消注释切修改fill属性
@@ -44,3 +43,37 @@ tags:
 </layer-list>
 ```
  * 然后在mipmap中添加对应的启动图资源即可
+ * 需要注意的是安卓的启动图片资源需要和flutter使用的启动图片资源比例要保持一致
+
+ 3. 如果需要自定义启动图时间，在flutter中再模拟一次启动图
+ ```dart
+ import 'package:flutter/material.dart';
+
+class LaunchImageScreen extends StatefulWidget {
+    @override
+    _LaunchImageScreenState createState() => _LaunchImageScreenState();
+}
+
+class _LaunchImageScreenState extends State<LaunchImageScreen> {
+    @override
+    void initState() {
+        super.initState();
+        _startHome();
+    }
+
+    @override
+    Widget build(BuildContext context) {
+        return Image.asset(
+            'lib/images/launch/LaunchImage.png',
+            fit: BoxFit.fill
+        );
+    }
+
+    //显示2秒后跳转到HomeTabPage
+    _startHome() async {
+        await Future.delayed(const Duration(milliseconds: 2000), () {
+            Navigator.pushReplacementNamed(context, '/tabbar');
+        });
+    }
+}
+ ```
