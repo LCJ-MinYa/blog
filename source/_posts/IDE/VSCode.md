@@ -11,3 +11,6 @@ tags:
 
 ## 打开新的窗口
 * <code>ctrl+shift+n</code>
+
+## 命令面板
+* `ctrl+shift+p`
