@@ -235,3 +235,12 @@ p{
     text-overflow:ellipsis;
 }
 ```
+
+## safair下input设置disabled导致透明
+```css
+input:disabled{
+    color: blue;
+    opacity: 1;
+    -webkit-text-fill-color: blue;
+}
+```
