@@ -40,7 +40,7 @@ if(this.doSomething){
 //#END
 
 1.执行git config -l查看当前生效的全局配置
-2.通过vi /Users/minya/.gitconfig查看当前全局配置
+2.通过vi /Users/minya/.gitconfig查看当前全局配置（windows配置文件路径为C:\Users\Administrator\.gitconfig）
 [filter "gitignore"]
         clean = "sed '/\\/\\/#BEGIN/,/\\/\\/#END$/d'"
         smudge = cat
