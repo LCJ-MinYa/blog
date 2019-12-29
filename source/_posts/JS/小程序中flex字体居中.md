@@ -9,7 +9,7 @@ tags:
 ---
 
 ## flex布局文本无法居中
-```
+```js
 <style lang="less">
 .step-index{
     width: 30rpx;
@@ -30,7 +30,7 @@ tags:
 ```
 
 ## 文本类行内元素采用line-height
-```
+```js
 <style lang="less">
 .step-index{
     width: 30rpx;
