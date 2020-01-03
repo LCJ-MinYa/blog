@@ -9,7 +9,8 @@ tags:
 ---
 
 ## flex布局文本无法居中
-```js
+* 原因是因为`display: inline-block`行内元素，如果是块级元素flex布局是可以居中的
+```html
 <style lang="less">
 .step-index{
     width: 30rpx;
@@ -30,7 +31,7 @@ tags:
 ```
 
 ## 文本类行内元素采用line-height
-```js
+```html
 <style lang="less">
 .step-index{
     width: 30rpx;
