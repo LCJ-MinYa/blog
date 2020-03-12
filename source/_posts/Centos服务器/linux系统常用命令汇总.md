@@ -98,3 +98,6 @@ mv 文件名当前目录 移动后的目录
 > 端口非22的时候scp -P指定端口，注意大写; -r代表复制文件夹
 * <code>scp -r -P 7777 root@ip:/root/www/xxx /Users/minya/Desktop</code>(下载xxx文件夹)
 * <code>scp -r /Users/minya/Desktop/xxx -P 7777 root@ip:/root/www/</code>(上传xxx文件夹)
+
+## 清空指定文件
+echo -n "" > 文件名
