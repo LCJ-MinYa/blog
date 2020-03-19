@@ -17,5 +17,5 @@ tags:
 * 从中可以看到这样的记录：pam_tally2(sshd:auth): user xxxxxx  (500) tally 74, deny 5 （账号登录失败次数过多导致被锁定）
 
 ## 解决
-pam_tally2 --reset -u root 解锁即可(这里root也可以对应其他被锁定的账号) 
+`pam_tally2 --reset -u root` 解锁即可(这里root也可以对应其他被锁定的账号) 
 
