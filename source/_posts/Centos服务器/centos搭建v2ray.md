@@ -22,6 +22,14 @@ bash <(curl -s -L https://git.io/v2ray.sh)
 systemctl status firewalld.service #查看防火墙状态
 
 systemctl stop firewalld.service #执行停止运行防火墙命令
+
+systemctl disable firewalld.service #禁止防火墙自启动
+```
+
+* 防火墙其他命令
+```shell
+systemctl start firewalld.service #启动
+systemctl enable firewalld.service #开机启动
 ```
 
 ## windows客户端配置
