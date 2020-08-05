@@ -9,7 +9,7 @@ tags:
 ---
 
 ## ios证书配置
-> 因是接手打包项目，所以证书已申请，直接配置即可
+> 因是接手打包项目，所以证书已申请，直接配置即可  
 * 1.双击已生成的证书安装(两个都需要安装)![image](/images/rn/ios_build/install.png)
 * 2.添加账号，下载Manual profiles![image](/images/rn/ios_build/add_user.png)
 * 3.配置对应的bundle identifier,signing![image](/images/rn/ios_build/build_config.png)
