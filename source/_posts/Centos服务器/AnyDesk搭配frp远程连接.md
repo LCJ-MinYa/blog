@@ -42,14 +42,16 @@ WantedBy=multi-user.target
 2. `sudo systemctl start frps`启动frps
 3. `sudo systemctl enable frps`自启动
 ```shell
+#其他相关命令
 sudo systemctl restart frps #重启
 sudo systemctl stop frps #停止
 sudo systemctl status frps #查看应用日志
 ```
 
 ### iptables开放端口
+> 如果未设置防火墙限制端口访问，该步骤省略
 ```shell
-# frp服务器
+# frp服务器，有多少需要开放的端口就添加多少条并替换其中的端口号
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 7000 -j ACCEPT
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 7070 -j ACCEPT
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 7080 -j ACCEPT
@@ -59,7 +61,7 @@ sudo systemctl status frps #查看应用日志
 ### 安装anydesk
 
 ### [下载frp客户端](https://github.com/fatedier/frp/releases)
-我是windows端的，下载后，解压压缩包。[image](/images/centos/frp_windows.png)
+我是windows端的，下载后，解压压缩包。![image](/images/centos/frp_windows.png)
 
 ### 配置frpc.ini
 ```shell
@@ -91,7 +93,7 @@ remote_port = 7080      #服务器暴露到外网的端口，同时服务器需�
 
 ## 网络拓扑
 ![image](/images/centos/network.png)
-> 上图是按我自己理解画出的网络拓扑，公司电脑的AnyDesk服务在本地监听7070端口，frp服务将其映射到云服务器的7080端口。家里的电脑连接云服务器的7080端口，就会被frp转发到公司的7070端口，此时公司电脑的AnyDesk收到连接请求，就这样实现远程桌面内网的穿透。
+> 网络拓扑理解如下，受控客户端的AnyDesk服务在本地监听7070端口，frp服务将其映射到云服务器的7080端口。控制客户端连接云服务器的7080端口，就会被frp转发到受控客户端的7070端口，此时受控客户端的AnyDesk收到连接请求，就这样实现远程桌面内网的穿透。
 
 ## 借鉴网址
 [AnyDesk with Frp 突破内网的远程桌面](https://www.cnblogs.com/flylinmu/p/11703567.html)
