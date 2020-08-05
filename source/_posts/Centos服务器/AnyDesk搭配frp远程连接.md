@@ -80,17 +80,17 @@ remote_port = 7080      #服务器暴露到外网的端口，同时服务器需�
 2. 执行`./frpc -c ./frpc.ini`命令，否则要配置path环境变量（注意此处windows必须加上`./`否则无法运行）
 
 ### 受控端anydesk设置
-1. 配置自主访问密码[image](/images/centos/anydesk_user.png)
-2. 允许直接连接，并保证端口与`frpc.ini`内本地端口配置一致[image](/images/centos/anydesk_port.png)
+1. 配置自主访问密码![image](/images/centos/anydesk_user.png)
+2. 允许直接连接，并保证端口与`frpc.ini`内本地端口配置一致![image](/images/centos/anydesk_port.png)
 
 ## 控制客户端
 ### 安装anydesk
 
 ### 输入地址：端口，连接
-[image](/images/centos/ip_port.png)
+![image](/images/centos/ip_port.png)
 
 ## 网络拓扑
-[image](/images/centos/network.png)
+![image](/images/centos/network.png)
 > 上图是按我自己理解画出的网络拓扑，公司电脑的AnyDesk服务在本地监听7070端口，frp服务将其映射到云服务器的7080端口。家里的电脑连接云服务器的7080端口，就会被frp转发到公司的7070端口，此时公司电脑的AnyDesk收到连接请求，就这样实现远程桌面内网的穿透。
 
 ## 借鉴网址
