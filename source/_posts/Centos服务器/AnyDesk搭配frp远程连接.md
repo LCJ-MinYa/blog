@@ -91,6 +91,7 @@ remote_port = 7080      #服务器暴露到外网的端口，同时服务器需�
 
 ## 网络拓扑
 [image](/images/centos/network.png)
+> 上图是按我自己理解画出的网络拓扑，公司电脑的AnyDesk服务在本地监听7070端口，frp服务将其映射到云服务器的7080端口。家里的电脑连接云服务器的7080端口，就会被frp转发到公司的7070端口，此时公司电脑的AnyDesk收到连接请求，就这样实现远程桌面内网的穿透。
 
 ## 借鉴网址
 [AnyDesk with Frp 突破内网的远程桌面](https://www.cnblogs.com/flylinmu/p/11703567.html)
