@@ -10,13 +10,13 @@ tags:
 - 远程桌面
 ---
 ## 服务器frps
-### 安装frp服务端
+- ### 安装frp服务端
 1. `cd /usr/local`进入/usr/local目录
 2. `wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.tar.gz`下载frp服务器压缩包
 3. `tar xzvf frp_0.29.0_linux_amd64.tar.gz`解压压缩包
 4. `cd frp_0.29.0_linux_amd64`进入frp目录，当前目录为`/usr/local/frp_0.29.0_linux_amd64`
 
-### 配置frps.ini
+- ### 配置frps.ini
 ```ini
 # frps.ini
 [common]
@@ -24,7 +24,7 @@ bind_port = 7000
 #token = sDesQJk@KlO #客户端连接服务器端的口令，设置了之后验证失败，所以暂时取消验证
 ```
 
-### 设置开机启动
+- ### 设置开机启动
 1. `vi /etc/systemd/system/frps.service` 新建此文件，并写入以下内容 
 ```shell 
 [Unit]                                                                                        
@@ -48,8 +48,8 @@ sudo systemctl stop frps #停止
 sudo systemctl status frps #查看应用日志
 ```
 
-### iptables开放端口
-> 如果未设置防火墙限制端口访问，该步骤省略
+- ### iptables开放端口
+如果未设置防火墙限制端口访问，该步骤省略
 ```shell
 # frp服务器，有多少需要开放的端口就添加多少条并替换其中的端口号
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 7000 -j ACCEPT
@@ -58,12 +58,12 @@ sudo systemctl status frps #查看应用日志
 ```
 
 ## 受控客户端
-### 安装anydesk
+- ### 安装anydesk
 
-### [下载frp客户端](https://github.com/fatedier/frp/releases)
+- ### [下载frp客户端](https://github.com/fatedier/frp/releases)
 我是windows端的，下载后，解压压缩包。![image](/images/centos/frp_windows.png)
 
-### 配置frpc.ini
+- ### 配置frpc.ini
 ```shell
 [common]
 server_addr = x.x.x.x   #服务器地址
@@ -77,18 +77,18 @@ local_port = 7070       #要穿透的本地端口
 remote_port = 7080      #服务器暴露到外网的端口，同时服务器需要开放该端口
 ```
 
-### 启动frpc
+- ### 启动frpc
 1. 在当前目录下打开cmd命令行工具
 2. 执行`./frpc -c ./frpc.ini`命令，否则要配置path环境变量（注意此处windows必须加上`./`否则无法运行）
 
-### 受控端anydesk设置
+- ### 受控端anydesk设置
 1. 配置自主访问密码![image](/images/centos/anydesk_user.png)
 2. 允许直接连接，并保证端口与`frpc.ini`内本地端口配置一致![image](/images/centos/anydesk_port.png)
 
 ## 控制客户端
-### 安装anydesk
+- ### 安装anydesk
 
-### 输入地址：端口，连接
+- ### 输入地址：端口，连接
 ![image](/images/centos/ip_port.png)
 
 ## 网络拓扑
