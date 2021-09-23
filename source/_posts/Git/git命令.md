@@ -6,6 +6,12 @@ tags:
 - git
 ---
 
+## 提交到本地
+* <code>git add .</code>
+
+## 提交到仓库
+* <code>git commit -m 'xxx'</code>
+
 ## 查看当前git状态
 * <code>git status</code>
 
