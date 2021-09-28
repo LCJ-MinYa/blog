@@ -6,11 +6,11 @@ tags:
 - git
 ---
 
-## 提交到本地
-* <code>git add .</code>
-
-## 提交到仓库
-* <code>git commit -m 'xxx'</code>
+## 提交步骤
+* 提交到暂存区<code>git add .</code>
+* 提交到本地仓库<code>git commit -m 'xxx'</code>
+* 拉取远程仓库<code>git pull</code>
+* 提交远程仓库<code>git push</code>
 
 ## 查看当前git状态
 * <code>git status</code>
@@ -18,6 +18,3 @@ tags:
 ## 放弃本地文件
 * <code>git checkout fileName</code>放弃fileName文件修改
 * <code>git checkout .</code>放弃所有本地文件修改
-
-## 拉取更新
-* <code>git pull</code>
