@@ -191,3 +191,47 @@ const catId = '10001';
 const currentLevelDataArr = [];
 dealTreeData(dataArr, catId, currentLevelDataArr);
 ```
+
+## 按需引入element-ui
+* `yarn add element-ui`
+* `yarn add babel-plugin-component --dev`
+* 编辑babel.config.js
+```js
+const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV)
+
+const plugins = [
+    [
+        'component',
+        {
+            "libraryName": "element-ui",
+            "styleLibraryName": "theme-chalk"
+        }
+    ]
+]
+if (IS_PROD) {
+  plugins.push('transform-remove-console')
+}
+
+module.exports = {
+  presets: [
+    '@vue/cli-plugin-babel/preset'
+  ],
+  plugins
+  // plugins: [
+  //   [
+  //     "import",
+  //     { libraryName: "ant-design-vue", libraryDirectory: "es", style: true }
+  //   ]
+  // ]
+}
+```
+* 在main.js中按需引入
+```js
+import { Table, TableColumn, Input } from 'element-ui';
+
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Input);
+```
+
+* 验证按需加载是否成功，每次添加一个组件，然后`yarn build`后查看`www/static/js/chunk-vendors.xxxx.js`文件大小
