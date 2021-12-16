@@ -1,0 +1,40 @@
+<!--
+ * @Author: LiChaoJun
+ * @Date: 2021-10-29 10:49:11
+ * @LastEditTime: 2021-10-29 10:58:30
+ * @LastEditors: LiChaoJun
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body></body>
+</html>
+<script>
+    const object = {
+        0: '我是0',
+        [1]: '我是数组1',
+        '{name: 2}': '我是对象2',
+    };
+    console.log(object);
+    console.log(typeof object);
+
+    /** new Map设置初始值 方法一 */
+    const map = new Map([
+        [0, '我是0'],
+        [[1], '我是数组1'],
+        [{ name: '2' }, '我是对象2'],
+    ]);
+    console.log(map);
+    console.log(typeof map);
+
+    /** new Map设置初始值 方法二 */
+    const otherMap = new Map();
+    otherMap.set(0, '我是0').set([1], '我是数组1').set({ name: '2' }, '我是对象2');
+    console.log(otherMap);
+    console.log(map == otherMap);
+</script>

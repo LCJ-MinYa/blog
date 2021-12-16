@@ -572,6 +572,13 @@ class语法 构造函数的语法糖
 
 ## http状态码
 ## cookie,session,token
+{% note %}
+Cookie：cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下,存储的大小很小只有4K左右。（key：可以在浏览器和服务器端来回传递，存储容量小，只有大约4K左右）
+
+sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持，localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。（key：本身就是一个回话过程，关闭浏览器后消失，session为一个回话，当页面不同即使是同一页面打开两次，也被视为同一次回话）
+
+localStorage：localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的。（key：同源窗口都会共享，并且不会失效，不管窗口或者浏览器关闭与否都会始终生效）
+{% endnote %}
 
 ## 前端性能优化
 
@@ -593,6 +600,115 @@ promise.then里的回调函数会放到相应宏任务的微任务队列里，�
 {% note %}
 promise构造函数是同步执行的，then方法是异步执行的
 {% endnote %}
+
+## new关键字做了什么
+{% note %}
+1.声明一个中间对象
+2.将该中间对象的proto指向构造函数的原型
+3.将构造函数的this通过apply指向中间对象
+4.返回该中间对象,也就是返回了实例对象
+{% endnote %}
+
+## 深拷贝和浅拷贝
+* 概念
+{% note %}
+如何区分深拷贝与浅拷贝，简单点来说，就是假设B复制了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，拿人手短，如果B没变，那就是深拷贝，自食其力。
+{% endnote %}
+
+* 深拷贝实现方式
+1. 递归递归去复制所有层级属性(PS：只是一个基本实现的展示，并非最佳实践)
+```js
+function deepClone(obj){
+    let objClone = Array.isArray(obj)?[]:{};
+    if(obj && typeof obj==="object"){
+        for(key in obj){
+            if(obj.hasOwnProperty(key)){
+                //判断ojb子元素是否为对象，如果是，递归复制
+                if(obj[key]&&typeof obj[key] ==="object"){
+                    objClone[key] = deepClone(obj[key]);
+                }else{
+                    //如果不是，简单复制
+                    objClone[key] = obj[key];
+                }
+            }
+        }
+    }
+    return objClone;
+}    
+```
+
+2. 通过JSON对象来实现深拷贝
+```js
+//缺点： 无法实现对对象中方法的深拷贝，会显示为undefined
+function deepClone2(obj) {
+    var _obj = JSON.stringify(obj),
+    objClone = JSON.parse(_obj);
+    return objClone;
+}
+```
+
+3. 通过jQuery的extend方法实现深拷贝
+```js
+var array = [1,2,3,4];
+var newArray = $.extend(true,[],array); // true为深拷贝，false为浅拷贝
+```
+
+4. lodash函数库实现深拷贝
+```js
+let result = _.cloneDeep(test)
+```
+
+5. 如果对象的value是基本类型的话，也可以用Object.assign来实现深拷贝，但是要把它赋值给一个空对象
+```js
+var obj = {
+    a: 1,
+    b: 2
+}
+var obj1 = Object.assign({}, obj); // obj赋值给一个空{}
+obj1.a = 3;
+console.log(obj.a)；// 1
+```
+
+## 跨域解决方案
+* 通过jsonp跨域
+* postMessage跨域
+{% note %}
+postMessage是HTML5 XMLHttpRequest Level 2中的API，且是为数不多可以跨域操作的window属性之一，它可用于解决以下方面的问题：
+a.） 页面和其打开的新窗口的数据传递
+b.） 多窗口之间消息传递
+c.） 页面与嵌套的iframe消息传递
+d.） 上面三个场景的跨域数据传递
+
+用法：postMessage(data,origin)方法接受两个参数
+data： html5规范支持任意基本类型或可复制的对象，但部分浏览器只支持字符串，所以传参时最好用JSON.stringify()序列化。
+origin： 协议+主机+端口号，也可以设置为"*"，表示可以传递给任意窗口，如果要指定和当前窗口同源的话设置为"/"。
+{% endnote %}
+* 跨域资源共享（CORS）
+{% note %}
+普通跨域请求：只服务端设置Access-Control-Allow-Origin即可，前端无须设置，若要带cookie请求：前后端都需要设置。
+{% endnote %}
+* nodejs中间件代理跨域
+* nginx代理跨域
+* WebSocket协议跨域
+
+## 如果通过点击空白区域关闭一个弹窗
+```js
+window.addEventListener('click', bodyClosePopup);
+
+function bodyClosePopup(event) {
+    let selectBox = document.querySelector('.ant-select-dropdown');
+    let modalBox = document.querySelector('.ant-modal-root');
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (path.includes(modalBox) || path.includes(selectBox)) {
+        return;
+    }
+    if (!this.dataSource.length) {
+        return;
+    }
+    //符合条件,关闭弹窗
+    this.popup = false;
+},
+```
 
 # vue部分
 
