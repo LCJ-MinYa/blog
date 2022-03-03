@@ -89,6 +89,3 @@ deploy:
   type: git
   repo: 
   branch: master
-
-include:
-  - .nojekyll
