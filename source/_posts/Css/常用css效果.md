@@ -266,3 +266,152 @@ flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余�
     flex-grow: 1;
 }
 ```
+
+## 打字效果
+```html
+<!-- html部分 -->
+<div class="wrapper">
+    <div class="typing-demo">
+      有趣且实用的 CSS 小技巧
+    </div>
+</div>
+```
+```css
+/* css部分 */
+.wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.typing-demo {
+    /*
+     * 1ch = 1个英文 = 1个数字
+     * 2ch = 1个中文
+     * ch 是一个相对单位，所谓相对，意思是 ch 会根据当前容器的 ****font-size**** 变化而变化。
+     * ch单位在chrome效果完好，在firfox中显示有问题，兼容性待商榷
+     */
+    width: 22ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 2em;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+}
+    
+@keyframes blink {
+    50% {
+        border-color: transparent
+    }
+}
+```
+
+## 自定义滚动条样式
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .wrapper {
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mr-1 {
+                margin-right: 1em;
+            }
+
+            .tile {
+                overflow: auto;
+                display: inline-block;
+                background-color: #ccc;
+                height: 200px;
+                width: 180px;
+            }
+
+            .tile-custom-scrollbar::-webkit-scrollbar {
+                width: 12px;
+                background-color: #eff1f5;
+            }
+
+            .tile-custom-scrollbar::-webkit-scrollbar-track {
+                border-radius: 3px;
+                background-color: transparent;
+            }
+
+            .tile-custom-scrollbar::-webkit-scrollbar-thumb {
+                border-radius: 5px;
+                background-color: #515769;
+                border: 2px solid #eff1f5;
+            }
+
+            .tile-content {
+                padding: 20px;
+                height: 500px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div>
+                <div class="tile mr-1">
+                    <div class="tile-content">默认滚动条</div>
+                </div>
+
+                <div class="tile tile-custom-scrollbar">
+                    <div class="tile-content">自定义滚动条</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+```
+
+## 圆形渐变边框
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .gradient-border {
+                border: solid 5px transparent;
+                border-radius: 10px;
+                background-image: linear-gradient(white, white), 
+                linear-gradient(315deg,#833ab4,#fd1d1d 50%,#fcb045);
+                background-origin: border-box;
+                background-clip: content-box, border-box;
+            }
+            .box {
+                width: 350px;
+                height: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 100px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box gradient-border">炫酷渐变边框</div>
+    </body>
+</html>
+```
+
