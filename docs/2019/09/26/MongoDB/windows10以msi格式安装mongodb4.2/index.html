@@ -87,15 +87,15 @@
 <meta property="og:site_name" content="MinYa">
 <meta property="og:description" content="安装文件以msi格式 会直接以应用程序形式安装mongodb  安装过程 请取消勾选install MongoDB Compass,有墙导致安装缓慢甚至无法安装,可使用Robo 3T或者mongodb compass作为界面可视化管理工具  安装完成后会出现MongoDB Server服务无法启动,原因是因为安装在非系统盘，mongodb/bin/mongod.cfg文件最后多一行mp:导致的，删">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lcj-minya.github.io/images/mongodb/1.webp">
-<meta property="og:image" content="https://lcj-minya.github.io/images/mongodb/2.webp">
-<meta property="og:image" content="https://lcj-minya.github.io/images/mongodb/3.png">
-<meta property="og:image" content="https://lcj-minya.github.io/images/mongodb/4.png">
-<meta property="og:updated_time" content="2021-09-08T01:19:10.406Z">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/2019/images/mongodb/1.webp">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/2019/images/mongodb/2.webp">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/2019/images/mongodb/3.png">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/2019/images/mongodb/4.png">
+<meta property="og:updated_time" content="2022-03-04T01:33:13.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="windows10以msi格式安装mongodb4.2">
 <meta name="twitter:description" content="安装文件以msi格式 会直接以应用程序形式安装mongodb  安装过程 请取消勾选install MongoDB Compass,有墙导致安装缓慢甚至无法安装,可使用Robo 3T或者mongodb compass作为界面可视化管理工具  安装完成后会出现MongoDB Server服务无法启动,原因是因为安装在非系统盘，mongodb/bin/mongod.cfg文件最后多一行mp:导致的，删">
-<meta name="twitter:image" content="https://lcj-minya.github.io/images/mongodb/1.webp">
+<meta name="twitter:image" content="https://lcj-minya.github.io/blog/2019/images/mongodb/1.webp">
 
 
 
@@ -503,9 +503,9 @@
 <li>会直接以应用程序形式安装mongodb</li>
 </ul>
 <h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><ul>
-<li><p>请取消勾选<code>install MongoDB Compass</code>,有墙导致安装缓慢甚至无法安装,可使用Robo 3T或者mongodb compass作为界面可视化管理工具<br><img src="/images/mongodb/1.webp" alt="image"></p>
+<li><p>请取消勾选<code>install MongoDB Compass</code>,有墙导致安装缓慢甚至无法安装,可使用Robo 3T或者mongodb compass作为界面可视化管理工具<br><img src="../../../../images/mongodb/1.webp" alt="image"></p>
 </li>
-<li><p>安装完成后会出现<code>MongoDB Server</code>服务无法启动,原因是因为安装在非系统盘，<code>mongodb/bin/mongod.cfg</code>文件最后多一行<code>mp:</code>导致的，删除即可运行<br><img src="/images/mongodb/2.webp" alt="image"></p>
+<li><p>安装完成后会出现<code>MongoDB Server</code>服务无法启动,原因是因为安装在非系统盘，<code>mongodb/bin/mongod.cfg</code>文件最后多一行<code>mp:</code>导致的，删除即可运行<br><img src="../../../../images/mongodb/2.webp" alt="image"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># mongod.conf</span><br><span class="line"></span><br><span class="line"># for documentation of all options, see:</span><br><span class="line">#   http://docs.mongodb.org/manual/reference/configuration-options/</span><br><span class="line"></span><br><span class="line"># Where and how to store data.</span><br><span class="line">storage:</span><br><span class="line">  dbPath: E:\MongoDB\data</span><br><span class="line">  journal:</span><br><span class="line">    enabled: true</span><br><span class="line">#  engine:</span><br><span class="line">#  mmapv1:</span><br><span class="line">#  wiredTiger:</span><br><span class="line"></span><br><span class="line"># where to write logging data.</span><br><span class="line">systemLog:</span><br><span class="line">  destination: file</span><br><span class="line">  logAppend: true</span><br><span class="line">  path:  E:\MongoDB\log\mongod.log</span><br><span class="line"></span><br><span class="line"># network interfaces</span><br><span class="line">net:</span><br><span class="line">  port: 27017</span><br><span class="line">  bindIp: 127.0.0.1</span><br><span class="line"></span><br><span class="line">#processManagement:</span><br><span class="line"></span><br><span class="line">#security:</span><br><span class="line"></span><br><span class="line">#operationProfiling:</span><br><span class="line"></span><br><span class="line">#replication:</span><br><span class="line"></span><br><span class="line">#sharding:</span><br><span class="line"></span><br><span class="line">## Enterprise-Only Options:</span><br><span class="line"></span><br><span class="line">#auditLog:</span><br><span class="line"></span><br><span class="line">#snmp:</span><br><span class="line"></span><br><span class="line">#删除下面即可</span><br><span class="line">mp:</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>mongo加入path环境变量<code>D:\mongodb\bin</code></p>
@@ -532,12 +532,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 快捷键 Ctrl + t 后勾选</span><br><span class="line">2. run as administrator</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="/images/mongodb/3.png" alt="image"></p>
+<p><img src="../../../../images/mongodb/3.png" alt="image"></p>
 <ul>
 <li>解决方法二永久开启管理员权限：(推荐)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 快捷键：win + alt + p</span><br><span class="line">2. Startup -&gt; Spedified named task选择&#123;bash::bash as Admin&#125;或者&#123;cmder::cmder as Admin&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="/images/mongodb/4.png" alt="image"></p>
+<p><img src="../../../../images/mongodb/4.png" alt="image"></p>
 <h2 id="windows启动mongodb命令"><a href="#windows启动mongodb命令" class="headerlink" title="windows启动mongodb命令"></a>windows启动mongodb命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">启动:net start MongoDB </span><br><span class="line">重启:net restart MongoDB </span><br><span class="line">关闭:net stop MongoDB</span><br></pre></td></tr></table></figure>
 <h2 id="借鉴网址"><a href="#借鉴网址" class="headerlink" title="借鉴网址"></a>借鉴网址</h2><p><a href="https://www.jianshu.com/p/4a91529fbaed" target="_blank" rel="noopener">Win10 安装配置 MongoDB 4.0 踩坑记</a><br><a href="https://blog.csdn.net/hrainning/article/details/83217051" target="_blank" rel="noopener">MongoDB net start MongoDB启动,提示发生系统错误 5 拒绝访问 解决之道</a><br><a href="https://jingyan.baidu.com/article/e52e3615ed475000c70c5168.html" target="_blank" rel="noopener">Windows10系统安装MongoDB-4.2版本</a><br><a href="https://www.cnblogs.com/feigao/p/8717520.html" target="_blank" rel="noopener">cmder 常用配置（包括默认管理员运行和解决中文乱码）</a></p>
 

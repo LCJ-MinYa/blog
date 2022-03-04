@@ -87,16 +87,16 @@
 <meta property="og:site_name" content="MinYa">
 <meta property="og:description" content="介绍安装相关 系统版本MacOS 10.13.3 镜像为网上资源（吉米镜像） U盘 Clover引导，目前启动还是依赖U盘，暂未研究硬盘引导 自带网卡驱动，自己打显卡和声卡驱动（声卡驱动问题待定）  配置 AMD Ryzen 1700x 华擎 X370 Killer SLI主板 宇瞻（Apacer） 黑豹玩家系列 DDR4 2400 8G x 2 技嘉 GTX 1070ti 双固态 闪迪(SanD">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lcj-minya.github.io/images/macos/黑苹果/格式化U盘.png">
-<meta property="og:image" content="https://lcj-minya.github.io/images/macos/黑苹果/写入dmg镜像.png">
-<meta property="og:image" content="https://lcj-minya.github.io/images/macos/黑苹果/EFI信息.png">
-<meta property="og:image" content="https://lcj-minya.github.io/images/macos/黑苹果/格式化固态硬盘格式.jpg">
-<meta property="og:image" content="https://lcj-minya.github.io/images/macos/黑苹果/line-out.png">
-<meta property="og:updated_time" content="2021-09-08T01:19:10.403Z">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/2019/images/macos/黑苹果/格式化U盘.png">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/2019/images/macos/黑苹果/写入dmg镜像.png">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/2019/images/macos/黑苹果/EFI信息.png">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/2019/images/macos/黑苹果/格式化固态硬盘格式.jpg">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/2019/images/macos/黑苹果/line-out.png">
+<meta property="og:updated_time" content="2022-03-04T01:33:13.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AMD安装黑苹果">
 <meta name="twitter:description" content="介绍安装相关 系统版本MacOS 10.13.3 镜像为网上资源（吉米镜像） U盘 Clover引导，目前启动还是依赖U盘，暂未研究硬盘引导 自带网卡驱动，自己打显卡和声卡驱动（声卡驱动问题待定）  配置 AMD Ryzen 1700x 华擎 X370 Killer SLI主板 宇瞻（Apacer） 黑豹玩家系列 DDR4 2400 8G x 2 技嘉 GTX 1070ti 双固态 闪迪(SanD">
-<meta name="twitter:image" content="https://lcj-minya.github.io/images/macos/黑苹果/格式化U盘.png">
+<meta name="twitter:image" content="https://lcj-minya.github.io/blog/2019/images/macos/黑苹果/格式化U盘.png">
 
 
 
@@ -529,14 +529,14 @@
 <li>WebDriver-387.10.10.10.25.156</li>
 </ul>
 <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-TransMac制作启动盘"><a href="#1-TransMac制作启动盘" class="headerlink" title="1.TransMac制作启动盘"></a>1.TransMac制作启动盘</h3><ul>
-<li>格式化U盘，在软件的左侧找到自己的U盘，然后右键选择Formar Disk for Mac意思是将U盘格式化为Mac格式，当然U盘内容提前做好备份。<br><img src="/images/macos/黑苹果/格式化U盘.png" alt="image"></li>
-<li>写入DMG镜像，在软件的左侧找到自己的U盘，然后右键选择Restore with Disk Image来准备将dmg镜像写入到U盘中。(时间较长，等待15-30分钟)，期间会提示你是否格式化u盘，这是因为此时windows不能识别该u盘，点否继续。<br><img src="/images/macos/黑苹果/写入dmg镜像.png" alt="image"></li>
-<li>此时已经可以通过DiskGenius查看到u盘相关信息。（如果要制作硬盘启动，需要像u盘一样，有一个独立的ESP分区，并且将u盘的EFI相关文件拷贝覆盖硬盘ESP的EFI信息）<br><img src="/images/macos/黑苹果/EFI信息.png" alt="image"></li>
+<li>格式化U盘，在软件的左侧找到自己的U盘，然后右键选择Formar Disk for Mac意思是将U盘格式化为Mac格式，当然U盘内容提前做好备份。<br><img src="../../../../images/macos/黑苹果/格式化U盘.png" alt="image"></li>
+<li>写入DMG镜像，在软件的左侧找到自己的U盘，然后右键选择Restore with Disk Image来准备将dmg镜像写入到U盘中。(时间较长，等待15-30分钟)，期间会提示你是否格式化u盘，这是因为此时windows不能识别该u盘，点否继续。<br><img src="../../../../images/macos/黑苹果/写入dmg镜像.png" alt="image"></li>
+<li>此时已经可以通过DiskGenius查看到u盘相关信息。（如果要制作硬盘启动，需要像u盘一样，有一个独立的ESP分区，并且将u盘的EFI相关文件拷贝覆盖硬盘ESP的EFI信息）<br><img src="../../../../images/macos/黑苹果/EFI信息.png" alt="image"></li>
 </ul>
 <h3 id="2-开机F11选择U盘UEFI启动（不同主板案按键不同）"><a href="#2-开机F11选择U盘UEFI启动（不同主板案按键不同）" class="headerlink" title="2.开机F11选择U盘UEFI启动（不同主板案按键不同）"></a>2.开机F11选择U盘UEFI启动（不同主板案按键不同）</h3><h3 id="3-选择AMD-Ryzen-linjimmy-10-13-3-V4，回车确认"><a href="#3-选择AMD-Ryzen-linjimmy-10-13-3-V4，回车确认" class="headerlink" title="3.选择AMD_Ryzen_linjimmy_10.13.3_V4，回车确认"></a>3.选择AMD_Ryzen_linjimmy_10.13.3_V4，回车确认</h3><h3 id="4-选择磁盘工具-抹除与改名盘名”mcOS“安装即可"><a href="#4-选择磁盘工具-抹除与改名盘名”mcOS“安装即可" class="headerlink" title="4.选择磁盘工具-抹除与改名盘名”mcOS“安装即可"></a>4.选择磁盘工具-抹除与改名盘名”mcOS“安装即可</h3><ul>
 <li>抹除为HFS + Mac os扩展日志式(如果是英文名称为Mac OS Extended(Journaled),一般是第一个选项)</li>
 <li>分区形式选择GPT[GUID]</li>
-<li>当安装完成后重启<br><img src="/images/macos/黑苹果/格式化固态硬盘格式.jpg" alt="image"></li>
+<li>当安装完成后重启<br><img src="../../../../images/macos/黑苹果/格式化固态硬盘格式.jpg" alt="image"></li>
 </ul>
 <h3 id="5-安装完毕后再次选择AMD-Ryzen-linjimmy-10-13-3-V4-回车确认"><a href="#5-安装完毕后再次选择AMD-Ryzen-linjimmy-10-13-3-V4-回车确认" class="headerlink" title="5.安装完毕后再次选择AMD_Ryzen_linjimmy_10.13.3_V4 ,回车确认"></a>5.安装完毕后再次选择AMD_Ryzen_linjimmy_10.13.3_V4 ,回车确认</h3><ul>
 <li>打开上方的工具-终端运行</li>
@@ -552,7 +552,7 @@
 <p>SLE =&gt; MacOS的驱动目录(/System/Library/Extensions)，每次安装kext都需要使用kext utility修复权限。</p>
 <ul>
 <li>1.显卡驱动,下载WebDriver，直接安装即可(pkg格式)</li>
-<li>2.声卡驱动,下载驱动Lilu.kext, AppleALC.kext放入SLE目录，Kext Utility重建缓存。（打开系统偏好设置-声音-播放声音效果的设备-切换Line-out即可听到声音，此处怀疑不需要前面声卡驱动，不过未做验证，按照此步骤暂时没有问题）<br><img src="/images/macos/黑苹果/line-out.png" alt="image"></li>
+<li>2.声卡驱动,下载驱动Lilu.kext, AppleALC.kext放入SLE目录，Kext Utility重建缓存。（打开系统偏好设置-声音-播放声音效果的设备-切换Line-out即可听到声音，此处怀疑不需要前面声卡驱动，不过未做验证，按照此步骤暂时没有问题）<br><img src="../../../../images/macos/黑苹果/line-out.png" alt="image"></li>
 </ul>
 </blockquote>
 <h3 id="8-安装完成"><a href="#8-安装完成" class="headerlink" title="8.安装完成"></a>8.安装完成</h3><ul>

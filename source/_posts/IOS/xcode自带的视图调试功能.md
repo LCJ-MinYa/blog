@@ -9,7 +9,7 @@ tags:
 
 * 首先保证xcode运行程序
 * 点击show the debug navigatior中的view ui hierarchy按钮
-![image](/images/ios/view_ui.png)<br />
+![image](../../../../images/ios/view_ui.png)<br />
     * 可以查看设置的view，选中为蓝色
     * 可以清楚查看层级，控制器之间的层级依赖关系
     * 可以放大缩小,是否查看超出区域

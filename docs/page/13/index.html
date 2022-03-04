@@ -786,7 +786,7 @@
             <ul>
 <li>获取ipa资源包(itunes获得或者第三方下载)</li>
 <li>更改下载的.ipa后缀为zip文件，解压文件。</li>
-<li>进入Payload文件夹，右键点击.app显示包内容，里面就是项目的图片资源<br><img src="/images/ios/assets.png" alt="image"><br><br><img src="/images/ios/add_assets.png" alt="image"><br></li>
+<li>进入Payload文件夹，右键点击.app显示包内容，里面就是项目的图片资源<br><img src="../../../../images/ios/assets.png" alt="image"><br><br><img src="../../../../images/ios/add_assets.png" alt="image"><br></li>
 </ul>
 <h2 id="解压car文件内的图片资源"><a href="#解压car文件内的图片资源" class="headerlink" title="解压car文件内的图片资源"></a>解压car文件内的图片资源</h2><pre><code>下载https://github.com/devcxm/iOS-Images-Extractor插件，其本质是mac应用，运行可以直接放入ipa文件解压出car的图片资源，也可以只放入car进行解压。
 打开方式: 使用xcode打开，然后command+R直接运行就可以使用。
@@ -1228,17 +1228,17 @@
       
         
           
-            <h2 id="PCH文件可能引发的错误"><a href="#PCH文件可能引发的错误" class="headerlink" title="PCH文件可能引发的错误"></a>PCH文件可能引发的错误</h2><p><img src="/images/ios/Snip20151105_8.png" alt="image"></p>
+            <h2 id="PCH文件可能引发的错误"><a href="#PCH文件可能引发的错误" class="headerlink" title="PCH文件可能引发的错误"></a>PCH文件可能引发的错误</h2><p><img src="../../../../images/ios/Snip20151105_8.png" alt="image"></p>
 <ul>
 <li>解决方案</li>
 </ul>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#ifndef PrefixHeader_pch</span></span><br><span class="line"><span class="meta">#define PrefixHeader_pch</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*** 如果希望某些内容能拷贝到任何源代码文件(OC\C\C++等), 那么就不要写在#ifdef __OBJC__和#endif之间 ***/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></span><br><span class="line"><span class="meta">#ifdef __OBJC__</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#endif</span></span><br></pre></td></tr></table></figure>
 <h2 id="在Build-Setting中配置宏"><a href="#在Build-Setting中配置宏" class="headerlink" title="在Build Setting中配置宏"></a>在Build Setting中配置宏</h2><ul>
-<li><p>如果项目中有些宏找不到, 可能是配置在Build Setting中<br><img src="/images/ios/Snip20151105_9.png" alt="image"></p>
+<li><p>如果项目中有些宏找不到, 可能是配置在Build Setting中<br><img src="../../../../images/ios/Snip20151105_9.png" alt="image"></p>
 </li>
 <li><p>注意点:宏的名字不能全部是小写字母</p>
 </li>
-<li><p>如果宏的名字全部是小写, 会出现以下错误<br><img src="/images/ios/Snip20151105_10.png" alt="image"></p>
+<li><p>如果宏的名字全部是小写, 会出现以下错误<br><img src="../../../../images/ios/Snip20151105_10.png" alt="image"></p>
 </li>
 </ul>
 
@@ -1394,7 +1394,7 @@
 </li>
 </ul>
 <hr>
-<h2 id="项目整体添加类前缀"><a href="#项目整体添加类前缀" class="headerlink" title="项目整体添加类前缀"></a>项目整体添加类前缀</h2><p><img src="/images/ios/class_prefix.png" alt="image"><br></p>
+<h2 id="项目整体添加类前缀"><a href="#项目整体添加类前缀" class="headerlink" title="项目整体添加类前缀"></a>项目整体添加类前缀</h2><p><img src="../../../../images/ios/class_prefix.png" alt="image"><br></p>
 <h2 id="LaunchImage配置"><a href="#LaunchImage配置" class="headerlink" title="LaunchImage配置"></a>LaunchImage配置</h2><ul>
 <li>步骤<ol>
 <li>删除默认的LaunchScreen.storyBoard</li>
@@ -1559,7 +1559,7 @@
           
             <ul>
 <li>首先保证xcode运行程序</li>
-<li>点击show the debug navigatior中的view ui hierarchy按钮<br><img src="/images/ios/view_ui.png" alt="image"><br><ul>
+<li>点击show the debug navigatior中的view ui hierarchy按钮<br><img src="../../../../images/ios/view_ui.png" alt="image"><br><ul>
 <li>可以查看设置的view，选中为蓝色</li>
 <li>可以清楚查看层级，控制器之间的层级依赖关系</li>
 <li>可以放大缩小,是否查看超出区域</li>

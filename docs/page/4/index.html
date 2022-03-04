@@ -502,7 +502,7 @@
 <p>这种问题，也许是你使用圆角属性，也许是你使用按钮组件</p>
 </blockquote>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><blockquote>
-<p>将显卡渲染模式设置成兼容模式即可<br><img src="/images/flutter/android_show.png" alt="image"></p>
+<p>将显卡渲染模式设置成兼容模式即可<br><img src="../../../../images/flutter/android_show.png" alt="image"></p>
 </blockquote>
 
           
@@ -1258,7 +1258,7 @@
 <h2 id="启动页"><a href="#启动页" class="headerlink" title="启动页"></a>启动页</h2><h5 id="ios原生设置启动页"><a href="#ios原生设置启动页" class="headerlink" title="ios原生设置启动页"></a>ios原生设置启动页</h5><ul>
 <li>准备三个尺寸图片1x(375×750), 2x(750×1500), 3x(1125×2250)</li>
 <li>替换<code>ios</code> ▸ <code>Runner</code> ▸ <code>Assets.xcassets</code> ▸ <code>LaunchImage.imageset</code>下图片即可，保持命名一致</li>
-<li>让启动图全屏, <code>launchScreen.storyboard</code> ▸ <code>View Controller Scene</code> ▸ <code>View Controller</code> ▸ <code>View</code> ▸ <code>LaunchImage</code> ▸ <code>Content Mode</code>改为<code>Scale To Fill</code>.<br><img src="/images/flutter/launchImage.jpg" alt="image"></li>
+<li>让启动图全屏, <code>launchScreen.storyboard</code> ▸ <code>View Controller Scene</code> ▸ <code>View Controller</code> ▸ <code>View</code> ▸ <code>LaunchImage</code> ▸ <code>Content Mode</code>改为<code>Scale To Fill</code>.<br><img src="../../../../images/flutter/launchImage.jpg" alt="image"></li>
 <li>ios需要6个约束来达到原生和flutter启动图效果一致<code>1.centerX 2.centerY 3.top = 0 4.left = 0 5.right = 0 6.bottom = 0</code><blockquote>
 <p>图中<code>Content Mode</code>改为<code>Scale To Fill</code>,因为在flutter中BoxFit.fill对应此属性，为了与安卓fill统一</p>
 </blockquote>
