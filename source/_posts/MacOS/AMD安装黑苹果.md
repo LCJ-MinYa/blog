@@ -45,11 +45,11 @@ tags:
 
 ### 1.TransMac制作启动盘
 * 格式化U盘，在软件的左侧找到自己的U盘，然后右键选择Formar Disk for Mac意思是将U盘格式化为Mac格式，当然U盘内容提前做好备份。
-![image](../../../../images/macos/黑苹果/格式化U盘.png)
+![image](../../../../../images/macos/黑苹果/格式化U盘.png)
 * 写入DMG镜像，在软件的左侧找到自己的U盘，然后右键选择Restore with Disk Image来准备将dmg镜像写入到U盘中。(时间较长，等待15-30分钟)，期间会提示你是否格式化u盘，这是因为此时windows不能识别该u盘，点否继续。
-![image](../../../../images/macos/黑苹果/写入dmg镜像.png)
+![image](../../../../../images/macos/黑苹果/写入dmg镜像.png)
 * 此时已经可以通过DiskGenius查看到u盘相关信息。（如果要制作硬盘启动，需要像u盘一样，有一个独立的ESP分区，并且将u盘的EFI相关文件拷贝覆盖硬盘ESP的EFI信息）
-![image](../../../../images/macos/黑苹果/EFI信息.png)
+![image](../../../../../images/macos/黑苹果/EFI信息.png)
 
 ### 2.开机F11选择U盘UEFI启动（不同主板案按键不同）
 
@@ -59,7 +59,7 @@ tags:
 * 抹除为HFS + Mac os扩展日志式(如果是英文名称为Mac OS Extended(Journaled),一般是第一个选项)
 * 分区形式选择GPT[GUID]
 * 当安装完成后重启
-![image](../../../../images/macos/黑苹果/格式化固态硬盘格式.jpg)
+![image](../../../../../images/macos/黑苹果/格式化固态硬盘格式.jpg)
 
 ### 5.安装完毕后再次选择AMD_Ryzen_linjimmy_10.13.3_V4 ,回车确认
 * 打开上方的工具-终端运行
@@ -77,7 +77,7 @@ sh /volumes/AMD_Ryzen_linjimmy_10.13.3_V4/linjimmy/linjimmy.sh
 > SLE => MacOS的驱动目录(/System/Library/Extensions)，每次安装kext都需要使用kext utility修复权限。
 * 1.显卡驱动,下载WebDriver，直接安装即可(pkg格式)
 * 2.声卡驱动,下载驱动Lilu.kext, AppleALC.kext放入SLE目录，Kext Utility重建缓存。（打开系统偏好设置-声音-播放声音效果的设备-切换Line-out即可听到声音，此处怀疑不需要前面声卡驱动，不过未做验证，按照此步骤暂时没有问题）
-![image](../../../../images/macos/黑苹果/line-out.png)
+![image](../../../../../images/macos/黑苹果/line-out.png)
 
 ### 8.安装完成
 * 目前即是双系统（win10 + MacOS）

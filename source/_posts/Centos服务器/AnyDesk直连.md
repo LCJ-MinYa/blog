@@ -18,4 +18,4 @@ tags:
 - ### IP直连（有公网IP）
 1. 端口映射，默认7070端口，将受控客户端的7070端口映射到公网7070端口
 2. 通过公网ip加端口直连
-![image](../../../../images/centos/direct_ip_port.png)
+![image](../../../../../images/centos/direct_ip_port.png)

@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="MinYa">
 <meta property="og:description" content="PCH文件可能引发的错误  解决方案  123456789101112131415#ifndef PrefixHeader_pch#define PrefixHeader_pch/*** 如果希望某些内容能拷贝到任何源代码文件(OC\C\C++等), 那么就不要写在#ifdef __OBJC__和#endif之间 ***//***** 在#ifdef __OBJC__和#endif之间的内容, 只">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lcj-minya.github.io/blog/2018/images/ios/Snip20151105_8.png">
-<meta property="og:image" content="https://lcj-minya.github.io/blog/2018/images/ios/Snip20151105_9.png">
-<meta property="og:image" content="https://lcj-minya.github.io/blog/2018/images/ios/Snip20151105_10.png">
-<meta property="og:updated_time" content="2022-03-04T01:33:13.583Z">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/images/ios/Snip20151105_8.png">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/images/ios/Snip20151105_9.png">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/images/ios/Snip20151105_10.png">
+<meta property="og:updated_time" content="2022-03-04T01:42:36.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="宏相关设置">
 <meta name="twitter:description" content="PCH文件可能引发的错误  解决方案  123456789101112131415#ifndef PrefixHeader_pch#define PrefixHeader_pch/*** 如果希望某些内容能拷贝到任何源代码文件(OC\C\C++等), 那么就不要写在#ifdef __OBJC__和#endif之间 ***//***** 在#ifdef __OBJC__和#endif之间的内容, 只">
-<meta name="twitter:image" content="https://lcj-minya.github.io/blog/2018/images/ios/Snip20151105_8.png">
+<meta name="twitter:image" content="https://lcj-minya.github.io/blog/images/ios/Snip20151105_8.png">
 
 
 
@@ -498,17 +498,17 @@
       
 
       
-        <h2 id="PCH文件可能引发的错误"><a href="#PCH文件可能引发的错误" class="headerlink" title="PCH文件可能引发的错误"></a>PCH文件可能引发的错误</h2><p><img src="../../../../images/ios/Snip20151105_8.png" alt="image"></p>
+        <h2 id="PCH文件可能引发的错误"><a href="#PCH文件可能引发的错误" class="headerlink" title="PCH文件可能引发的错误"></a>PCH文件可能引发的错误</h2><p><img src="../../../../../images/ios/Snip20151105_8.png" alt="image"></p>
 <ul>
 <li>解决方案</li>
 </ul>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#ifndef PrefixHeader_pch</span></span><br><span class="line"><span class="meta">#define PrefixHeader_pch</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*** 如果希望某些内容能拷贝到任何源代码文件(OC\C\C++等), 那么就不要写在#ifdef __OBJC__和#endif之间 ***/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></span><br><span class="line"><span class="meta">#ifdef __OBJC__</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#endif</span></span><br></pre></td></tr></table></figure>
 <h2 id="在Build-Setting中配置宏"><a href="#在Build-Setting中配置宏" class="headerlink" title="在Build Setting中配置宏"></a>在Build Setting中配置宏</h2><ul>
-<li><p>如果项目中有些宏找不到, 可能是配置在Build Setting中<br><img src="../../../../images/ios/Snip20151105_9.png" alt="image"></p>
+<li><p>如果项目中有些宏找不到, 可能是配置在Build Setting中<br><img src="../../../../../images/ios/Snip20151105_9.png" alt="image"></p>
 </li>
 <li><p>注意点:宏的名字不能全部是小写字母</p>
 </li>
-<li><p>如果宏的名字全部是小写, 会出现以下错误<br><img src="../../../../images/ios/Snip20151105_10.png" alt="image"></p>
+<li><p>如果宏的名字全部是小写, 会出现以下错误<br><img src="../../../../../images/ios/Snip20151105_10.png" alt="image"></p>
 </li>
 </ul>
 

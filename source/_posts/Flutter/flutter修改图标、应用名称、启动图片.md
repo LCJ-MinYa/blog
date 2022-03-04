@@ -23,7 +23,7 @@ tags:
    * 准备三个尺寸图片1x(375×750), 2x(750×1500), 3x(1125×2250)
    * 替换`ios` ▸ `Runner` ▸ `Assets.xcassets` ▸ `LaunchImage.imageset`下图片即可，保持命名一致
    * 让启动图全屏, `launchScreen.storyboard` ▸ `View Controller Scene` ▸ `View Controller` ▸ `View` ▸ `LaunchImage` ▸ `Content Mode`改为`Scale To Fill`.
-![image](../../../../images/flutter/launchImage.jpg)
+![image](../../../../../images/flutter/launchImage.jpg)
    * ios需要6个约束来达到原生和flutter启动图效果一致`1.centerX 2.centerY 3.top = 0 4.left = 0 5.right = 0 6.bottom = 0`
 > 图中`Content Mode`改为`Scale To Fill`,因为在flutter中BoxFit.fill对应此属性，为了与安卓fill统一
 

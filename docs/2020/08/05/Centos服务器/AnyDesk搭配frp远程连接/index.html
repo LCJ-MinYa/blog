@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="服务器,anydesk,centos,远程桌面,frp,">
+  <meta name="keywords" content="服务器,anydesk,frp,centos,远程桌面,">
 
 
 
@@ -80,23 +80,23 @@
 
 
 <meta name="description" content="服务器frps 安装frp服务端   cd /usr/local进入/usr/local目录 wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.tar.gz下载frp服务器压缩包 tar xzvf frp_0.29.0_linux_amd64.tar.gz解压压缩包 cd fr">
-<meta name="keywords" content="服务器,anydesk,centos,远程桌面,frp">
+<meta name="keywords" content="服务器,anydesk,frp,centos,远程桌面">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AnyDesk搭配frp远程连接">
 <meta property="og:url" content="https://lcj-minya.github.io/blog/2020/08/05/Centos服务器/AnyDesk搭配frp远程连接/index.html">
 <meta property="og:site_name" content="MinYa">
 <meta property="og:description" content="服务器frps 安装frp服务端   cd /usr/local进入/usr/local目录 wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.tar.gz下载frp服务器压缩包 tar xzvf frp_0.29.0_linux_amd64.tar.gz解压压缩包 cd fr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lcj-minya.github.io/blog/2020/images/centos/frp_windows.png">
-<meta property="og:image" content="https://lcj-minya.github.io/blog/2020/images/centos/anydesk_user.png">
-<meta property="og:image" content="https://lcj-minya.github.io/blog/2020/images/centos/anydesk_port.png">
-<meta property="og:image" content="https://lcj-minya.github.io/blog/2020/images/centos/ip_port.png">
-<meta property="og:image" content="https://lcj-minya.github.io/blog/2020/images/centos/network.png">
-<meta property="og:updated_time" content="2022-03-04T01:33:13.583Z">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/images/centos/frp_windows.png">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/images/centos/anydesk_user.png">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/images/centos/anydesk_port.png">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/images/centos/ip_port.png">
+<meta property="og:image" content="https://lcj-minya.github.io/blog/images/centos/network.png">
+<meta property="og:updated_time" content="2022-03-04T01:42:36.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AnyDesk搭配frp远程连接">
 <meta name="twitter:description" content="服务器frps 安装frp服务端   cd /usr/local进入/usr/local目录 wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.tar.gz下载frp服务器压缩包 tar xzvf frp_0.29.0_linux_amd64.tar.gz解压压缩包 cd fr">
-<meta name="twitter:image" content="https://lcj-minya.github.io/blog/2020/images/centos/frp_windows.png">
+<meta name="twitter:image" content="https://lcj-minya.github.io/blog/images/centos/frp_windows.png">
 
 
 
@@ -529,7 +529,7 @@
 </ul>
 <h2 id="受控客户端"><a href="#受控客户端" class="headerlink" title="受控客户端"></a>受控客户端</h2><ul>
 <li><h3 id="安装anydesk"><a href="#安装anydesk" class="headerlink" title="安装anydesk"></a>安装anydesk</h3></li>
-<li><h3 id="下载frp客户端"><a href="#下载frp客户端" class="headerlink" title="下载frp客户端"></a><a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">下载frp客户端</a></h3><p>我是windows端的，下载后，解压压缩包。<img src="../../../../images/centos/frp_windows.png" alt="image"></p>
+<li><h3 id="下载frp客户端"><a href="#下载frp客户端" class="headerlink" title="下载frp客户端"></a><a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">下载frp客户端</a></h3><p>我是windows端的，下载后，解压压缩包。<img src="../../../../../images/centos/frp_windows.png" alt="image"></p>
 </li>
 <li><h3 id="配置frpc-ini"><a href="#配置frpc-ini" class="headerlink" title="配置frpc.ini"></a>配置frpc.ini</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = x.x.x.x   #服务器地址</span><br><span class="line">server_port = 7000      #服务器端口</span><br><span class="line"><span class="meta">#</span>token = sDesQJk@KlO    #连接服务端口令,设置了之后验证失败，所以暂时取消验证</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 7070       #要穿透的本地端口</span><br><span class="line">remote_port = 7080      #服务器暴露到外网的端口，同时服务器需要开放该端口</span><br></pre></td></tr></table></figure>
 </li>
@@ -543,15 +543,15 @@
 <li><h3 id="受控端anydesk设置"><a href="#受控端anydesk设置" class="headerlink" title="受控端anydesk设置"></a>受控端anydesk设置</h3></li>
 </ul>
 <ol>
-<li>配置自主访问密码<img src="../../../../images/centos/anydesk_user.png" alt="image"></li>
-<li>允许直接连接，并保证端口与<code>frpc.ini</code>内本地端口配置一致<img src="../../../../images/centos/anydesk_port.png" alt="image"></li>
+<li>配置自主访问密码<img src="../../../../../images/centos/anydesk_user.png" alt="image"></li>
+<li>允许直接连接，并保证端口与<code>frpc.ini</code>内本地端口配置一致<img src="../../../../../images/centos/anydesk_port.png" alt="image"></li>
 </ol>
 <h2 id="控制客户端"><a href="#控制客户端" class="headerlink" title="控制客户端"></a>控制客户端</h2><ul>
 <li><h3 id="安装anydesk-1"><a href="#安装anydesk-1" class="headerlink" title="安装anydesk"></a>安装anydesk</h3></li>
-<li><h3 id="输入地址：端口，连接"><a href="#输入地址：端口，连接" class="headerlink" title="输入地址：端口，连接"></a>输入地址：端口，连接</h3><p><img src="../../../../images/centos/ip_port.png" alt="image"></p>
+<li><h3 id="输入地址：端口，连接"><a href="#输入地址：端口，连接" class="headerlink" title="输入地址：端口，连接"></a>输入地址：端口，连接</h3><p><img src="../../../../../images/centos/ip_port.png" alt="image"></p>
 </li>
 </ul>
-<h2 id="网络拓扑"><a href="#网络拓扑" class="headerlink" title="网络拓扑"></a>网络拓扑</h2><p><img src="../../../../images/centos/network.png" alt="image"></p>
+<h2 id="网络拓扑"><a href="#网络拓扑" class="headerlink" title="网络拓扑"></a>网络拓扑</h2><p><img src="../../../../../images/centos/network.png" alt="image"></p>
 <blockquote>
 <p>网络拓扑理解如下，受控客户端的AnyDesk服务在本地监听7070端口，frp服务将其映射到云服务器的7080端口。控制客户端连接云服务器的7080端口，就会被frp转发到受控客户端的7070端口，此时受控客户端的AnyDesk收到连接请求，就这样实现远程桌面内网的穿透。</p>
 </blockquote>
@@ -606,11 +606,11 @@
           
             <a href="/blog/tags/anydesk/" rel="tag"># anydesk</a>
           
+            <a href="/blog/tags/frp/" rel="tag"># frp</a>
+          
             <a href="/blog/tags/centos/" rel="tag"># centos</a>
           
             <a href="/blog/tags/远程桌面/" rel="tag"># 远程桌面</a>
-          
-            <a href="/blog/tags/frp/" rel="tag"># frp</a>
           
         </div>
       

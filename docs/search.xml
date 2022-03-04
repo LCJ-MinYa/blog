@@ -129,9 +129,9 @@
       <tags>
         <tag>服务器</tag>
         <tag>anydesk</tag>
+        <tag>frp</tag>
         <tag>centos</tag>
         <tag>远程桌面</tag>
-        <tag>frp</tag>
       </tags>
   </entry>
   <entry>
@@ -378,9 +378,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[flutter真机添加网络请求权限]]></title>
-    <url>%2Fblog%2F2019%2F11%2F25%2FFlutter%2Fflutter%E7%9C%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%9D%83%E9%99%90%2F</url>
-    <content type="text"><![CDATA[android 在android/src/main/AndroidManifest.xml中添加下列代码1234&lt;uses-permission android:name="android.permission.READ_PHONE_STATE" /&gt;&lt;uses-permission android:name="android.permission.INTERNET" /&gt;&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;&lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt; 不要放到application里.]]></content>
+    <title><![CDATA[flutter在安卓模拟器上花屏问题]]></title>
+    <url>%2Fblog%2F2019%2F11%2F25%2FFlutter%2Fflutter%E5%9C%A8%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8A%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[原因 这种问题，也许是你使用圆角属性，也许是你使用按钮组件 解决方案 将显卡渲染模式设置成兼容模式即可]]></content>
       <categories>
         <category>flutter</category>
       </categories>
@@ -391,9 +391,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[flutter在安卓模拟器上花屏问题]]></title>
-    <url>%2Fblog%2F2019%2F11%2F25%2FFlutter%2Fflutter%E5%9C%A8%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8A%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[原因 这种问题，也许是你使用圆角属性，也许是你使用按钮组件 解决方案 将显卡渲染模式设置成兼容模式即可]]></content>
+    <title><![CDATA[flutter真机添加网络请求权限]]></title>
+    <url>%2Fblog%2F2019%2F11%2F25%2FFlutter%2Fflutter%E7%9C%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%9D%83%E9%99%90%2F</url>
+    <content type="text"><![CDATA[android 在android/src/main/AndroidManifest.xml中添加下列代码1234&lt;uses-permission android:name="android.permission.READ_PHONE_STATE" /&gt;&lt;uses-permission android:name="android.permission.INTERNET" /&gt;&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;&lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt; 不要放到application里.]]></content>
       <categories>
         <category>flutter</category>
       </categories>
