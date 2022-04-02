@@ -405,7 +405,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2019/11/25/Flutter/flutter真机添加网络请求权限/">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2019/11/25/Flutter/flutter在安卓模拟器上花屏问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LiChaoJun">
@@ -424,7 +424,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/11/25/Flutter/flutter真机添加网络请求权限/" itemprop="url">flutter真机添加网络请求权限</a></h1>
+                <a class="post-title-link" href="/blog/2019/11/25/Flutter/flutter在安卓模拟器上花屏问题/" itemprop="url">flutter在安卓模拟器上花屏问题</a></h1>
         
 
         <div class="post-meta">
@@ -498,12 +498,11 @@
       
         
           
-            <h2 id="android"><a href="#android" class="headerlink" title="android"></a>android</h2><ul>
-<li>在<code>android/src/main/AndroidManifest.xml</code>中添加下列代码<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_PHONE_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_WIFI_STATE"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>不要放到application里.</p>
+            <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><blockquote>
+<p>这种问题，也许是你使用圆角属性，也许是你使用按钮组件</p>
+</blockquote>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><blockquote>
+<p>将显卡渲染模式设置成兼容模式即可<br><img src="../../../../../images/flutter/android_show.png" alt="image"></p>
 </blockquote>
 
           
