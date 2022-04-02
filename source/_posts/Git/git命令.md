@@ -18,3 +18,7 @@ tags:
 ## 放弃本地文件
 * <code>git checkout fileName</code>放弃fileName文件修改
 * <code>git checkout .</code>放弃所有本地文件修改
+
+## 分支
+* <code>git branch -a</code>查看所有分支
+* <code>git remote prune origin</code>清理本地分支与远程分支同步(sourcetree在git远程删除分支后刷新也不会同步，必须执行git命令才能与远程分支同步)

@@ -22,8 +22,8 @@
       </categories>
       <tags>
         <tag>ide</tag>
-        <tag>vscode</tag>
         <tag>插件</tag>
+        <tag>vscode</tag>
       </tags>
   </entry>
   <entry>
@@ -129,9 +129,9 @@
       <tags>
         <tag>服务器</tag>
         <tag>anydesk</tag>
+        <tag>frp</tag>
         <tag>centos</tag>
         <tag>远程桌面</tag>
-        <tag>frp</tag>
       </tags>
   </entry>
   <entry>
@@ -378,9 +378,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[flutter在安卓模拟器上花屏问题]]></title>
-    <url>%2Fblog%2F2019%2F11%2F25%2FFlutter%2Fflutter%E5%9C%A8%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8A%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[原因 这种问题，也许是你使用圆角属性，也许是你使用按钮组件 解决方案 将显卡渲染模式设置成兼容模式即可]]></content>
+    <title><![CDATA[flutter真机添加网络请求权限]]></title>
+    <url>%2Fblog%2F2019%2F11%2F25%2FFlutter%2Fflutter%E7%9C%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%9D%83%E9%99%90%2F</url>
+    <content type="text"><![CDATA[android 在android/src/main/AndroidManifest.xml中添加下列代码1234&lt;uses-permission android:name="android.permission.READ_PHONE_STATE" /&gt;&lt;uses-permission android:name="android.permission.INTERNET" /&gt;&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;&lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt; 不要放到application里.]]></content>
       <categories>
         <category>flutter</category>
       </categories>
@@ -391,9 +391,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[flutter真机添加网络请求权限]]></title>
-    <url>%2Fblog%2F2019%2F11%2F25%2FFlutter%2Fflutter%E7%9C%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%9D%83%E9%99%90%2F</url>
-    <content type="text"><![CDATA[android 在android/src/main/AndroidManifest.xml中添加下列代码1234&lt;uses-permission android:name="android.permission.READ_PHONE_STATE" /&gt;&lt;uses-permission android:name="android.permission.INTERNET" /&gt;&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;&lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt; 不要放到application里.]]></content>
+    <title><![CDATA[flutter在安卓模拟器上花屏问题]]></title>
+    <url>%2Fblog%2F2019%2F11%2F25%2FFlutter%2Fflutter%E5%9C%A8%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8A%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[原因 这种问题，也许是你使用圆角属性，也许是你使用按钮组件 解决方案 将显卡渲染模式设置成兼容模式即可]]></content>
       <categories>
         <category>flutter</category>
       </categories>
@@ -494,9 +494,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[flutter代码规范]]></title>
-    <url>%2Fblog%2F2019%2F10%2F28%2FFlutter%2Fflutter%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%2F</url>
-    <content type="text"><![CDATA[_私有属性或方法的使用 如果一个方法只有该文件内使用，则需要加上_表示为私有属性或方法。 组件或者方法封装 组件的封装需要加上Widget表示返回的为一个组件.并且封装的名称结尾带上Widget 方法的封装前面不加任何类型，以此来区别组件123456789//方法封装_doSomeThing()&#123; ...&#125;//组件封装Widget _bannerWidget()&#123; return Widget;&#125; this省略 所有的方法或者属性调用，省略掉this]]></content>
+    <title><![CDATA[flutter中dart语言技巧]]></title>
+    <url>%2Fblog%2F2019%2F10%2F28%2FFlutter%2Fflutter%E4%B8%ADdart%E8%AF%AD%E8%A8%80%E6%8A%80%E5%B7%A7%2F</url>
+    <content type="text"><![CDATA[字符串模板12int index = 0;var imgUrl = "lib/images/banner$&#123;index + 1&#125;.jpg";]]></content>
       <categories>
         <category>flutter</category>
       </categories>
@@ -507,9 +507,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[flutter中dart语言技巧]]></title>
-    <url>%2Fblog%2F2019%2F10%2F28%2FFlutter%2Fflutter%E4%B8%ADdart%E8%AF%AD%E8%A8%80%E6%8A%80%E5%B7%A7%2F</url>
-    <content type="text"><![CDATA[字符串模板12int index = 0;var imgUrl = "lib/images/banner$&#123;index + 1&#125;.jpg";]]></content>
+    <title><![CDATA[flutter代码规范]]></title>
+    <url>%2Fblog%2F2019%2F10%2F28%2FFlutter%2Fflutter%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%2F</url>
+    <content type="text"><![CDATA[_私有属性或方法的使用 如果一个方法只有该文件内使用，则需要加上_表示为私有属性或方法。 组件或者方法封装 组件的封装需要加上Widget表示返回的为一个组件.并且封装的名称结尾带上Widget 方法的封装前面不加任何类型，以此来区别组件123456789//方法封装_doSomeThing()&#123; ...&#125;//组件封装Widget _bannerWidget()&#123; return Widget;&#125; this省略 所有的方法或者属性调用，省略掉this]]></content>
       <categories>
         <category>flutter</category>
       </categories>
@@ -732,8 +732,8 @@
       </categories>
       <tags>
         <tag>ide</tag>
-        <tag>vscode</tag>
         <tag>插件</tag>
+        <tag>vscode</tag>
       </tags>
   </entry>
   <entry>
@@ -851,7 +851,7 @@
   <entry>
     <title><![CDATA[git命令]]></title>
     <url>%2Fblog%2F2019%2F03%2F19%2FGit%2Fgit%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[提交步骤 提交到暂存区git add . 提交到本地仓库git commit -m ‘xxx’ 拉取远程仓库git pull 提交远程仓库git push 查看当前git状态 git status 放弃本地文件 git checkout fileName放弃fileName文件修改 git checkout .放弃所有本地文件修改]]></content>
+    <content type="text"><![CDATA[提交步骤 提交到暂存区git add . 提交到本地仓库git commit -m ‘xxx’ 拉取远程仓库git pull 提交远程仓库git push 查看当前git状态 git status 放弃本地文件 git checkout fileName放弃fileName文件修改 git checkout .放弃所有本地文件修改 分支 git branch -a查看所有分支 git remote prune origin清理本地分支与远程分支同步(sourcetree在git远程删除分支后刷新也不会同步，必须执行git命令才能与远程分支同步)]]></content>
       <categories>
         <category>git</category>
       </categories>
@@ -1036,8 +1036,8 @@
         <category>git</category>
       </categories>
       <tags>
-        <tag>git</tag>
         <tag>macos</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -1049,8 +1049,8 @@
       </categories>
       <tags>
         <tag>ide</tag>
-        <tag>插件</tag>
         <tag>sublime-text</tag>
+        <tag>插件</tag>
       </tags>
   </entry>
   <entry>
@@ -1265,9 +1265,9 @@
       <tags>
         <tag>服务器</tag>
         <tag>centos</tag>
-        <tag>nginx</tag>
         <tag>gzip</tag>
         <tag>cache</tag>
+        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -1293,8 +1293,8 @@
       <tags>
         <tag>服务器</tag>
         <tag>centos</tag>
-        <tag>node</tag>
         <tag>nginx</tag>
+        <tag>node</tag>
       </tags>
   </entry>
   <entry>
@@ -1484,8 +1484,8 @@
       </categories>
       <tags>
         <tag>操作系统</tag>
-        <tag>git</tag>
         <tag>macos</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -1698,7 +1698,7 @@
   <entry>
     <title><![CDATA[常用css效果]]></title>
     <url>%2Fblog%2F2018%2F12%2F07%2FCss%2F%E5%B8%B8%E7%94%A8css%E6%95%88%E6%9E%9C%2F</url>
-    <content type="text"><![CDATA[modal中内容(未知宽度高度)绝对居中123456789101112131415161718192021.father-box&#123; display: none; position: fixed; overflow: hidden; top: 0; left: 0; bottom: 0; right: 0; z-index: 5; background: rgba(0,0,0,0.6);&#125;.child-box&#123; position: absolute; width: 240px; overflow: hidden; top: 50%; left: 50%; -o-transform: translate3d(-50%,-50%,0); -webkit-transform: translate3d(-50%,-50%,0); transform: translate3d(-50%,-50%,0);&#125; modal侧滑效果1234567891011121314151617181920.father-box&#123; display: none; position: fixed; overflow: hidden; top: 0; left: 0; bottom: 0; right: 0; z-index: 5; background: rgba(0,0,0,0.6);&#125;.child-box&#123; position: absolute; top: 0; right: -45%; width: 45%; height: 100%; background: #fff; padding-top: 4.2rem;&#125; 1234567891011121314151617181920212223/* 显示和隐藏modal * 显示=》先显示modal，再显示对应的内容节点 * 隐藏=》先隐藏内容节点，再隐藏modal * 拿显示来说，为什么不将内容节点的显示放在modal显示的回调中，从测试来看，并行UI更舒服一些 */var hideModal = function() &#123; $(".child-box").animate(&#123; right: '-45%' &#125;, 300); $(".father-box").fadeOut(300);&#125;var showModal = function() &#123; $(".father-box").fadeIn(300); $(".child-box").animate(&#123; right: 0 &#125;, 300);&#125;/* 点击内容节点外的空白区域隐藏（事件冒泡）*/$(".child-box").on('click', function() &#123; event.stopPropagation();&#125;) 安卓字体未垂直居中123456789101112131415161718192021222324252627/*安卓浏览器字体不垂直居中，REM计算后小数点会导致，如果用偶数大于12px可以解决，如果使用REM则可以通过table布局来解决*/&lt;p class="h2"&gt; &lt;span&gt;无缝对接&lt;i&gt;云ERP进销存、网店版&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;.header-content p.h2&#123; display: table; width: 12.8rem; height: 1.35rem; background: url(../img/wulianbao/header_title_dec.png) no-repeat 50% 50%; background-size: cover; text-align: center; margin: 0 auto 0.5rem;&#125;.header-content p.h2 span&#123; display: table-cell; font-size: 0.75rem; vertical-align: middle; color: #fff;&#125;.header-content p.h2 i&#123; font-size: 0.75rem; color: #fff; font-weight: bold;&#125;/*注意点: 父元素不能设置line-height，vertical-align: middle设置在子元素上*/ img图片（未知宽高）在div中居中显示1234567891011121314151617.father-box&#123; width: 100%; height: 9.35rem; position: relative; overflow: hidden;&#125;.father-box img&#123; display: block; width: 80%; height: auto; margin: auto; position: absolute; top: 0; left: 0; right: 0; bottom: 0;&#125; css中计算属性calc12345div&#123; width:-webkit-calc(100% - 2.5rem); width:-moz-calc(100% - 2.5rem); width:calc(100% - 2.5rem);&#125; 手机端1px实现123456789101112131415/* 第一种 * 伪类缩放 */div:before&#123; content: ""; display: block; position: absolute; left: -50%; width: 200%; height: 1px; background: #eaeaea; bottom: 0; -webkit-transform:scale(0.5); transform: scale(0.5);&#125; 安卓浏览器字体不垂直居中12345678.banner-box &gt; a:before&#123; content: ''; display: inline-block; vertical-align: middle; width: 0; height: 100%; margin-top: 1px;&#125; 确定高度多行文本垂直居中1234567891011121314151617181920212223//最外层确定高度，第二层容器包含文本，不要确定高度，由内容撑开（table布局vertical-align: middle实现）.footerBox &#123; background: #fff; width: 100%; position: relative; overflow: hidden; text-align: center; height: 3.8rem; display: table;&#125;.footerTextBox&#123; position: relative; width: 100%; display: table-cell; vertical-align: middle;&#125;.footerTextBox&gt;p &#123; font-size: .5rem; color: #999; line-height: 150%;&#125; input修改placeholder提示文本属性123456789101112input::-webkit-input-placeholder&#123; color: #999;&#125;input:-moz-placeholder&#123; color: #999;&#125;input::-moz-placeholder&#123; color: #999;&#125;input:-ms-input-placeholder&#123; color: #999;&#125; 超出显示省略号123456789101112131415/*---- 单行 ----*/p&#123; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;&#125;/*---- 多行 ----*/p&#123; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; text-overflow:ellipsis;&#125; safair下input设置disabled导致透明12345input:disabled&#123; color: blue; opacity: 1; -webkit-text-fill-color: blue;&#125; flex布局时不被挤压1234567/*flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。*/.child&#123; flex-shrink: 0;&#125; flex布局占据剩余宽度1234567/*flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。*/.child&#123; flex-grow: 1;&#125;]]></content>
+    <content type="text"><![CDATA[modal中内容(未知宽度高度)绝对居中123456789101112131415161718192021.father-box&#123; display: none; position: fixed; overflow: hidden; top: 0; left: 0; bottom: 0; right: 0; z-index: 5; background: rgba(0,0,0,0.6);&#125;.child-box&#123; position: absolute; width: 240px; overflow: hidden; top: 50%; left: 50%; -o-transform: translate3d(-50%,-50%,0); -webkit-transform: translate3d(-50%,-50%,0); transform: translate3d(-50%,-50%,0);&#125; modal侧滑效果1234567891011121314151617181920.father-box&#123; display: none; position: fixed; overflow: hidden; top: 0; left: 0; bottom: 0; right: 0; z-index: 5; background: rgba(0,0,0,0.6);&#125;.child-box&#123; position: absolute; top: 0; right: -45%; width: 45%; height: 100%; background: #fff; padding-top: 4.2rem;&#125; 1234567891011121314151617181920212223/* 显示和隐藏modal * 显示=》先显示modal，再显示对应的内容节点 * 隐藏=》先隐藏内容节点，再隐藏modal * 拿显示来说，为什么不将内容节点的显示放在modal显示的回调中，从测试来看，并行UI更舒服一些 */var hideModal = function() &#123; $(".child-box").animate(&#123; right: '-45%' &#125;, 300); $(".father-box").fadeOut(300);&#125;var showModal = function() &#123; $(".father-box").fadeIn(300); $(".child-box").animate(&#123; right: 0 &#125;, 300);&#125;/* 点击内容节点外的空白区域隐藏（事件冒泡）*/$(".child-box").on('click', function() &#123; event.stopPropagation();&#125;) 安卓字体未垂直居中123456789101112131415161718192021222324252627/*安卓浏览器字体不垂直居中，REM计算后小数点会导致，如果用偶数大于12px可以解决，如果使用REM则可以通过table布局来解决*/&lt;p class="h2"&gt; &lt;span&gt;无缝对接&lt;i&gt;云ERP进销存、网店版&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;.header-content p.h2&#123; display: table; width: 12.8rem; height: 1.35rem; background: url(../img/wulianbao/header_title_dec.png) no-repeat 50% 50%; background-size: cover; text-align: center; margin: 0 auto 0.5rem;&#125;.header-content p.h2 span&#123; display: table-cell; font-size: 0.75rem; vertical-align: middle; color: #fff;&#125;.header-content p.h2 i&#123; font-size: 0.75rem; color: #fff; font-weight: bold;&#125;/*注意点: 父元素不能设置line-height，vertical-align: middle设置在子元素上*/ img图片（未知宽高）在div中居中显示1234567891011121314151617.father-box&#123; width: 100%; height: 9.35rem; position: relative; overflow: hidden;&#125;.father-box img&#123; display: block; width: 80%; height: auto; margin: auto; position: absolute; top: 0; left: 0; right: 0; bottom: 0;&#125; css中计算属性calc12345div&#123; width:-webkit-calc(100% - 2.5rem); width:-moz-calc(100% - 2.5rem); width:calc(100% - 2.5rem);&#125; 手机端1px实现123456789101112131415/* 第一种 * 伪类缩放 */div:before&#123; content: ""; display: block; position: absolute; left: -50%; width: 200%; height: 1px; background: #eaeaea; bottom: 0; -webkit-transform:scale(0.5); transform: scale(0.5);&#125; 安卓浏览器字体不垂直居中12345678.banner-box &gt; a:before&#123; content: ''; display: inline-block; vertical-align: middle; width: 0; height: 100%; margin-top: 1px;&#125; 确定高度多行文本垂直居中1234567891011121314151617181920212223//最外层确定高度，第二层容器包含文本，不要确定高度，由内容撑开（table布局vertical-align: middle实现）.footerBox &#123; background: #fff; width: 100%; position: relative; overflow: hidden; text-align: center; height: 3.8rem; display: table;&#125;.footerTextBox&#123; position: relative; width: 100%; display: table-cell; vertical-align: middle;&#125;.footerTextBox&gt;p &#123; font-size: .5rem; color: #999; line-height: 150%;&#125; input修改placeholder提示文本属性123456789101112input::-webkit-input-placeholder&#123; color: #999;&#125;input:-moz-placeholder&#123; color: #999;&#125;input::-moz-placeholder&#123; color: #999;&#125;input:-ms-input-placeholder&#123; color: #999;&#125; 超出显示省略号123456789101112131415/*---- 单行 ----*/p&#123; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;&#125;/*---- 多行 ----*/p&#123; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; text-overflow:ellipsis;&#125; safair下input设置disabled导致透明12345input:disabled&#123; color: blue; opacity: 1; -webkit-text-fill-color: blue;&#125; flex布局时不被挤压1234567/*flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。*/.child&#123; flex-shrink: 0;&#125; flex布局占据剩余宽度1234567/*flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。*/.child&#123; flex-grow: 1;&#125; 打字效果123456&lt;!-- html部分 --&gt;&lt;div class="wrapper"&gt; &lt;div class="typing-demo"&gt; 有趣且实用的 CSS 小技巧 &lt;/div&gt;&lt;/div&gt; 1234567891011121314151617181920212223242526272829303132333435/* css部分 */.wrapper &#123; height: 100vh; display: flex; align-items: center; justify-content: center;&#125;.typing-demo &#123; /* * 1ch = 1个英文 = 1个数字 * 2ch = 1个中文 * ch 是一个相对单位，所谓相对，意思是 ch 会根据当前容器的 ****font-size**** 变化而变化。 * ch单位在chrome效果完好，在firfox中显示有问题，兼容性待商榷 */ width: 22ch; animation: typing 2s steps(22), blink .5s step-end infinite alternate; white-space: nowrap; overflow: hidden; border-right: 3px solid; font-family: monospace; font-size: 2em;&#125;@keyframes typing &#123; from &#123; width: 0 &#125;&#125; @keyframes blink &#123; 50% &#123; border-color: transparent &#125;&#125; 自定义滚动条样式123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt; &lt;head&gt; &lt;meta charset="UTF-8" /&gt; &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; .wrapper &#123; height: 100vh; display: flex; align-items: center; justify-content: center; &#125; .mr-1 &#123; margin-right: 1em; &#125; .tile &#123; overflow: auto; display: inline-block; background-color: #ccc; height: 200px; width: 180px; &#125; .tile-custom-scrollbar::-webkit-scrollbar &#123; width: 12px; background-color: #eff1f5; &#125; .tile-custom-scrollbar::-webkit-scrollbar-track &#123; border-radius: 3px; background-color: transparent; &#125; .tile-custom-scrollbar::-webkit-scrollbar-thumb &#123; border-radius: 5px; background-color: #515769; border: 2px solid #eff1f5; &#125; .tile-content &#123; padding: 20px; height: 500px; &#125; &lt;/style&gt; &lt;/head&gt; &lt;body&gt; &lt;div class="wrapper"&gt; &lt;div&gt; &lt;div class="tile mr-1"&gt; &lt;div class="tile-content"&gt;默认滚动条&lt;/div&gt; &lt;/div&gt; &lt;div class="tile tile-custom-scrollbar"&gt; &lt;div class="tile-content"&gt;自定义滚动条&lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/body&gt;&lt;/html&gt; 圆形渐变边框123456789101112131415161718192021222324252627282930&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt; &lt;head&gt; &lt;meta charset="UTF-8" /&gt; &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; .gradient-border &#123; border: solid 5px transparent; border-radius: 10px; background-image: linear-gradient(white, white), linear-gradient(315deg,#833ab4,#fd1d1d 50%,#fcb045); background-origin: border-box; background-clip: content-box, border-box; &#125; .box &#123; width: 350px; height: 100px; display: flex; align-items: center; justify-content: center; margin: 100px auto; &#125; &lt;/style&gt; &lt;/head&gt; &lt;body&gt; &lt;div class="box gradient-border"&gt;炫酷渐变边框&lt;/div&gt; &lt;/body&gt;&lt;/html&gt;]]></content>
       <categories>
         <category>css</category>
       </categories>
