@@ -1498,6 +1498,7 @@
 <h2 id="组件中-data-为什么是一个函数？"><a href="#组件中-data-为什么是一个函数？" class="headerlink" title="组件中 data 为什么是一个函数？"></a>组件中 data 为什么是一个函数？</h2><div class="note "><p>因为组件是用来复用的，且 JS 里对象是引用关系，如果组件中 data 是一个对象，那么这样作用域没有隔离，子组件中的 data 属性值会相互影响，如果组件中 data 选项是一个函数，那么每个实例可以维护一份被返回对象的独立的拷贝，组件实例之间的 data 属性值不会互相影响；而 new Vue 的实例，是不会被复用的，因此不存在引用对象的问题。</p></div>
 <h2 id="v-model-的原理？"><a href="#v-model-的原理？" class="headerlink" title="v-model 的原理？"></a>v-model 的原理？</h2><div class="note "><p>我们在 vue 项目中主要使用 v-model 指令在表单 input、textarea、select 等元素上创建双向数据绑定，我们知道 v-model 本质上不过是语法糖，v-model 在内部为不同的输入元素使用不同的属性并抛出不同的事件：</p>
 <p>text 和 textarea 元素使用 value 属性和 input 事件；<br>checkbox 和 radio 使用 checked 属性和 change 事件；<br>select 字段将 value 作为 prop 并将 change 作为事件。</p></div>
+<p><a href="https://codepen.io/lcj-minya/pen/NWXYwLL" target="_blank" rel="noopener">自定义实现v-model示例</a></p>
 <h2 id="vue-router-路由模式有几种？"><a href="#vue-router-路由模式有几种？" class="headerlink" title="vue-router 路由模式有几种？"></a>vue-router 路由模式有几种？</h2><div class="note "><p>hash:  使用 URL hash 值来作路由。支持所有浏览器，包括不支持 HTML5 History Api 的浏览器；</p>
 <p>history :  依赖 HTML5 History API 和服务器配置。具体可以查看 HTML5 History 模式；</p>
 <p>abstract :  支持所有 JavaScript 运行环境，如 Node.js 服务器端。如果发现没有浏览器的 API，路由会自动强制进入这个模式.</p></div>

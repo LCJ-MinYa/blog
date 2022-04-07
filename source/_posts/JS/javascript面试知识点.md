@@ -926,6 +926,7 @@ text 和 textarea 元素使用 value 属性和 input 事件；
 checkbox 和 radio 使用 checked 属性和 change 事件；
 select 字段将 value 作为 prop 并将 change 作为事件。
 {% endnote %}
+[自定义实现v-model示例](https://codepen.io/lcj-minya/pen/NWXYwLL)
 
 ## vue-router 路由模式有几种？
 {% note %}
