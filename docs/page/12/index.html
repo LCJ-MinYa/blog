@@ -405,6 +405,192 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/ReactNative/CodePush教程/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2018/12/07/ReactNative/CodePush教程/" itemprop="url">CodePush教程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T23:36:47+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/reactnative/" itemprop="url" rel="index">
+                    <span itemprop="name">reactnative</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><p>1.全局安装App Center CLI(目前appcenter-cli受event-stream恶意代码攻击 <a href="mailto:event-stream@3.3.6" target="_blank" rel="noopener">event-stream@3.3.6</a>被注入恶意代码)</p>
+<blockquote>
+<p>npm install -g appcenter-cli</p>
+</blockquote>
+</li>
+<li><p>2.注册App Center账号</p>
+<blockquote>
+<p>通过<a href="https://appcenter.ms" target="_blank" rel="noopener">App Center注册地址</a>注册账号</p>
+</blockquote>
+</li>
+<li><p>3.命令行登陆App Center账号</p>
+<blockquote>
+<p>appcenter login</p>
+</blockquote>
+</li>
+<li><p>4.创建app应用</p>
+<blockquote>
+<p>网页创建（推荐）,登陆状态下打开<a href="https://appcenter.ms" target="_blank" rel="noopener">App Center</a>,add new app -&gt; 填写信息 -&gt; 完成<br>命令行创建,命令行中=&gt;<br>格式：appcenter apps create -d <appdisplayname> -o <operatingsystem>  -p <platform><br>示例：appcenter apps create -d minya -o Android -p React-Native</platform></operatingsystem></appdisplayname></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">注意: 应用创建后默认有两个部署 Staging Production</span><br><span class="line">部署默认是有key值存在的</span><br><span class="line">查看key值方法:</span><br><span class="line">appcenter codepush deployment list -a minya/APP_IOS --displayKeys</span><br><span class="line">appcenter codepush deployment list -a minya/APP_ANDROID --displayKeys</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>5.安装codepush</p>
+<blockquote>
+<p>在对应项目目录下: npm install –save react-native-code-push</p>
+</blockquote>
+</li>
+<li><p>6.ios,android配置</p>
+<blockquote>
+<p>react-native link react-native-code-push</p>
+</blockquote>
+</li>
+<li><p>7.发布更新</p>
+<blockquote>
+<p>appcenter codepush release-react -a minya/APP_IOS -t 1.0.0 -m –description “更新描述”</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="多部署安装"><a href="#多部署安装" class="headerlink" title="多部署安装"></a>多部署安装</h2><blockquote>
+<p><a href="https://docs.microsoft.com/en-us/appcenter/distribution/codepush/react-native#multi-deployment-testing" target="_blank" rel="noopener">多部署文档</a>,按照文档配置即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">注意点:</span><br><span class="line">debug &#123;</span><br><span class="line">    buildConfigField &quot;String&quot;, &quot;CODEPUSH_KEY&quot;, &apos;&quot;&quot;&apos; //这里也可以添加测试环境的CODEPUSH_KEY然后在模拟器里面测试</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">releaseStaging &#123;</span><br><span class="line">    buildConfigField &quot;String&quot;, &quot;CODEPUSH_KEY&quot;, &apos;&quot;&lt;INSERT_STAGING_KEY&gt;&quot;&apos;</span><br><span class="line">    //matchingFallbacks = [&apos;release&apos;] 该行添加会报错，注释即可编译</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">查看部署历史</span><br><span class="line">appcenter codepush deployment history Staging</span><br><span class="line"></span><br><span class="line">删除部署历史(Staging)</span><br><span class="line">appcenter codepush deployment clear -a minya/APP_IOS Staging</span><br></pre></td></tr></table></figure>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><blockquote>
+<p>在使用codepush中，经常需要用到很多命令，但是一时间又不能完全记忆，可以使用package.json中的script中的命令配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;node node_modules/react-native/local-cli/cli.js start&quot;,</span><br><span class="line">    &quot;test&quot;: &quot;jest&quot;,</span><br><span class="line">    &quot;add ios&quot;: appcenter codepush release-react -a minya/APP_IOS,</span><br><span class="line">    &quot;add android&quot;: appcenter codepush release-react -a minya/APP_ANDROID,</span><br><span class="line">    &quot;delete ios staging&quot;: appcenter codepush deployment clear -a minya/APP_IOS Staging,</span><br><span class="line">    &quot;delete android staging&quot;: appcenter codepush deployment clear -a minya/APP_ANDROID Staging,</span><br><span class="line">&#125;</span><br><span class="line">其中正式环境的发布不需要通过命令，在确认预发布环境ok直接可以通过appcenter页面点击按钮推送到正式环境</span><br><span class="line">description描述信息换行问题，在命令行中\n,\\n,&quot;\n&quot;,&quot;\\n&quot;都尝试过，都不能换行，直接在appcenter页面上编辑回车就可以了。。。。</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/ReactNative/BUG积累/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -538,6 +724,9 @@
 <p>react-native缓存问题<br>react-native start –reset-cache  </p>
 </blockquote>
 <h3 id="main-jsbundle-does-not-exist引发的惨案"><a href="#main-jsbundle-does-not-exist引发的惨案" class="headerlink" title="main.jsbundle does not exist引发的惨案"></a>main.jsbundle does not exist引发的惨案</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">这个报错是在安装极光推送之后编译Archive导致的报错.</span><br><span class="line">最开始的猜测，因为测试环境真机和模拟器都没有报错，而正是环境main.jsbundle不存在=》以下尝试</span><br><span class="line">1.尝试手动编译main.jsbundle，</span><br><span class="line">2.下载推送的正式证书（因为极光推送涉及到推送证书，测试和正式又是不同的证书）</span><br><span class="line">3.重新npm install</span><br><span class="line">4.重新react-native link</span><br><span class="line">5.尝试github上各种解决方法</span><br><span class="line">都依然编译不能通过，再纠结一个小时之后，偶然看报错信息</span><br><span class="line"></span><br><span class="line">+ DEST=/Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app</span><br><span class="line">+ [[ Release = \D\e\b\u\g ]]</span><br><span class="line">+ BUNDLE_FILE=/Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle</span><br><span class="line">+ node /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules/react-native/local-cli/cli.js bundle --entry-file index.js --platform ios --dev false --reset-cache --bundle-output /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle --assets-dest /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app</span><br><span class="line">Scanning folders for symlinks in /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules (12ms)</span><br><span class="line">Scanning folders for symlinks in /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules (10ms)</span><br><span class="line">warning: the transform cache was reset.</span><br><span class="line">Loading dependency graph, done.</span><br><span class="line"></span><br><span class="line">/Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules/react-native-root-siblings/index.js: /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules/react-native-root-siblings/index.js: Exporting local &quot;_default&quot;, which is not declared. (This is an error on an internal node. Probably an internal error.)（===============最后发现是一个第三方库的依赖文件，导出类的问题================）</span><br><span class="line"></span><br><span class="line">+ [[ false != true ]]</span><br><span class="line">+ [[ ! -f /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle ]]</span><br><span class="line">+ echo &apos;error: File /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle does not exist. This must be a bug with&apos;（===============最开始的报错信息，注意力一直在这里================）</span><br><span class="line">error: File /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle does not exist. This must be a bug with</span><br><span class="line">+ echo &apos;React Native, please report it here: https://github.com/facebook/react-native/issues&apos;</span><br><span class="line">React Native, please report it here: https://github.com/facebook/react-native/issues</span><br><span class="line">+ exit 2</span><br><span class="line"></span><br><span class="line">结论：看报错信息，一定要一层一层往下面跟，因为反馈在表面的问题，往往是很多中错误的相同报错，特别是RN这种依赖IOS和Android原生的框架（看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！）</span><br></pre></td></tr></table></figure>
+<h2 id="RN项目缺陷（网上资料，备份）"><a href="#RN项目缺陷（网上资料，备份）" class="headerlink" title="RN项目缺陷（网上资料，备份）"></a>RN项目缺陷（网上资料，备份）</h2><ul>
+<li>1.此为网上看到的资料觉得在理，备份下<img src="../../../../../images/rn/quexian.png" alt="image"></li>
+</ul>
 
           
         
@@ -1786,159 +1975,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/JS/this作用域/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2018/12/07/JS/this作用域/" itemprop="url">this作用域</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T23:24:48+08:00">
-                2018-12-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="函数内置name属性"><a href="#函数内置name属性" class="headerlink" title="函数内置name属性"></a>函数内置name属性</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'this is a func'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.test.name = <span class="string">'重新赋值函数name属性'</span>; <span class="comment">//无意义</span></span><br><span class="line"><span class="built_in">window</span>.test.otherName = <span class="string">'定义非name关键字的属性'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.test.name); <span class="comment">//test</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.test.otherName); <span class="comment">//定义非name关键字的属性</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数内置name属性就是函数名，且name属性不能重新赋值改变,可以赋值其他非name关键字的属性;</span></span><br></pre></td></tr></table></figure>
-<h2 id="this作用域解析一"><a href="#this作用域解析一" class="headerlink" title="this作用域解析一"></a>this作用域解析一</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"The window"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">one</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">"The one"</span>;</span><br><span class="line">    <span class="keyword">var</span> object = &#123;　　　　</span><br><span class="line">        name: <span class="string">"The object"</span>,</span><br><span class="line">        getNameFunc: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;　　　　　　</span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;　　　　　　　　</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.name;　　　　　　</span><br><span class="line">            &#125;;　　　　</span><br><span class="line">        &#125;　　</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">console</span>.log(object.getNameFunc()());</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.one(); <span class="comment">//The window</span></span><br><span class="line"><span class="comment">/* 结果为The window</span></span><br><span class="line"><span class="comment"> * 调用window.one()方法 =&gt;</span></span><br><span class="line"><span class="comment"> * 步骤一: var声明name变量为The one;</span></span><br><span class="line"><span class="comment"> * 步骤二: var声明object对象,包含name和getNameFunc属性，getNameFunc属性为一个函数;</span></span><br><span class="line"><span class="comment"> * 步骤三: 打印object.getNameFunc()()结果;</span></span><br><span class="line"><span class="comment"> * 解析步骤三 =&gt;</span></span><br><span class="line"><span class="comment"> * object.getNameFunc()函数执行结果返回一个函数，结果如下</span></span><br><span class="line"><span class="comment"> * function() &#123;　　　　　　　　</span></span><br><span class="line"><span class="comment"> *     return this.name;　　　　　　</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> * object.getNameFunc()后面跟(),表示执行返回的函数,return this.name,由于该方法是window.one()调用，this谁调用指向谁，即结果为The window</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 延伸定义=&gt; 当你要确定 函数中的this指向什么的时候，不要到函数定义的地方去找答案，而是要到函数被调用的地方找答案。</span></span><br><span class="line"><span class="comment"> * 如：a.f(),f()里面的this就是指a，而不管f()里面什么东西；若只是f()，不考虑一些特殊情况，f里面的this就是指全局对象window</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-<h2 id="this作用域解析二"><a href="#this作用域解析二" class="headerlink" title="this作用域解析二"></a>this作用域解析二</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> val = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    val: <span class="number">2</span>,</span><br><span class="line">    doMath: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.val *= <span class="number">2</span>;</span><br><span class="line">        val *= <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(val);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.doMath(); <span class="comment">//2 4</span></span><br><span class="line"><span class="keyword">var</span> func = obj.doMath;</span><br><span class="line">func(); <span class="comment">//8 8</span></span><br></pre></td></tr></table></figure>
-<h2 id="箭头函数this区别"><a href="#箭头函数this区别" class="headerlink" title="箭头函数this区别"></a>箭头函数this区别</h2><ul>
-<li><code>箭头函数的this定义：箭头函数的this是在定义函数时绑定的，不是在执行过程中绑定的。简单的说，函数在定义时，this就继承了定义函数的对象。</code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> val = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.val = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.val)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test()(); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/blog/page/13/">13</a><a class="page-number" href="/blog/page/14/">14</a><a class="extend next" rel="next" href="/blog/page/13/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/blog/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/15/">15</a><a class="extend next" rel="next" href="/blog/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1984,7 +2025,7 @@
               
                 <a href="/blog/archives">
               
-                  <span class="site-state-item-count">140</span>
+                  <span class="site-state-item-count">141</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2006,7 +2047,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

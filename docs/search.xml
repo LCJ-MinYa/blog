@@ -14,6 +14,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[aliyun-oss]]></title>
+    <url>%2Fblog%2F2022%2F04%2F15%2FJS%2Faliyun-oss%2F</url>
+    <content type="text"><![CDATA[断点续传1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465/* aliOssUpload.js简单封装文件 * 需要自定义字段,folderPath、bucket、options * options中需要传递requestApi(请求服务器获得sts凭证) */import OSS from 'ali-oss';import Cookie from 'js-cookie';const isProd = process.env.VUE_APP_CURRENTMODE === 'prod';export default class AliOssUpload &#123; /** oss实例 */ client = null; /** 上传文件夹自定义路径 */ folderPath = '/test/'; /** 上传阿里云配置 */ options = &#123; /** bucket 所在的区域，默认 oss-cn-hangzhou */ region: 'oss-cn-chengdu', /** 通过控制台创建的bucket */ bucket: isProd ? 'prodBucketName' : 'bucketName', /** (secure: true) 则使用 HTTPS， (secure: false) 则使用 HTTP */ secure: true, /** 是否使用阿里云内网访问，默认false。比如通过ECS访问OSS，则设置为true，采用internal的endpoint可节约费用 */ internal: false, // endpoint: 'oss-cn-chengdu-internal.aliyuncs.com', &#125;; constructor(options = &#123;&#125;) &#123; this.options = &#123; ...this.options, ...options &#125;; &#125; getStsToken(forceUpdate = false) &#123; return new Promise((resolve, reject) =&gt; &#123; /** 通过阿里云控制台创建的access key */ const accessKeyId = Cookie.get('accessKeyId'); /** 通过阿里云控制台创建的access secret */ const accessKeySecret = Cookie.get('accessKeySecret'); /** 使用临时授权方式token */ const stsToken = Cookie.get('stsToken'); console.log(this.options); if (accessKeyId &amp;&amp; accessKeySecret &amp;&amp; stsToken &amp;&amp; !forceUpdate) &#123; this.client = new OSS(&#123; ...this.options, accessKeyId, accessKeySecret, stsToken &#125;); resolve(this.client); &#125; else &#123; this.options .requestApi() .then((result = &#123;&#125;) =&gt; &#123; Cookie.set('accessKeyId', result.accessKeyId, &#123; expires: 0.5 &#125;); Cookie.set('accessKeySecret', result.accessKeySecret, &#123; expires: 0.5 &#125;); Cookie.set('stsToken', result.securityToken, &#123; expires: 0.5 &#125;); this.client = new OSS(&#123; ...this.options, ...result, stsToken: result.securityToken &#125;); resolve(this.client); &#125;) .catch((err) =&gt; &#123; console.log(err, '获取stsToken失败'); reject(err); &#125;); &#125; &#125;); &#125; resumeBreakpointUpload(filename, file, options = &#123;&#125;) &#123; return this.client.multipartUpload(`$&#123;this.folderPath&#125;$&#123;filename&#125;`, file, options); &#125;&#125; sts到期自动更新思路 1.此为网上看到的资料觉得在理，备份下]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>javascript</tag>
+        <tag>阿里云oss</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[VSCode]]></title>
     <url>%2Fblog%2F2021%2F09%2F17%2FIDE%2Fvscode%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%2F</url>
     <content type="text"><![CDATA[前置依赖插件 koroFileHeader 在vscode中用于生成文件头部注释和函数注释的插件 Prettier 格式化 Turbo Console Log 快速生成console.log Vetur vue工具 全局配置123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657&#123; "editor.tabSize": 4, "editor.detectIndentation": false, "editor.formatOnSave": true, "git.ignoreMissingGitWarning": true, "window.zoomLevel": 1, "workbench.tree.indent": 20, "workbench.colorTheme": "Monokai", "explorer.confirmDragAndDrop": false, "editor.fontSize": 16, "explorer.confirmDelete": false, "update.mode": "none", "prettier.semi": true, //prettier全局使用分号 "prettier.singleQuote": true, //prettier全局使用单引号 "prettier.printWidth": 50, //prettier全局超过50才换行 "[javascript]": &#123; "editor.defaultFormatter": "esbenp.prettier-vscode" //js文件保存时使用prettier格式化 &#125;, "[markdown]": &#123; "editor.formatOnSave": false //markdown文件保存时使用不格式化 &#125;, "[vue]": &#123; "editor.tabSize": 4, "editor.defaultFormatter": "octref.vetur" &#125;, "vetur.format.defaultFormatter.html": "prettyhtml", "vetur.format.options.tabSize": 4, "prettier.tabWidth": 4, "vetur.format.defaultFormatterOptions": &#123; "prettier": &#123; "semi": true, "singleQuote": true, "printWidth": 50, &#125;, &#125;, "[typescriptreact]": &#123; "editor.defaultFormatter": "esbenp.prettier-vscode" &#125;, "fileheader.customMade": &#123; // 头部注释默认字段 "Author": "LiChaoJun", "Date": "Do not edit", // 设置后默认设置文件生成时间 "LastEditTime": "Do not edit", // 设置后，保存文件更改默认更新最后编辑时间 "LastEditors": "LiChaoJun", // 设置后，保存文件更改默认更新最后编辑人 &#125;, "fileheader.configObj": &#123; "autoAddLine": 10, // 文件超过多少行数 不再自动添加头部注释 &#125;, "security.workspace.trust.untrustedFiles": "open", "turboConsoleLog.addSemicolonInTheEnd": true, "turboConsoleLog.delimiterInsideMessage": "-", "turboConsoleLog.insertEnclosingFunction": false, "turboConsoleLog.logMessagePrefix": "", "turboConsoleLog.quote": "'", // "editor.renderControlCharacters": true, // 显示tabs // "editor.renderWhitespace": "all", // 显示空格&#125; Turbo Console Log使用 选中变量添加注释（支持多选）ctrl + alt + L 从当前文档中删除由扩展程序插入的所有日志消息alt + shift + d 从当前文档中注释由扩展程序插入的所有日志消息alt + shift + c 从当前文档中取消对扩展程序插入的所有日志消息的注释alt + shift + u]]></content>
@@ -113,9 +126,9 @@
         <category>centos</category>
       </categories>
       <tags>
+        <tag>centos</tag>
         <tag>服务器</tag>
         <tag>anydesk</tag>
-        <tag>centos</tag>
         <tag>远程桌面</tag>
       </tags>
   </entry>
@@ -127,11 +140,11 @@
         <category>centos</category>
       </categories>
       <tags>
+        <tag>centos</tag>
         <tag>服务器</tag>
         <tag>anydesk</tag>
-        <tag>centos</tag>
-        <tag>远程桌面</tag>
         <tag>frp</tag>
+        <tag>远程桌面</tag>
       </tags>
   </entry>
   <entry>
@@ -149,13 +162,13 @@
   <entry>
     <title><![CDATA[centos搭建v2ray]]></title>
     <url>%2Fblog%2F2020%2F06%2F05%2FCentos%E6%9C%8D%E5%8A%A1%E5%99%A8%2Fcentos%E6%90%AD%E5%BB%BAv2ray%2F</url>
-    <content type="text"><![CDATA[服务器安装v2ray 一键安装命令,安装完成后可以通过v2ray管理V2Ray 1bash &lt;(curl -s -L https://git.io/v2ray.sh) v2ray配置成功，客户端连接不上报错context deadline exceeded,必须关闭防火墙（或者开启对应v2ray端口和ss端口） 12345systemctl status firewalld.service #查看防火墙状态systemctl stop firewalld.service #执行停止运行防火墙命令systemctl disable firewalld.service #禁止防火墙自启动 防火墙其他命令 12systemctl start firewalld.service #启动systemctl enable firewalld.service #开机启动 windows客户端配置 服务器-添加vmess服务器-配置信息（可以在服务器查看对应信息） 参数设置-core基础设置-PAC或者全局选择 PAC =&gt; 参数设置-core路由设置-域名策略(AsIs) PAC =&gt; 参数设置-core路由设置-点击一键设置默认自定义路由规则生成默认规则（即代理指定的网址例如google,youtube） Android客户端配置 配置-设置-路由设置-AsIs,绕过局域网及大陆地址（此步骤设置后需要服务重启才能生效） 借鉴网址V2Ray 一键安装脚本V2Ray 客户端下载导航地址V2Ray 安卓客户端V2Ray Windows客户端]]></content>
+    <content type="text"><![CDATA[阿里云香港主机 购买地址 一键DD脚本，重装厂商自带的系统(脚本备份) 1.默认的用户名和密码，再选择系统后会自动给出，注意记一下！！！ 1wget --no-check-certificate -O AutoReinstall.sh https://git.io/AutoReinstall.sh &amp;&amp; bash AutoReinstall.sh 如果有以下报错根据提示信息显示，远程主机的公钥已被更改，因此无法连接远程主机。在使用 ssh 连接时，会将远程主机提供的公钥存储在本地 $HOME/.ssh/known_hosts 文件中。而如果远程主机的公钥信息被更改了，则由于本地公钥信息与远程主机的不匹配而无法连接，此时只需删除本地存储的公钥信息即可。按如下操作删除原有公钥后再次连接，提示询问时输入 yes 即可登录远程主机 1ssh-keygen -R 阿里云主机地址(xxx.xxx.xxx.xxx) 修改默认密码passwd 服务器安装v2ray 一键安装命令,安装完成后可以通过v2ray管理V2Ray(脚本备份) 1bash &lt;(curl -s -L https://git.io/v2ray.sh) v2ray配置成功，客户端连接不上报错context deadline exceeded,必须关闭防火墙（或者开启对应v2ray端口和ss端口） 12345systemctl status firewalld.service #查看防火墙状态systemctl stop firewalld.service #执行停止运行防火墙命令systemctl disable firewalld.service #禁止防火墙自启动 防火墙其他命令 12systemctl start firewalld.service #启动systemctl enable firewalld.service #开机启动 v2ray设置 开启bbr加速,v2ray,然后选择11其他，安装bbr即可 tcl协议最快，但是容易被检测 ws + tls目前来说较为安全一些，申请一个域名，然后将域名解析指向服务器ip地址，然后脚本可以自动配置tls，只需要正确输入你的域名即可。 windows客户端配置 服务器-添加vmess服务器-配置信息（可以在服务器查看对应信息） 参数设置-core基础设置-PAC或者全局选择 PAC =&gt; 参数设置-core路由设置-域名策略(AsIs) PAC =&gt; 参数设置-core路由设置-点击一键设置默认自定义路由规则生成默认规则（即代理指定的网址例如google,youtube）123456789// 常用自定义pac规则v2ex.com,vultr.com,getadblock.com,github.blog,github.com,tiktok.com,cloudflare.com,speedtest.net Android客户端配置 配置-设置-路由设置-AsIs,绕过局域网及大陆地址（此步骤设置后需要服务重启才能生效） 借鉴网址V2Ray 一键安装脚本V2Ray 客户端下载导航地址V2Ray 安卓客户端V2Ray Windows客户端]]></content>
       <categories>
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
         <tag>ss</tag>
         <tag>shadowsocks</tag>
         <tag>varay</tag>
@@ -232,8 +245,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -906,9 +919,9 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
-        <tag>centos</tag>
         <tag>docker</tag>
+        <tag>centos</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -919,8 +932,8 @@
         <category>docker</category>
       </categories>
       <tags>
-        <tag>centos</tag>
         <tag>docker</tag>
+        <tag>centos</tag>
       </tags>
   </entry>
   <entry>
@@ -1023,8 +1036,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
         <tag>filezilla</tag>
       </tags>
   </entry>
@@ -1110,8 +1123,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -1122,8 +1135,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -1134,8 +1147,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
         <tag>nginx</tag>
       </tags>
   </entry>
@@ -1147,8 +1160,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -1159,8 +1172,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
         <tag>hexo</tag>
       </tags>
   </entry>
@@ -1172,8 +1185,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
         <tag>pm2</tag>
       </tags>
   </entry>
@@ -1185,8 +1198,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -1197,8 +1210,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -1209,8 +1222,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
         <tag>nginx</tag>
       </tags>
   </entry>
@@ -1222,8 +1235,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
         <tag>mongodb</tag>
       </tags>
   </entry>
@@ -1235,8 +1248,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
         <tag>node</tag>
         <tag>pm2</tag>
       </tags>
@@ -1249,8 +1262,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
         <tag>ss</tag>
         <tag>shadowsocks</tag>
       </tags>
@@ -1263,8 +1276,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
         <tag>nginx</tag>
         <tag>gzip</tag>
         <tag>cache</tag>
@@ -1278,8 +1291,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
         <tag>iptables</tag>
       </tags>
   </entry>
@@ -1291,8 +1304,8 @@
         <category>centos</category>
       </categories>
       <tags>
-        <tag>服务器</tag>
         <tag>centos</tag>
+        <tag>服务器</tag>
         <tag>node</tag>
         <tag>nginx</tag>
       </tags>
@@ -1318,8 +1331,8 @@
         <category>thinkjs</category>
       </categories>
       <tags>
-        <tag>node</tag>
         <tag>前端</tag>
+        <tag>node</tag>
         <tag>thinkjs</tag>
       </tags>
   </entry>
@@ -1417,7 +1430,7 @@
   <entry>
     <title><![CDATA[BUG积累]]></title>
     <url>%2Fblog%2F2018%2F12%2F07%2FReactNative%2FBUG%E7%A7%AF%E7%B4%AF%2F</url>
-    <content type="text"><![CDATA[安装windows10 所有都安装成功运行react-native run-android报找不到设备问题 原因1.如果在windows上初始化的项目，在mac运行安卓会有字符编码的问题.原因2.java_jdk版本必须为8，如果是java10，无论如何都不能通过命令行启动，只能通过android studio启动 组件子组件阻止父组件点击12345678910111213141516171819202122render() &#123; &lt;TouchableOpacity style=&#123;styles.popupWrapStyle&#125; activeOpacity=&#123;1&#125; onPress=&#123;this.closeModalPopup.bind(this)&#125; onStartShouldSetResponderCapture=&#123;()=&gt; true&#125; &gt; &lt;View &#123;...this.gestureHandlers&#125; style=&#123;styles.popupViewStyle&#125;&gt; &lt;Text&gt;123&lt;/Text&gt; &lt;Text&gt;123&lt;/Text&gt; &lt;Text&gt;123&lt;/Text&gt; &lt;Text&gt;123&lt;/Text&gt; &lt;Text&gt;123&lt;/Text&gt; &lt;/View&gt; &lt;/TouchableOpacity&gt;&#125;componentWillMount() &#123; this.gestureHandlers = &#123; onStartShouldSetResponderCapture: () =&gt; true, &#125;&#125; 调用了一个未安装组件的setState警告123456789101112131415Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component.原因是当离开页面以后，组件已经被卸载，执行setState时无法找到渲染组件。解决办法特别简单，在离开页面时的周期函数（componentWillUnmount）中：//组件将被卸载 componentWillUnmount()&#123; //重写组件的setState方法，直接返回空 this.setState = (state,callback)=&gt;&#123; return; &#125;; &#125;再来回切换页面以后，只要页面离开就会执行该方法，当页面再次进入时又会重新挂载父组件的setState方法，从而不影响页面的渲染。不过该方法不是很严谨，在集成的子组件中能修改父组件的setState方法，不过在javascript的语法中很适用，建议只在出现上述bug的页面中使用。 FlatList或ListView更改数据源视图不更新或者数据显示错乱123/* key如果是用的 item.index().toString()，key一直是0-9，所以数据不刷新 * 此后，不建议key用数组下标显示*/ FlatList实现自适应高度 FlatList默认flexGrow: 1,导致FlatList不能自适应高度，加上样式flexGrow: 0即可 FlatList性能缓慢 警告信息如下: you have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc.123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566/* * 这是因为renderItemView()中渲染的组件没有继承自React.PureComponent * 推荐在FlatList和renderItemView中都继承React.PureComponent而不是React.Component */class MyListItem extends React.PureComponent &#123; _onPress = () =&gt; &#123; this.props.onPressItem(this.props.id); &#125;; render() &#123; const textColor = this.props.selected ? "red" : "black"; return ( &lt;TouchableOpacity onPress=&#123;this._onPress&#125;&gt; &lt;View&gt; &lt;Text style=&#123;&#123; color: textColor &#125;&#125;&gt; &#123;this.props.title&#125; &lt;/Text&gt; &lt;/View&gt; &lt;/TouchableOpacity&gt; ); &#125;&#125;class MultiSelectList extends React.PureComponent &#123; state = &#123;selected: (new Map(): Map&lt;string, boolean&gt;)&#125;; _keyExtractor = (item, index) =&gt; item.id; _onPressItem = (id: string) =&gt; &#123; // updater functions are preferred for transactional updates this.setState((state) =&gt; &#123; // copy the map rather than modifying state. const selected = new Map(state.selected); selected.set(id, !selected.get(id)); // toggle return &#123;selected&#125;; &#125;); &#125;; _renderItem = (&#123;item&#125;) =&gt; ( &lt;MyListItem id=&#123;item.id&#125; onPressItem=&#123;this._onPressItem&#125; selected=&#123;!!this.state.selected.get(item.id)&#125; title=&#123;item.title&#125; /&gt; ); render() &#123; return ( &lt;FlatList data=&#123;this.props.data&#125; extraData=&#123;this.state&#125; keyExtractor=&#123;this._keyExtractor&#125; renderItem=&#123;this._renderItem&#125; /&gt; ); &#125;&#125;/*React.PureComponent 与 React.Component 几乎完全相同，但 React.PureComponent 通过prop和state的浅对比来实现 shouldComponentUpate()。如果React组件的 render() 函数在给定相同的props和state下渲染为相同的结果，在某些场景下你可以使用 React.PureComponent 来提升性能。React.PureComponent 的 shouldComponentUpdate() 只会对对象进行浅对比。如果对象包含复杂的数据结构，它可能会因深层的数据不一致而产生错误的否定判断(表现为对象深层的数据已改变视图却没有更新, 原文：false-negatives)。当你期望只拥有简单的props和state时，才去继承 PureComponent ，或者在你知道深层的数据结构已经发生改变时使用 forceUpate() 。或者，考虑使用 不可变对象 来促进嵌套数据的快速比较。此外,React.PureComponent 的 shouldComponentUpate() 会忽略整个组件的子级。请确保所有的子级组件也是”Pure”的。 */ 0.55不能输入中文123456789101112131415import React, &#123;Component&#125; from 'react';import &#123;Platform, TextInput&#125; from 'react-native';class WPTextInput extends Component &#123; shouldComponentUpdate(nextProps)&#123; return Platform.OS !== 'ios' || (this.props.value === nextProps.value &amp;&amp; (nextProps.defaultValue == undefined || nextProps.defaultValue == '' )) || (this.props.defaultValue === nextProps.defaultValue &amp;&amp; (nextProps.value == undefined || nextProps.value == '' )); &#125; render() &#123; return &lt;TextInput &#123;...this.props&#125; /&gt;; &#125;&#125;;export default WPTextInput; 0.55 0.56IOS不能输入中文，更新数据源不能更新界面，clear()方法不生效1234567891011121314151617181920212223242526/* * 修改node_modules源文件 * 位置1: project/node_modules/react-native/Libraries/Text/TextInput/RCTBaseTextInputShadowView.m * 位置2: project/node_modules/react-native/Libraries/Text/TextInput/RCTBaseTextInputView.m */ RCTBaseTextInputShadowView.m文件修改 //26行新增+ NSString *_text; //105行新增+ - (NSString *)text+ &#123;+ return _text;+ &#125;+ - (void)setText:(NSString *)text+ &#123;+ _text = text;+ _previousAttributedText = _localAttributedText;+ &#125; RCTBaseTextInputView.m文件修改 //340行修改 if (_onChange) &#123; ↓↓↓↓ if (_onChange &amp;&amp; backedTextInputView.markedTextRange == nil) &#123; textinput作为组件，默认值(value为数组中的数据)初次不渲染12345678//强制刷新componentWillReceiveProps(nextProps) &#123; if(nextProps.value &amp;&amp; nextProps.isFirstUpdate)&#123; setTimeout(()=&gt;&#123; this.forceUpdate() &#125;, 50) &#125;&#125; Attempted to redefine property “XXXX”(OrderInvoiceMoney=&gt; 自定义变量, width, fontSize等) 重新定义属性导致的报错，即一个属性定义多次.在测试debug模式中不会报错，编译正式包崩溃闪退，查看日志得知. 样式安卓低版本borderRadius属性安卓低版本&lt;4.1.1&gt;Image标签不支持borderRadius属性，需要用view包裹，在view上面设置borderRadius属性 字体图标font-weight字体图标不能设置字体粗细，否则安卓会不识别 IOS三倍分辨率border问题（设置小数点）ios设置borderTopWidth: 0.5，在ios上会导致border失真(具体表现为border占据很大一块) 1.只有borderTopWidth会有该问题，borderBottomWidth不存在该问题，可将borderTopWidth改为borderBottomWidth 2.将borderTopWidth: 0.5改为borderTopWidth: 0.33(比例1/3 == 0.33)12345678/* * hairlineWidth:CallExpression * 该用来定义当前平台最细的宽度。该属性用来设置边框或者两个组件之间的分割线 */&#123; borderBottomColor: '#bbb', borderBottomWidth: StyleSheet.hairlineWidth&#125; 编译Mac打包安卓正式包(gradlew相关报错)执行sudo cd android &amp;&amp; ./gradlew assembleRelease,报错信息:-bash: ./gradlew: No such file or directory进入android目录，单独执行./gradlew assembleRelease报错(-bash: ./gradlew: Permission denied)解决办法: chmod +x gradlew windows运行rn项目报模块找不到(AccessibilityInfo 0.56.0) 原因：react-native项目本身版本的问题解决办法：修改package.json “react”: “16.3.1” “react-native”: “0.55.4” “babel-preset-react-native”: “2.1.0” 删除node_modules然后重新安装 windows中原文件有报错切运行过（修改报错并反复确认没问题还是报相同的错误=&gt;git忽略文件夹大小写变动问题） react-native缓存问题react-native start –reset-cache main.jsbundle does not exist引发的惨案1234567891011121314151617181920212223242526272829这个报错是在安装极光推送之后编译Archive导致的报错.最开始的猜测，因为测试环境真机和模拟器都没有报错，而正是环境main.jsbundle不存在=》以下尝试1.尝试手动编译main.jsbundle，2.下载推送的正式证书（因为极光推送涉及到推送证书，测试和正式又是不同的证书）3.重新npm install4.重新react-native link5.尝试github上各种解决方法都依然编译不能通过，再纠结一个小时之后，偶然看报错信息+ DEST=/Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app+ [[ Release = \D\e\b\u\g ]]+ BUNDLE_FILE=/Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle+ node /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules/react-native/local-cli/cli.js bundle --entry-file index.js --platform ios --dev false --reset-cache --bundle-output /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle --assets-dest /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.appScanning folders for symlinks in /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules (12ms)Scanning folders for symlinks in /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules (10ms)warning: the transform cache was reset.Loading dependency graph, done./Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules/react-native-root-siblings/index.js: /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules/react-native-root-siblings/index.js: Exporting local &quot;_default&quot;, which is not declared. (This is an error on an internal node. Probably an internal error.)（===============最后发现是一个第三方库的依赖文件，导出类的问题================）+ [[ false != true ]]+ [[ ! -f /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle ]]+ echo &apos;error: File /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle does not exist. This must be a bug with&apos;（===============最开始的报错信息，注意力一直在这里================）error: File /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle does not exist. This must be a bug with+ echo &apos;React Native, please report it here: https://github.com/facebook/react-native/issues&apos;React Native, please report it here: https://github.com/facebook/react-native/issues+ exit 2结论：看报错信息，一定要一层一层往下面跟，因为反馈在表面的问题，往往是很多中错误的相同报错，特别是RN这种依赖IOS和Android原生的框架（看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！）]]></content>
+    <content type="text"><![CDATA[安装windows10 所有都安装成功运行react-native run-android报找不到设备问题 原因1.如果在windows上初始化的项目，在mac运行安卓会有字符编码的问题.原因2.java_jdk版本必须为8，如果是java10，无论如何都不能通过命令行启动，只能通过android studio启动 组件子组件阻止父组件点击12345678910111213141516171819202122render() &#123; &lt;TouchableOpacity style=&#123;styles.popupWrapStyle&#125; activeOpacity=&#123;1&#125; onPress=&#123;this.closeModalPopup.bind(this)&#125; onStartShouldSetResponderCapture=&#123;()=&gt; true&#125; &gt; &lt;View &#123;...this.gestureHandlers&#125; style=&#123;styles.popupViewStyle&#125;&gt; &lt;Text&gt;123&lt;/Text&gt; &lt;Text&gt;123&lt;/Text&gt; &lt;Text&gt;123&lt;/Text&gt; &lt;Text&gt;123&lt;/Text&gt; &lt;Text&gt;123&lt;/Text&gt; &lt;/View&gt; &lt;/TouchableOpacity&gt;&#125;componentWillMount() &#123; this.gestureHandlers = &#123; onStartShouldSetResponderCapture: () =&gt; true, &#125;&#125; 调用了一个未安装组件的setState警告123456789101112131415Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component.原因是当离开页面以后，组件已经被卸载，执行setState时无法找到渲染组件。解决办法特别简单，在离开页面时的周期函数（componentWillUnmount）中：//组件将被卸载 componentWillUnmount()&#123; //重写组件的setState方法，直接返回空 this.setState = (state,callback)=&gt;&#123; return; &#125;; &#125;再来回切换页面以后，只要页面离开就会执行该方法，当页面再次进入时又会重新挂载父组件的setState方法，从而不影响页面的渲染。不过该方法不是很严谨，在集成的子组件中能修改父组件的setState方法，不过在javascript的语法中很适用，建议只在出现上述bug的页面中使用。 FlatList或ListView更改数据源视图不更新或者数据显示错乱123/* key如果是用的 item.index().toString()，key一直是0-9，所以数据不刷新 * 此后，不建议key用数组下标显示*/ FlatList实现自适应高度 FlatList默认flexGrow: 1,导致FlatList不能自适应高度，加上样式flexGrow: 0即可 FlatList性能缓慢 警告信息如下: you have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc.123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566/* * 这是因为renderItemView()中渲染的组件没有继承自React.PureComponent * 推荐在FlatList和renderItemView中都继承React.PureComponent而不是React.Component */class MyListItem extends React.PureComponent &#123; _onPress = () =&gt; &#123; this.props.onPressItem(this.props.id); &#125;; render() &#123; const textColor = this.props.selected ? "red" : "black"; return ( &lt;TouchableOpacity onPress=&#123;this._onPress&#125;&gt; &lt;View&gt; &lt;Text style=&#123;&#123; color: textColor &#125;&#125;&gt; &#123;this.props.title&#125; &lt;/Text&gt; &lt;/View&gt; &lt;/TouchableOpacity&gt; ); &#125;&#125;class MultiSelectList extends React.PureComponent &#123; state = &#123;selected: (new Map(): Map&lt;string, boolean&gt;)&#125;; _keyExtractor = (item, index) =&gt; item.id; _onPressItem = (id: string) =&gt; &#123; // updater functions are preferred for transactional updates this.setState((state) =&gt; &#123; // copy the map rather than modifying state. const selected = new Map(state.selected); selected.set(id, !selected.get(id)); // toggle return &#123;selected&#125;; &#125;); &#125;; _renderItem = (&#123;item&#125;) =&gt; ( &lt;MyListItem id=&#123;item.id&#125; onPressItem=&#123;this._onPressItem&#125; selected=&#123;!!this.state.selected.get(item.id)&#125; title=&#123;item.title&#125; /&gt; ); render() &#123; return ( &lt;FlatList data=&#123;this.props.data&#125; extraData=&#123;this.state&#125; keyExtractor=&#123;this._keyExtractor&#125; renderItem=&#123;this._renderItem&#125; /&gt; ); &#125;&#125;/*React.PureComponent 与 React.Component 几乎完全相同，但 React.PureComponent 通过prop和state的浅对比来实现 shouldComponentUpate()。如果React组件的 render() 函数在给定相同的props和state下渲染为相同的结果，在某些场景下你可以使用 React.PureComponent 来提升性能。React.PureComponent 的 shouldComponentUpdate() 只会对对象进行浅对比。如果对象包含复杂的数据结构，它可能会因深层的数据不一致而产生错误的否定判断(表现为对象深层的数据已改变视图却没有更新, 原文：false-negatives)。当你期望只拥有简单的props和state时，才去继承 PureComponent ，或者在你知道深层的数据结构已经发生改变时使用 forceUpate() 。或者，考虑使用 不可变对象 来促进嵌套数据的快速比较。此外,React.PureComponent 的 shouldComponentUpate() 会忽略整个组件的子级。请确保所有的子级组件也是”Pure”的。 */ 0.55不能输入中文123456789101112131415import React, &#123;Component&#125; from 'react';import &#123;Platform, TextInput&#125; from 'react-native';class WPTextInput extends Component &#123; shouldComponentUpdate(nextProps)&#123; return Platform.OS !== 'ios' || (this.props.value === nextProps.value &amp;&amp; (nextProps.defaultValue == undefined || nextProps.defaultValue == '' )) || (this.props.defaultValue === nextProps.defaultValue &amp;&amp; (nextProps.value == undefined || nextProps.value == '' )); &#125; render() &#123; return &lt;TextInput &#123;...this.props&#125; /&gt;; &#125;&#125;;export default WPTextInput; 0.55 0.56IOS不能输入中文，更新数据源不能更新界面，clear()方法不生效1234567891011121314151617181920212223242526/* * 修改node_modules源文件 * 位置1: project/node_modules/react-native/Libraries/Text/TextInput/RCTBaseTextInputShadowView.m * 位置2: project/node_modules/react-native/Libraries/Text/TextInput/RCTBaseTextInputView.m */ RCTBaseTextInputShadowView.m文件修改 //26行新增+ NSString *_text; //105行新增+ - (NSString *)text+ &#123;+ return _text;+ &#125;+ - (void)setText:(NSString *)text+ &#123;+ _text = text;+ _previousAttributedText = _localAttributedText;+ &#125; RCTBaseTextInputView.m文件修改 //340行修改 if (_onChange) &#123; ↓↓↓↓ if (_onChange &amp;&amp; backedTextInputView.markedTextRange == nil) &#123; textinput作为组件，默认值(value为数组中的数据)初次不渲染12345678//强制刷新componentWillReceiveProps(nextProps) &#123; if(nextProps.value &amp;&amp; nextProps.isFirstUpdate)&#123; setTimeout(()=&gt;&#123; this.forceUpdate() &#125;, 50) &#125;&#125; Attempted to redefine property “XXXX”(OrderInvoiceMoney=&gt; 自定义变量, width, fontSize等) 重新定义属性导致的报错，即一个属性定义多次.在测试debug模式中不会报错，编译正式包崩溃闪退，查看日志得知. 样式安卓低版本borderRadius属性安卓低版本&lt;4.1.1&gt;Image标签不支持borderRadius属性，需要用view包裹，在view上面设置borderRadius属性 字体图标font-weight字体图标不能设置字体粗细，否则安卓会不识别 IOS三倍分辨率border问题（设置小数点）ios设置borderTopWidth: 0.5，在ios上会导致border失真(具体表现为border占据很大一块) 1.只有borderTopWidth会有该问题，borderBottomWidth不存在该问题，可将borderTopWidth改为borderBottomWidth 2.将borderTopWidth: 0.5改为borderTopWidth: 0.33(比例1/3 == 0.33)12345678/* * hairlineWidth:CallExpression * 该用来定义当前平台最细的宽度。该属性用来设置边框或者两个组件之间的分割线 */&#123; borderBottomColor: '#bbb', borderBottomWidth: StyleSheet.hairlineWidth&#125; 编译Mac打包安卓正式包(gradlew相关报错)执行sudo cd android &amp;&amp; ./gradlew assembleRelease,报错信息:-bash: ./gradlew: No such file or directory进入android目录，单独执行./gradlew assembleRelease报错(-bash: ./gradlew: Permission denied)解决办法: chmod +x gradlew windows运行rn项目报模块找不到(AccessibilityInfo 0.56.0) 原因：react-native项目本身版本的问题解决办法：修改package.json “react”: “16.3.1” “react-native”: “0.55.4” “babel-preset-react-native”: “2.1.0” 删除node_modules然后重新安装 windows中原文件有报错切运行过（修改报错并反复确认没问题还是报相同的错误=&gt;git忽略文件夹大小写变动问题） react-native缓存问题react-native start –reset-cache main.jsbundle does not exist引发的惨案1234567891011121314151617181920212223242526272829这个报错是在安装极光推送之后编译Archive导致的报错.最开始的猜测，因为测试环境真机和模拟器都没有报错，而正是环境main.jsbundle不存在=》以下尝试1.尝试手动编译main.jsbundle，2.下载推送的正式证书（因为极光推送涉及到推送证书，测试和正式又是不同的证书）3.重新npm install4.重新react-native link5.尝试github上各种解决方法都依然编译不能通过，再纠结一个小时之后，偶然看报错信息+ DEST=/Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app+ [[ Release = \D\e\b\u\g ]]+ BUNDLE_FILE=/Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle+ node /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules/react-native/local-cli/cli.js bundle --entry-file index.js --platform ios --dev false --reset-cache --bundle-output /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle --assets-dest /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.appScanning folders for symlinks in /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules (12ms)Scanning folders for symlinks in /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules (10ms)warning: the transform cache was reset.Loading dependency graph, done./Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules/react-native-root-siblings/index.js: /Users/minya/Desktop/zybfapp/Mobile/XZY/node_modules/react-native-root-siblings/index.js: Exporting local &quot;_default&quot;, which is not declared. (This is an error on an internal node. Probably an internal error.)（===============最后发现是一个第三方库的依赖文件，导出类的问题================）+ [[ false != true ]]+ [[ ! -f /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle ]]+ echo &apos;error: File /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle does not exist. This must be a bug with&apos;（===============最开始的报错信息，注意力一直在这里================）error: File /Users/minya/Library/Developer/Xcode/DerivedData/XZY-blohpvcvoaocvvaiiqcahzynwdhp/Build/Intermediates.noindex/ArchiveIntermediates/XZY/BuildProductsPath/Release-iphoneos/XZY.app/main.jsbundle does not exist. This must be a bug with+ echo &apos;React Native, please report it here: https://github.com/facebook/react-native/issues&apos;React Native, please report it here: https://github.com/facebook/react-native/issues+ exit 2结论：看报错信息，一定要一层一层往下面跟，因为反馈在表面的问题，往往是很多中错误的相同报错，特别是RN这种依赖IOS和Android原生的框架（看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！） RN项目缺陷（网上资料，备份） 1.此为网上看到的资料觉得在理，备份下]]></content>
       <categories>
         <category>reactnative</category>
       </categories>

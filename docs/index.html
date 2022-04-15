@@ -550,6 +550,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2022/04/15/JS/aliyun-oss/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2022/04/15/JS/aliyun-oss/" itemprop="url">aliyun-oss</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-04-15T16:09:45+08:00">
+                2022-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*  aliOssUpload.js简单封装文件</span></span><br><span class="line"><span class="comment"> *  需要自定义字段,folderPath、bucket、options</span></span><br><span class="line"><span class="comment"> *  options中需要传递requestApi(请求服务器获得sts凭证)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> OSS <span class="keyword">from</span> <span class="string">'ali-oss'</span>;</span><br><span class="line"><span class="keyword">import</span> Cookie <span class="keyword">from</span> <span class="string">'js-cookie'</span>;</span><br><span class="line"><span class="keyword">const</span> isProd = process.env.VUE_APP_CURRENTMODE === <span class="string">'prod'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">AliOssUpload</span> </span>&#123;</span><br><span class="line">    <span class="comment">/** oss实例 */</span></span><br><span class="line">    client = <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">/** 上传文件夹自定义路径 */</span></span><br><span class="line">    folderPath = <span class="string">'/test/'</span>;</span><br><span class="line">    <span class="comment">/** 上传阿里云配置 */</span></span><br><span class="line">    options = &#123;</span><br><span class="line">        <span class="comment">/** bucket 所在的区域，默认 oss-cn-hangzhou */</span></span><br><span class="line">        region: <span class="string">'oss-cn-chengdu'</span>,</span><br><span class="line">        <span class="comment">/** 通过控制台创建的bucket */</span></span><br><span class="line">        bucket: isProd ? <span class="string">'prodBucketName'</span> : <span class="string">'bucketName'</span>,</span><br><span class="line">        <span class="comment">/** (secure: true) 则使用 HTTPS， (secure: false) 则使用 HTTP */</span></span><br><span class="line">        secure: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">/** 是否使用阿里云内网访问，默认false。比如通过ECS访问OSS，则设置为true，采用internal的endpoint可节约费用 */</span></span><br><span class="line">        internal: <span class="literal">false</span>,</span><br><span class="line">        <span class="comment">// endpoint: 'oss-cn-chengdu-internal.aliyuncs.com',</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</span><br><span class="line">        <span class="keyword">this</span>.options = &#123; ...this.options, ...options &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    getStsToken(forceUpdate = <span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">/** 通过阿里云控制台创建的access key */</span></span><br><span class="line">            <span class="keyword">const</span> accessKeyId = Cookie.get(<span class="string">'accessKeyId'</span>);</span><br><span class="line">            <span class="comment">/** 通过阿里云控制台创建的access secret */</span></span><br><span class="line">            <span class="keyword">const</span> accessKeySecret = Cookie.get(<span class="string">'accessKeySecret'</span>);</span><br><span class="line">            <span class="comment">/** 使用临时授权方式token */</span></span><br><span class="line">            <span class="keyword">const</span> stsToken = Cookie.get(<span class="string">'stsToken'</span>);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.options);</span><br><span class="line">            <span class="keyword">if</span> (accessKeyId &amp;&amp; accessKeySecret &amp;&amp; stsToken &amp;&amp; !forceUpdate) &#123;</span><br><span class="line">                <span class="keyword">this</span>.client = <span class="keyword">new</span> OSS(&#123; ...this.options, accessKeyId, accessKeySecret, stsToken &#125;);</span><br><span class="line">                resolve(<span class="keyword">this</span>.client);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.options</span><br><span class="line">                    .requestApi()</span><br><span class="line">                    .then(<span class="function">(<span class="params">result = &#123;&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">                        Cookie.set(<span class="string">'accessKeyId'</span>, result.accessKeyId, &#123; <span class="attr">expires</span>: <span class="number">0.5</span> &#125;);</span><br><span class="line">                        Cookie.set(<span class="string">'accessKeySecret'</span>, result.accessKeySecret, &#123; <span class="attr">expires</span>: <span class="number">0.5</span> &#125;);</span><br><span class="line">                        Cookie.set(<span class="string">'stsToken'</span>, result.securityToken, &#123; <span class="attr">expires</span>: <span class="number">0.5</span> &#125;);</span><br><span class="line">                        <span class="keyword">this</span>.client = <span class="keyword">new</span> OSS(&#123; ...this.options, ...result, <span class="attr">stsToken</span>: result.securityToken &#125;);</span><br><span class="line">                        resolve(<span class="keyword">this</span>.client);</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">                        <span class="built_in">console</span>.log(err, <span class="string">'获取stsToken失败'</span>);</span><br><span class="line">                        reject(err);</span><br><span class="line">                    &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    resumeBreakpointUpload(filename, file, options = &#123;&#125;) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.client.multipartUpload(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.folderPath&#125;</span><span class="subst">$&#123;filename&#125;</span>`</span>, file, options);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="sts到期自动更新思路"><a href="#sts到期自动更新思路" class="headerlink" title="sts到期自动更新思路"></a>sts到期自动更新思路</h2><ul>
+<li>1.此为网上看到的资料觉得在理，备份下<img src="../../../../../images/js/sts.jpg" alt="image"></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2021/09/17/IDE/vscode全局配置文件/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2147,208 +2292,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2020/08/05/Centos服务器/AnyDesk搭配frp远程连接/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2020/08/05/Centos服务器/AnyDesk搭配frp远程连接/" itemprop="url">AnyDesk搭配frp远程连接</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-05T11:13:57+08:00">
-                2020-08-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/centos/" itemprop="url" rel="index">
-                    <span itemprop="name">centos</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="服务器frps"><a href="#服务器frps" class="headerlink" title="服务器frps"></a>服务器frps</h2><ul>
-<li><h3 id="安装frp服务端"><a href="#安装frp服务端" class="headerlink" title="安装frp服务端"></a>安装frp服务端</h3></li>
-</ul>
-<ol>
-<li><code>cd /usr/local</code>进入/usr/local目录</li>
-<li><code>wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.tar.gz</code>下载frp服务器压缩包</li>
-<li><code>tar xzvf frp_0.29.0_linux_amd64.tar.gz</code>解压压缩包</li>
-<li><code>cd frp_0.29.0_linux_amd64</code>进入frp目录，当前目录为<code>/usr/local/frp_0.29.0_linux_amd64</code></li>
-</ol>
-<ul>
-<li><h3 id="配置frps-ini"><a href="#配置frps-ini" class="headerlink" title="配置frps.ini"></a>配置frps.ini</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frps.ini</span></span><br><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="comment">#token = sDesQJk@KlO #客户端连接服务器端的口令，设置了之后验证失败，所以暂时取消验证</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3></li>
-</ul>
-<ol>
-<li><p><code>vi /etc/systemd/system/frps.service</code> 新建此文件，并写入以下内容 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]                                                                                        </span><br><span class="line">Description=frps daemon                                                                         </span><br><span class="line">                                                                                                </span><br><span class="line">[Service]                                                                                         </span><br><span class="line">Type=simple                                                                                       </span><br><span class="line">                                                                                                </span><br><span class="line"><span class="meta">#</span>启动服务的命令（此处写你的frps的实际安装目录）                                                                       </span><br><span class="line">ExecStart=/usr/local/frp_0.29.0_linux_amd64/frps -c /usr/local/frp_0.29.0_linux_amd64/frps.ini   </span><br><span class="line">                                                                                                </span><br><span class="line">[Install]                                                                                        </span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>sudo systemctl start frps</code>启动frps</p>
-</li>
-<li><code>sudo systemctl enable frps</code>自启动<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>其他相关命令</span><br><span class="line">sudo systemctl restart frps #重启</span><br><span class="line">sudo systemctl stop frps #停止</span><br><span class="line">sudo systemctl status frps #查看应用日志</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ul>
-<li><h3 id="iptables开放端口"><a href="#iptables开放端口" class="headerlink" title="iptables开放端口"></a>iptables开放端口</h3>如果未设置防火墙限制端口访问，该步骤省略<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> frp服务器，有多少需要开放的端口就添加多少条并替换其中的端口号</span><br><span class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport 7000 -j ACCEPT</span><br><span class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport 7070 -j ACCEPT</span><br><span class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport 7080 -j ACCEPT</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="受控客户端"><a href="#受控客户端" class="headerlink" title="受控客户端"></a>受控客户端</h2><ul>
-<li><h3 id="安装anydesk"><a href="#安装anydesk" class="headerlink" title="安装anydesk"></a>安装anydesk</h3></li>
-<li><h3 id="下载frp客户端"><a href="#下载frp客户端" class="headerlink" title="下载frp客户端"></a><a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">下载frp客户端</a></h3><p>我是windows端的，下载后，解压压缩包。<img src="../../../../../images/centos/frp_windows.png" alt="image"></p>
-</li>
-<li><h3 id="配置frpc-ini"><a href="#配置frpc-ini" class="headerlink" title="配置frpc.ini"></a>配置frpc.ini</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = x.x.x.x   #服务器地址</span><br><span class="line">server_port = 7000      #服务器端口</span><br><span class="line"><span class="meta">#</span>token = sDesQJk@KlO    #连接服务端口令,设置了之后验证失败，所以暂时取消验证</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 7070       #要穿透的本地端口</span><br><span class="line">remote_port = 7080      #服务器暴露到外网的端口，同时服务器需要开放该端口</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="启动frpc"><a href="#启动frpc" class="headerlink" title="启动frpc"></a>启动frpc</h3></li>
-</ul>
-<ol>
-<li>在当前目录下打开cmd命令行工具</li>
-<li>执行<code>./frpc -c ./frpc.ini</code>命令，否则要配置path环境变量（注意此处windows必须加上<code>./</code>否则无法运行）</li>
-</ol>
-<ul>
-<li><h3 id="受控端anydesk设置"><a href="#受控端anydesk设置" class="headerlink" title="受控端anydesk设置"></a>受控端anydesk设置</h3></li>
-</ul>
-<ol>
-<li>配置自主访问密码<img src="../../../../../images/centos/anydesk_user.png" alt="image"></li>
-<li>允许直接连接，并保证端口与<code>frpc.ini</code>内本地端口配置一致<img src="../../../../../images/centos/anydesk_port.png" alt="image"></li>
-</ol>
-<h2 id="控制客户端"><a href="#控制客户端" class="headerlink" title="控制客户端"></a>控制客户端</h2><ul>
-<li><h3 id="安装anydesk-1"><a href="#安装anydesk-1" class="headerlink" title="安装anydesk"></a>安装anydesk</h3></li>
-<li><h3 id="输入地址：端口，连接"><a href="#输入地址：端口，连接" class="headerlink" title="输入地址：端口，连接"></a>输入地址：端口，连接</h3><p><img src="../../../../../images/centos/ip_port.png" alt="image"></p>
-</li>
-</ul>
-<h2 id="网络拓扑"><a href="#网络拓扑" class="headerlink" title="网络拓扑"></a>网络拓扑</h2><p><img src="../../../../../images/centos/network.png" alt="image"></p>
-<blockquote>
-<p>网络拓扑理解如下，受控客户端的AnyDesk服务在本地监听7070端口，frp服务将其映射到云服务器的7080端口。控制客户端连接云服务器的7080端口，就会被frp转发到受控客户端的7070端口，此时受控客户端的AnyDesk收到连接请求，就这样实现远程桌面内网的穿透。</p>
-</blockquote>
-<h2 id="借鉴网址"><a href="#借鉴网址" class="headerlink" title="借鉴网址"></a>借鉴网址</h2><p><a href="https://www.cnblogs.com/flylinmu/p/11703567.html" target="_blank" rel="noopener">AnyDesk with Frp 突破内网的远程桌面</a><br><a href="https://blog.csdn.net/sinat_29963957/article/details/83591264" target="_blank" rel="noopener">frp实现内网穿透并配置自动启动</a><br><a href="https://github.com/fatedier/frp/issues/176" target="_blank" rel="noopener">frp怎样开机启动和后台运行? =&gt; piiiiiiiiiiiiiii回答</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/14/">14</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/15/">15</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2394,7 +2342,7 @@
               
                 <a href="/blog/archives">
               
-                  <span class="site-state-item-count">140</span>
+                  <span class="site-state-item-count">141</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2416,7 +2364,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

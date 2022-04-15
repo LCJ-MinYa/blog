@@ -283,6 +283,9 @@ React Native, please report it here: https://github.com/facebook/react-native/is
 结论：看报错信息，一定要一层一层往下面跟，因为反馈在表面的问题，往往是很多中错误的相同报错，特别是RN这种依赖IOS和Android原生的框架（看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！看完整报错日志！！！！）
 ```
 
+## RN项目缺陷（网上资料，备份）
+* 1.此为网上看到的资料觉得在理，备份下![image](../../../../../images/rn/quexian.png)
+
 
 
 
