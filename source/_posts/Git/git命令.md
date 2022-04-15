@@ -22,3 +22,8 @@ tags:
 ## 分支
 * <code>git branch -a</code>查看所有分支
 * <code>git remote prune origin</code>清理本地分支与远程分支同步(sourcetree在git远程删除分支后刷新也不会同步，必须执行git命令才能与远程分支同步)
+
+## git提交github反复输入密码
+```
+git config --global credential.helper store
+```
