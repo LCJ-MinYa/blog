@@ -61,7 +61,7 @@ sudo systemctl status frps #查看应用日志
 - ### 安装anydesk
 
 - ### [下载frp客户端](https://github.com/fatedier/frp/releases)
-我是windows端的，下载后，解压压缩包。![image](../../../../../images/centos/frp_windows.png)
+我是windows端的，下载后，解压压缩包。![image](/blog/images/centos/frp_windows.png)
 
 - ### 配置frpc.ini
 ```shell
@@ -82,17 +82,17 @@ remote_port = 7080      #服务器暴露到外网的端口，同时服务器需�
 2. 执行`./frpc -c ./frpc.ini`命令，否则要配置path环境变量（注意此处windows必须加上`./`否则无法运行）
 
 - ### 受控端anydesk设置
-1. 配置自主访问密码![image](../../../../../images/centos/anydesk_user.png)
-2. 允许直接连接，并保证端口与`frpc.ini`内本地端口配置一致![image](../../../../../images/centos/anydesk_port.png)
+1. 配置自主访问密码![image](/blog/images/centos/anydesk_user.png)
+2. 允许直接连接，并保证端口与`frpc.ini`内本地端口配置一致![image](/blog/images/centos/anydesk_port.png)
 
 ## 控制客户端
 - ### 安装anydesk
 
 - ### 输入地址：端口，连接
-![image](../../../../../images/centos/ip_port.png)
+![image](/blog/images/centos/ip_port.png)
 
 ## 网络拓扑
-![image](../../../../../images/centos/network.png)
+![image](/blog/images/centos/network.png)
 > 网络拓扑理解如下，受控客户端的AnyDesk服务在本地监听7070端口，frp服务将其映射到云服务器的7080端口。控制客户端连接云服务器的7080端口，就会被frp转发到受控客户端的7070端口，此时受控客户端的AnyDesk收到连接请求，就这样实现远程桌面内网的穿透。
 
 ## 借鉴网址

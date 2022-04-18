@@ -13,4 +13,4 @@ tags:
 
 ## 解决方案
 > 将显卡渲染模式设置成兼容模式即可
-![image](../../../../../images/flutter/android_show.png)
+![image](/blog/images/flutter/android_show.png)

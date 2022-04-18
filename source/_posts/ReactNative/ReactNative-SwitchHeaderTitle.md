@@ -10,7 +10,7 @@ tags:
 
 ## SwitchHeaderTitle 自定义
 
-![image](../../../../../images/rn/SwitchHeaderTitle.gif)
+![image](/blog/images/rn/SwitchHeaderTitle.gif)
 
 ``` javascript
 //SwitchHeaderTitle.js

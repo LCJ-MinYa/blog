@@ -18,7 +18,7 @@ tags:
 wget --no-check-certificate -O AutoReinstall.sh https://git.io/AutoReinstall.sh && bash AutoReinstall.sh
 ```
 
-* 如果有以下报错![image](../../../../../images/centos/dd_error.png)
+* 如果有以下报错![image](/blog/images/centos/dd_error.png)
 根据提示信息显示，远程主机的公钥已被更改，因此无法连接远程主机。在使用 ssh 连接时，会将远程主机提供的公钥存储在本地 $HOME/.ssh/known_hosts 文件中。而如果远程主机的公钥信息被更改了，则由于本地公钥信息与远程主机的不匹配而无法连接，此时只需删除本地存储的公钥信息即可。
 按如下操作删除原有公钥后再次连接，提示询问时输入 yes 即可登录远程主机
 ```shell

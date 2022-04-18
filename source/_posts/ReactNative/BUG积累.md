@@ -284,7 +284,7 @@ React Native, please report it here: https://github.com/facebook/react-native/is
 ```
 
 ## RN项目缺陷（网上资料，备份）
-* 1.此为网上看到的资料觉得在理，备份下![image](../../../../../images/rn/quexian.png)
+* 1.此为网上看到的资料觉得在理，备份下![image](/blog/images/rn/quexian.png)
 
 
 

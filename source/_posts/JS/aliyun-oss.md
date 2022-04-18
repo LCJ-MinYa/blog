@@ -78,4 +78,4 @@ export default class AliOssUpload {
 ```
 
 ## sts到期自动更新思路
-* 1.此为网上看到的资料觉得在理，备份下![image](../../../../../images/js/sts.jpg)
+* 1.此为网上看到的资料觉得在理，备份下![image](/blog/images/js/sts.jpg)
