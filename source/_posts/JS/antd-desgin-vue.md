@@ -235,3 +235,11 @@ Vue.use(Input);
 ```
 
 * 验证按需加载是否成功，每次添加一个组件，然后`yarn build`后查看`www/static/js/chunk-vendors.xxxx.js`文件大小
+
+## element-table排序
+```js
+function sortMethod(prev, cur) {
+    var rule = ['2', '1', '3'];
+    return rule.indexOf(prev.applyStatus) - rule.indexOf(cur.applyStatus);
+}
+```

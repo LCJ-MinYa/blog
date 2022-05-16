@@ -1104,6 +1104,7 @@
 <li><p>验证按需加载是否成功，每次添加一个组件，然后<code>yarn build</code>后查看<code>www/static/js/chunk-vendors.xxxx.js</code>文件大小</p>
 </li>
 </ul>
+<h2 id="element-table排序"><a href="#element-table排序" class="headerlink" title="element-table排序"></a>element-table排序</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortMethod</span>(<span class="params">prev, cur</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> rule = [<span class="string">'2'</span>, <span class="string">'1'</span>, <span class="string">'3'</span>];</span><br><span class="line">    <span class="keyword">return</span> rule.indexOf(prev.applyStatus) - rule.indexOf(cur.applyStatus);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
