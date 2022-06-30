@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="服务器,centos,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="重启系统 reboot  查看当前文件夹目录 ls(不包含隐藏文件) ls -l(查看当前文件夹目录详细信息，不包含隐藏文件) ls -a(包含隐藏文件)  格式化硬盘 mkfs.ext4 /dev/vdb（格式化vdb这个名称的硬盘，其中ext4为磁盘格式，例如ex2,ex3和window下面的NTFS）  查看生效的系统盘和数据盘 df -h  文件操作 name在下文中统一代表变量，即你自己">
+<meta name="keywords" content="服务器,centos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux系统常用命令汇总">
+<meta property="og:url" content="https://lcj-minya.github.io/blog/2018/12/08/Centos服务器/linux系统常用命令汇总/index.html">
+<meta property="og:site_name" content="MinYa">
+<meta property="og:description" content="重启系统 reboot  查看当前文件夹目录 ls(不包含隐藏文件) ls -l(查看当前文件夹目录详细信息，不包含隐藏文件) ls -a(包含隐藏文件)  格式化硬盘 mkfs.ext4 /dev/vdb（格式化vdb这个名称的硬盘，其中ext4为磁盘格式，例如ex2,ex3和window下面的NTFS）  查看生效的系统盘和数据盘 df -h  文件操作 name在下文中统一代表变量，即你自己">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2022-06-30T01:40:02.124Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux系统常用命令汇总">
+<meta name="twitter:description" content="重启系统 reboot  查看当前文件夹目录 ls(不包含隐藏文件) ls -l(查看当前文件夹目录详细信息，不包含隐藏文件) ls -a(包含隐藏文件)  格式化硬盘 mkfs.ext4 /dev/vdb（格式化vdb这个名称的硬盘，其中ext4为磁盘格式，例如ex2,ex3和window下面的NTFS）  查看生效的系统盘和数据盘 df -h  文件操作 name在下文中统一代表变量，即你自己">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lcj-minya.github.io/blog/2018/12/08/Centos服务器/linux系统常用命令汇总/">
+
+
+
+
+
+  <title>linux系统常用命令汇总 | MinYa</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d4519a4a5a946a100fcc37a7d97a6a21";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MinYa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">MinYa-Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-centos">
+          <a href="/blog/categories/centos/" rel="section">
+            
+            CentOS
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-git">
+          <a href="/blog/categories/git/" rel="section">
+            
+            Git
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-js">
+          <a href="/blog/categories/js/" rel="section">
+            
+            Javascript
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-css">
+          <a href="/blog/categories/css/" rel="section">
+            
+            Css
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-reactnative">
+          <a href="/blog/categories/reactnative/" rel="section">
+            
+            ReactNative
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-apidoc">
+          <a href="/blog/categories/apidoc/" rel="section">
+            
+            ApiDoc
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-flutter">
+          <a href="/blog/categories/flutter/" rel="section">
+            
+            Flutter
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-html">
+          <a href="/blog/categories/html/" rel="section">
+            
+            Html
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-ios">
+          <a href="/blog/categories/ios/" rel="section">
+            
+            iOS
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-macos">
+          <a href="/blog/categories/macos/" rel="section">
+            
+            MacOS
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-mongodb">
+          <a href="/blog/categories/mongodb/" rel="section">
+            
+            MongoDB
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-thinkjs">
+          <a href="/blog/categories/thinkjs/" rel="section">
+            
+            ThinkJS
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-hexo">
+          <a href="/blog/categories/hexo/" rel="section">
+            
+            Hexo
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-vmware">
+          <a href="/blog/categories/vmware/" rel="section">
+            
+            VMware
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-ide">
+          <a href="/blog/categories/ide/" rel="section">
+            
+            IDE
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-docker">
+          <a href="/blog/categories/docker/" rel="section">
+            
+            Docker
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-android">
+          <a href="/blog/categories/android/" rel="section">
+            
+            Android
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/08/Centos服务器/linux系统常用命令汇总/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">linux系统常用命令汇总</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-08T00:14:13+08:00">
+                2018-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/centos/" itemprop="url" rel="index">
+                    <span itemprop="name">centos</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="重启系统"><a href="#重启系统" class="headerlink" title="重启系统"></a>重启系统</h2><ul>
+<li><code>reboot</code></li>
+</ul>
+<h2 id="查看当前文件夹目录"><a href="#查看当前文件夹目录" class="headerlink" title="查看当前文件夹目录"></a>查看当前文件夹目录</h2><ul>
+<li><code>ls</code>(不包含隐藏文件)</li>
+<li><code>ls -l</code>(查看当前文件夹目录详细信息，不包含隐藏文件)</li>
+<li><code>ls -a</code>(包含隐藏文件)</li>
+</ul>
+<h2 id="格式化硬盘"><a href="#格式化硬盘" class="headerlink" title="格式化硬盘"></a>格式化硬盘</h2><ul>
+<li><code>mkfs.ext4 /dev/vdb</code>（格式化vdb这个名称的硬盘，其中ext4为磁盘格式，例如ex2,ex3和window下面的NTFS）</li>
+</ul>
+<h2 id="查看生效的系统盘和数据盘"><a href="#查看生效的系统盘和数据盘" class="headerlink" title="查看生效的系统盘和数据盘"></a>查看生效的系统盘和数据盘</h2><ul>
+<li><code>df -h</code></li>
+</ul>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><blockquote>
+<p>name在下文中统一代表变量，即你自己想要操作的对应的文件或文件名等</p>
+<ul>
+<li><code>cd name</code>(移动目录)</li>
+<li><code>cat name</code>(输入文件内容，不能编辑)</li>
+<li><code>vi name</code>(打开文件编辑，i编辑，ESC退出编辑 :wq保存退出，:q退出不保存 :q!强制退出不保存)</li>
+<li><code>mkdir name</code>(创建文件或文件夹)</li>
+<li><code>rm -rf name</code>(删除文件夹或文件，且不需要提示用户)</li>
+<li><code>cp name1 name2</code>(复制文件1到文件2，文件1必须存在)</li>
+</ul>
+</blockquote>
+<h2 id="查看Centos端口命令"><a href="#查看Centos端口命令" class="headerlink" title="查看Centos端口命令"></a>查看Centos端口命令</h2><ul>
+<li><code>netstat -lntp</code>(查看监听(Listen)的端口)</li>
+<li><code>netstat -antp</code>(查看所有建立的TCP连接)</li>
+</ul>
+<h2 id="查看文件夹大小"><a href="#查看文件夹大小" class="headerlink" title="查看文件夹大小"></a>查看文件夹大小</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">du -h --max-depth=1</span><br><span class="line">m：以M为单位展示查询结果</span><br><span class="line">-h：以K、M、G为单位展示查询结果，提高信息可读性</span><br><span class="line">--max-depth=1：其中，数字“1”是指查询结果中最多显示的目录层数，这里指最多显示一层目录</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查看当前目录下文件夹大小，按照大小依次排序(由于磁盘空间将满,想知道哪些文件夹的内容过大，删除一些大且无用文件不断的du –max-depth=1 -h，筛选出你要删除的文件)</p>
+</blockquote>
+<h2 id="Linux中查看SSH登录失败次数"><a href="#Linux中查看SSH登录失败次数" class="headerlink" title="Linux中查看SSH登录失败次数"></a>Linux中查看SSH登录失败次数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/secure* | grep &apos;Failed password&apos; | grep sshd | awk &apos;&#123;print $1,$2&#125;&apos; | sort | uniq -c</span><br></pre></td></tr></table></figure>
+<h2 id="创建用户与更改密码"><a href="#创建用户与更改密码" class="headerlink" title="创建用户与更改密码"></a>创建用户与更改密码</h2><ul>
+<li>adduser username 创建用户</li>
+<li>passwd username  修改密码</li>
+</ul>
+<h2 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h2><ul>
+<li>su root 切换root用户</li>
+</ul>
+<h2 id="ssh相关"><a href="#ssh相关" class="headerlink" title="ssh相关"></a>ssh相关</h2><ul>
+<li>service sshd restart 重启ssh服务</li>
+</ul>
+<h2 id="终端ssh断开方法"><a href="#终端ssh断开方法" class="headerlink" title="终端ssh断开方法"></a>终端ssh断开方法</h2><ul>
+<li>logout</li>
+<li>Ctrl+D</li>
+</ul>
+<h2 id="登陆失败限制"><a href="#登陆失败限制" class="headerlink" title="登陆失败限制"></a>登陆失败限制</h2><blockquote>
+<p>vi /etc/pam.d/sshd(远程失败限制) vi /etc/pam.d/login(本地失败限制)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#%PAM-1.0</span><br><span class="line"></span><br><span class="line">auth required pam_tally2.so deny=3 unlock_time=300 even_deny_root root_unlock_time=10</span><br><span class="line"></span><br><span class="line">/*注释说明*/</span><br><span class="line">#在#%PAM-1.0的下面，即第二行，添加内容，一定要写在前面，如果写在后面，虽然用户被锁定，但是只要用户输入正确的密码，还是可以登录的！</span><br><span class="line">#even_deny_root 也限制root用户;</span><br><span class="line">#deny次数</span><br><span class="line">#unlock_time锁定时间（秒）</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv 文件名当前目录 移动后的目录</span><br></pre></td></tr></table></figure>
+<h2 id="查找文件内关键字"><a href="#查找文件内关键字" class="headerlink" title="查找文件内关键字"></a>查找文件内关键字</h2><p>在非i（编辑模式）和非ctrl+:(命令模式下)输入 =&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/关键字</span><br></pre></td></tr></table></figure></p>
+<h2 id="查看端口是否占用"><a href="#查看端口是否占用" class="headerlink" title="查看端口是否占用"></a>查看端口是否占用</h2><ul>
+<li>lsof -i:80（带:80查询80端口，不带查询所有端口）</li>
+</ul>
+<h2 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h2><ul>
+<li><code>find / -name *.psd</code>(全局查找psd后缀的文件)</li>
+</ul>
+<h2 id="命令行利用ssh从远程服务器下载或者上传文件"><a href="#命令行利用ssh从远程服务器下载或者上传文件" class="headerlink" title="命令行利用ssh从远程服务器下载或者上传文件"></a>命令行利用ssh从远程服务器下载或者上传文件</h2><blockquote>
+<p>端口非22的时候scp -P指定端口，注意大写; -r代表复制文件夹</p>
+<ul>
+<li><code>scp -r -P 7777 root@ip:/root/www/xxx /Users/minya/Desktop</code>(下载xxx文件夹)</li>
+<li><code>scp -r /Users/minya/Desktop/xxx -P 7777 root@ip:/root/www/</code>(上传xxx文件夹)</li>
+</ul>
+</blockquote>
+<h2 id="清空指定文件"><a href="#清空指定文件" class="headerlink" title="清空指定文件"></a>清空指定文件</h2><p>echo -n “” &gt; 文件名</p>
+<h2 id="查看ip地址"><a href="#查看ip地址" class="headerlink" title="查看ip地址"></a>查看ip地址</h2><ul>
+<li>查看内网ip地址<code>ifconfig -a</code></li>
+<li>查看外网ip地址<code>curl ifconfig.me</code></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果有帮助到您，请多多支持~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="../../../../../images/pay/wechatpay.png" alt="LiChaoJun 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="../../../../../images/pay/alipay.png" alt="LiChaoJun 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/服务器/" rel="tag"># 服务器</a>
+          
+            <a href="/blog/tags/centos/" rel="tag"># centos</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/12/08/Centos服务器/hexo个人博客部署/" rel="next" title="hexo个人博客部署">
+                <i class="fa fa-chevron-left"></i> hexo个人博客部署
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/12/08/Centos服务器/nginx配置静态网页访问与单页路由访问问题/" rel="prev" title="nginx配置静态网页访问与单页路由访问问题">
+                nginx配置静态网页访问与单页路由访问问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">LiChaoJun</p>
+              <p class="site-description motion-element" itemprop="description">MinYa学习记录</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives">
+              
+                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LCJ-MinYa" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lichaojunshine@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ziyiu.com/" title="恣意游" target="_blank">恣意游</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://chat.ziyiu.com/" title="聊天室" target="_blank">聊天室</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://api.ziyiu.com/" title="API文档" target="_blank">API文档</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重启系统"><span class="nav-number">1.</span> <span class="nav-text">重启系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看当前文件夹目录"><span class="nav-number">2.</span> <span class="nav-text">查看当前文件夹目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式化硬盘"><span class="nav-number">3.</span> <span class="nav-text">格式化硬盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看生效的系统盘和数据盘"><span class="nav-number">4.</span> <span class="nav-text">查看生效的系统盘和数据盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件操作"><span class="nav-number">5.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看Centos端口命令"><span class="nav-number">6.</span> <span class="nav-text">查看Centos端口命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看文件夹大小"><span class="nav-number">7.</span> <span class="nav-text">查看文件夹大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux中查看SSH登录失败次数"><span class="nav-number">8.</span> <span class="nav-text">Linux中查看SSH登录失败次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建用户与更改密码"><span class="nav-number">9.</span> <span class="nav-text">创建用户与更改密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换用户"><span class="nav-number">10.</span> <span class="nav-text">切换用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh相关"><span class="nav-number">11.</span> <span class="nav-text">ssh相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端ssh断开方法"><span class="nav-number">12.</span> <span class="nav-text">终端ssh断开方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登陆失败限制"><span class="nav-number">13.</span> <span class="nav-text">登陆失败限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动文件"><span class="nav-number">14.</span> <span class="nav-text">移动文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找文件内关键字"><span class="nav-number">15.</span> <span class="nav-text">查找文件内关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看端口是否占用"><span class="nav-number">16.</span> <span class="nav-text">查看端口是否占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看文件"><span class="nav-number">17.</span> <span class="nav-text">查看文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行利用ssh从远程服务器下载或者上传文件"><span class="nav-number">18.</span> <span class="nav-text">命令行利用ssh从远程服务器下载或者上传文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清空指定文件"><span class="nav-number">19.</span> <span class="nav-text">清空指定文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看ip地址"><span class="nav-number">20.</span> <span class="nav-text">查看ip地址</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LiChaoJun</span>
+  <span style="padding-left: 20px;">蜀ICP备15022337号</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
