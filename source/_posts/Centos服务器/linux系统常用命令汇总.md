@@ -101,3 +101,7 @@ mv 文件名当前目录 移动后的目录
 
 ## 清空指定文件
 echo -n "" > 文件名
+
+## 查看ip地址
+* 查看内网ip地址<code>ifconfig -a</code>
+* 查看外网ip地址<code>curl ifconfig.me</code>

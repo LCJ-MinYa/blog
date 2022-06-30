@@ -1,7 +1,7 @@
 ---
 title: windows安装java、jenkins
 date: 2022-6-29 16:10:57
-categories: windows
+categories: centos
 tags: 
 - jenkins
 - windows
