@@ -105,3 +105,8 @@ echo -n "" > 文件名
 ## 查看ip地址
 * 查看内网ip地址<code>ifconfig -a</code>
 * 查看外网ip地址<code>curl ifconfig.me</code>
+
+## 查看开机自启动项
+* <code>systemctl list-unit-files</code>会列出所有开机启动项服务,可以使用上下方向键来滚动显示
+* <code>systemctl list-unit-files | grep enabled</code>查询已经开启的开机服务项
+* <code>systemctl list-unit-files | grep nginx</code>查询具体某个服务，例如nginx的开机服务项状态
