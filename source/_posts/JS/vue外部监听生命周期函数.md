@@ -40,8 +40,7 @@ tags:
                 },
                 methods: {
                     changeOwnTitle() {
-                        console.log(222);
-                        // this.ownTitle += 1;
+                        this.ownTitle += 1;
                     },
                 },
                 template:
