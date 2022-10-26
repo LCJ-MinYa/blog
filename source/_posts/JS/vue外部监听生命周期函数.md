@@ -20,7 +20,11 @@ tags:
         <div id="app">
             <div>
                 <h1>{{ message }}</h1>
-                <child title="我是child" @hook:updated="handleUpdated" />
+                <child
+                    title="我是child"
+                    @hook:updated="handleUpdated"
+                    @hook:mounted="handleMounted"
+                />
             </div>
         </div>
     </body>
@@ -57,7 +61,10 @@ tags:
         },
         methods: {
             handleUpdated() {
-                console.log(11);
+                console.log('handleUpdated');
+            },
+            handleMounted() {
+                console.log('handleMounted');
             },
         },
     });
