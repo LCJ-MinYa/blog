@@ -383,7 +383,12 @@ flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余�
 
 ## 自定义滚动条样式(UI优化)
 ```css
-/* 滚动槽 */
+/* firfox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.05);
+}
+/* chrome */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -393,7 +398,6 @@ flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余�
     background: rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.08);
 }
-/* 滚动条滑块 */
 ::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background: rgba(0, 0, 0, 0.08);
