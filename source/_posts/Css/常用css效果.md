@@ -381,6 +381,30 @@ flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余�
 </html>
 ```
 
+## 自定义滚动条样式(UI优化)
+```css
+/* firfox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.05);
+}
+/* chrome */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.08);
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+```
+
 ## 圆形渐变边框
 ```html
 <!DOCTYPE html>
