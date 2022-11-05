@@ -405,6 +405,488 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2020/04/10/JS/微信小程序日常技巧/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/04/10/JS/微信小程序日常技巧/" itemprop="url">微信小程序日常技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-10T17:52:45+08:00">
+                2020-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安卓更新微信后小程序字体不居中"><a href="#安卓更新微信后小程序字体不居中" class="headerlink" title="安卓更新微信后小程序字体不居中"></a>安卓更新微信后小程序字体不居中</h2><ul>
+<li>开发者工具表现正常，安卓真机老版本微信正常显示，升级后文本显示偏上</li>
+<li>所有有问题得地方都为line-height来设置垂直居中<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 所有需要用到文本居中的地方都是用flex来解决 */</span></span><br><span class="line"><span class="selector-class">.text-center</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="scroll-view无法触发bindscrolltolower上拉加载"><a href="#scroll-view无法触发bindscrolltolower上拉加载" class="headerlink" title="scroll-view无法触发bindscrolltolower上拉加载"></a>scroll-view无法触发bindscrolltolower上拉加载</h2><ul>
+<li><p>如果<code>scroll-view</code>在页面最顶层</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">page</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.scroll-view-class</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果<code>scroll-view</code>作为子组件被嵌套多层（或者包含第三方UI框架），此时没办法保证所有父节点都是<code>height: 100%;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//已知明确高度(假定页面其他元素明确高度100px或者200rpx两种类型)</span></span><br><span class="line">wx.getSystemInfo(&#123;</span><br><span class="line">    success:(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> otherHeight = <span class="number">200</span> / <span class="number">750</span> * res.windowWidth;</span><br><span class="line">        <span class="keyword">this</span>.scrollH = (res.windowHeight - otherHeight) + <span class="string">'px'</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//未知高度，通过createSelectorQuery方法动态获取scroll-view高度（如果scroll-view内是数据请求的，需要在获取到数据渲染页面之后再设置高度）</span></span><br><span class="line">onReady()&#123;</span><br><span class="line">    <span class="keyword">let</span> query = wx.createSelectorQuery();</span><br><span class="line">    query.select(<span class="string">'.scroll-box'</span>).boundingClientRect(<span class="function"><span class="params">rect</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(rect);</span><br><span class="line">        <span class="keyword">this</span>.scrollHeight = rect.height;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.scrollHeight);</span><br><span class="line">    &#125;).exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="两个请求同时发出，都未登录同时跳转登录页面处理方法"><a href="#两个请求同时发出，都未登录同时跳转登录页面处理方法" class="headerlink" title="两个请求同时发出，都未登录同时跳转登录页面处理方法"></a>两个请求同时发出，都未登录同时跳转登录页面处理方法</h2><ul>
+<li>一般用于请求中登录失效，跳转到登录页（某个页面同时发出两个请求）<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//防止多次跳转</span></span><br><span class="line"><span class="keyword">let</span> pages = getCurrentPages();</span><br><span class="line"><span class="keyword">if</span>(pages[pages.length - <span class="number">1</span>].route != <span class="string">'pages/auth/login'</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(wepy.$instance.globalData.login)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    wepy.$instance.globalData.login = <span class="literal">true</span>;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">        url: <span class="string">'/pages/auth/login'</span>,</span><br><span class="line">        complete: <span class="function">(<span class="params">result</span>)=&gt;</span>&#123;</span><br><span class="line">            wepy.$instance.globalData.login = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="wepy报错"><a href="#wepy报错" class="headerlink" title="wepy报错"></a>wepy报错</h2><blockquote>
+<p>报错信息<code>unexpected attribute name, near .sync</code>(包括<code>.once</code>)  </p>
+</blockquote>
+<ul>
+<li><p>问题一,是否有components，并且必须是等号</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">components = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>问题二,组件引入方式(首先必须引入组件，并且在components中设置，同时一定不能包含.wpy后缀)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> CollectProduct <span class="keyword">from</span> <span class="string">'../../components/list/collectProduct'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>问题三,组件引入写法必须一致</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">components = &#123;</span><br><span class="line">    collectProduct: CollectProduct,</span><br><span class="line">    shopItem: ShopItem,</span><br><span class="line">    productRefreshList: ProductRefreshList,</span><br><span class="line">    shopRefreshList: ShopRefreshList,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">components = &#123;</span></span><br><span class="line"><span class="comment">    collectProduct: CollectProduct,</span></span><br><span class="line"><span class="comment">    shopItem: ShopItem,</span></span><br><span class="line"><span class="comment">    ProductRefreshList: ProductRefreshList,</span></span><br><span class="line"><span class="comment">    ShopRefreshList: ShopRefreshList,</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">1.大小写不一直，报错</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">components = &#123;</span></span><br><span class="line"><span class="comment">    collectProduct: CollectProduct,</span></span><br><span class="line"><span class="comment">    shopItem: ShopItem,</span></span><br><span class="line"><span class="comment">    productRefreshList,</span></span><br><span class="line"><span class="comment">    shopRefreshList,</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">2.简写，报错</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>问题四,组件嵌套组件报错（我遇到的问题就是这个，两个自定义组件中必须要添加一个节点，这里也可以是<code>&lt;block&gt;&lt;/block&gt;</code>）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;productRefreshList :height.sync=<span class="string">"scrollH"</span> hidden=<span class="string">"&#123;&#123;!collectTypeList[0].active&#125;&#125;"</span>&gt;</span><br><span class="line">    &lt;view slot=<span class="string">"item"</span>&gt;</span><br><span class="line">        &lt;collectProduct :list.sync=<span class="string">"productList"</span> slot=<span class="string">"item"</span>/&gt;</span><br><span class="line">    &lt;<span class="regexp">/view&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>productRefreshList&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="vant-weapp框架van-datetime-picker组件源码警告"><a href="#vant-weapp框架van-datetime-picker组件源码警告" class="headerlink" title="vant weapp框架van-datetime-picker组件源码警告"></a>vant weapp框架van-datetime-picker组件源码警告</h2><ul>
+<li>警告信息<code>does not look like a valid key name (did you mean wx:key=&quot;&quot; ?)</code></li>
+<li>其中原因是因为微信改了wx:key的写法，但是修改之后任然报错<code>wx:key=&quot; index &quot;</code>,重点就是<code>index</code>旁边的两个空格，也会导致同样的警告信息，所以最终写法为<code>wx:key=&quot;index&quot;</code></li>
+</ul>
+<h2 id="wepy中不能使用selectComponent方法"><a href="#wepy中不能使用selectComponent方法" class="headerlink" title="wepy中不能使用selectComponent方法"></a>wepy中不能使用selectComponent方法</h2><ul>
+<li>报错信息<code>this.selectComponent is not a function</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//this.$wxpage才能获取到selectComponent方法</span></span><br><span class="line"><span class="keyword">const</span> picker = <span class="keyword">this</span>.$wxpage.selectComponent(<span class="string">'#js_picker'</span>);</span><br><span class="line">picker.setColumnIndex(<span class="number">0</span>, <span class="keyword">this</span>.currentChoose);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="微信小程序相同的rpx呈现效果高度不一致"><a href="#微信小程序相同的rpx呈现效果高度不一致" class="headerlink" title="微信小程序相同的rpx呈现效果高度不一致"></a>微信小程序相同的rpx呈现效果高度不一致</h2><ul>
+<li>两个组件，如果一个高度为120rpx,另外一个为子元素80rpx再加上下内边距20rpx，其高度渲染出来是不一致的，如果需要保持一致需要同样的DOM层级高度</li>
+</ul>
+<h2 id="上拉加载更多在van-tab中需要动态计算高度"><a href="#上拉加载更多在van-tab中需要动态计算高度" class="headerlink" title="上拉加载更多在van-tab中需要动态计算高度"></a>上拉加载更多在van-tab中需要动态计算高度</h2><h2 id="swiper根据图片自适应高度"><a href="#swiper根据图片自适应高度" class="headerlink" title="swiper根据图片自适应高度"></a>swiper根据图片自适应高度</h2><ul>
+<li>微信swiper组件默认高度都是150px,如果要让高度根据图片比例来自适应，需要在初始化的时候，根据设备宽度动态计算图片高度<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">uni.getSystemInfo(&#123;</span><br><span class="line">    success: <span class="function">(<span class="params">res</span>)=&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.swiperHeight = res.windowWidth * (<span class="number">200</span> / <span class="number">375</span>) + <span class="string">'px'</span>; <span class="comment">//200 / 375为图片比例</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2020/03/20/JS/实时监听input值的实时改变/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/03/20/JS/实时监听input值的实时改变/" itemprop="url">实时监听input值的实时改变</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T15:52:45+08:00">
+                2020-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="html结构"><a href="#html结构" class="headerlink" title="html结构"></a>html结构</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--   register内容开始  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"bash-box register-box"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>手机号<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"js_tel"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">maxlength</span>=<span class="string">"11"</span> <span class="attr">placeholder</span>=<span class="string">"请输入手机号"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"code"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>验证码<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"js_code"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">maxlength</span>=<span class="string">"11"</span> <span class="attr">placeholder</span>=<span class="string">"请输入验证码"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"js_get_code_btn"</span>&gt;</span>获取验证码<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--   register内容结束  --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"wx-register-btn"</span>&gt;</span>一键注册<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="js逻辑"><a href="#js逻辑" class="headerlink" title="js逻辑"></a>js逻辑</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//因为当前页面就两个input，所以这里直接用的属性名选择器</span></span><br><span class="line">$(<span class="string">'input'</span>).bind(<span class="string">'input propertychange'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="keyword">var</span> tel = $(<span class="string">"#js_tel"</span>).val();</span><br><span class="line">    <span class="keyword">var</span> code = $(<span class="string">"#js_code"</span>).val();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(tel &amp;&amp; code)&#123;</span><br><span class="line">        $(<span class="string">".wx-register-btn"</span>).addClass(<span class="string">"active"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        $(<span class="string">".wx-register-btn"</span>).removeClass(<span class="string">"active"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
+<li><code>onchange</code>事件是在输入框失去焦点<code>onblur</code>时候触发，不符合实时改变。</li>
+<li><code>keyPress</code>在Android可以触发，iOS不可以。(<code>keyDown</code>和<code>keyUp</code>可以)。</li>
+</ul>
+<h2 id="js动态改变input值不触发propertychange"><a href="#js动态改变input值不触发propertychange" class="headerlink" title="js动态改变input值不触发propertychange"></a>js动态改变input值不触发propertychange</h2><ul>
+<li>使用Js动态改变input的值时，没有任何鼠标和键盘的事件，所以并不能触发监听</li>
+<li>解决办法是在Js改变这个值之前加上以下代码。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#inputId"</span>).trigger(<span class="string">"input"</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2020/03/20/JS/验证码倒计时/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/03/20/JS/验证码倒计时/" itemprop="url">验证码倒计时</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T15:52:45+08:00">
+                2020-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="html结构"><a href="#html结构" class="headerlink" title="html结构"></a>html结构</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"code"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>验证码<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"js_code"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">maxlength</span>=<span class="string">"11"</span> <span class="attr">placeholder</span>=<span class="string">"请输入验证码"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"js_get_code_btn"</span>&gt;</span>获取验证码<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="js逻辑"><a href="#js逻辑" class="headerlink" title="js逻辑"></a>js逻辑</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#js_get_code_btn"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="keyword">this</span>).attr(<span class="string">"disabled"</span>, <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">var</span> time = <span class="number">60</span>;</span><br><span class="line">    <span class="keyword">var</span> timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        time--;</span><br><span class="line">        $(<span class="string">"#js_get_code_btn"</span>).text(time + <span class="string">"s后可重发"</span>);</span><br><span class="line">        <span class="keyword">if</span>(time == <span class="number">0</span>)&#123;</span><br><span class="line">            clearInterval(timer);</span><br><span class="line">            $(<span class="string">"#js_get_code_btn"</span>).text(<span class="string">"获取验证码"</span>);</span><br><span class="line">            $(<span class="string">"#js_get_code_btn"</span>).removeAttr(<span class="string">"disabled"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2020/03/20/Css/选中列表中第一个带指定类名的元素/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1445,462 +1927,6 @@ deactivated () {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2019/12/11/JS/es5类相关知识/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/12/11/JS/es5类相关知识/" itemprop="url">es5类相关知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-11T16:06:45+08:00">
-                2019-12-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, sex</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name || <span class="string">'我是默认姓名'</span>;</span><br><span class="line">    <span class="keyword">this</span>.age = age || <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">this</span>.sex = sex || <span class="string">'男性'</span>;</span><br><span class="line">    <span class="keyword">this</span>.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'在跑步'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="实例化类"><a href="#实例化类" class="headerlink" title="实例化类"></a>实例化类</h2><ul>
-<li>实例化可以获取this，类的属性和方法<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, sex</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name || <span class="string">'我是默认姓名'</span>;</span><br><span class="line">    <span class="keyword">this</span>.age = age || <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">this</span>.sex = sex || <span class="string">'男性'</span>;</span><br><span class="line">    <span class="keyword">this</span>.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'在跑步'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> people = <span class="keyword">new</span> Person();  <span class="comment">//实例化</span></span><br><span class="line">people.run();   <span class="comment">//调用内置run方法</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><ul>
-<li>不需要实例化类都可以使用的类的方法</li>
-<li>静态方法不能调用this,不能获取类的属性和方法<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, sex</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name || <span class="string">'我是默认姓名'</span>;</span><br><span class="line">    <span class="keyword">this</span>.age = age || <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">this</span>.sex = sex || <span class="string">'男性'</span>;</span><br><span class="line">    <span class="keyword">this</span>.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'在跑步'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.doStaticFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我是静态方法'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.doStaticFunc(); <span class="comment">//调用静态方法</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2019/12/11/JS/$.ajax请求成功也进入error/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/12/11/JS/$.ajax请求成功也进入error/" itemprop="url">$.ajax请求成功也进入error</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-11T15:52:45+08:00">
-                2019-12-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
-<li>无论是使用zepot或者jquery的ajax方法，请求服务器在F12中都是200成功状态，但是都是进入error回调函数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">'POST'</span>,</span><br><span class="line">    url: url,</span><br><span class="line">    dataType: <span class="string">'json'</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(data.code = <span class="number">200</span>)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'请求成功'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    error: <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'请求失败'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>通过打印error中err信息，查看到请求状态是404,并且控制台有跨域提示</p>
-</blockquote>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
-<li>1.首先必须保证同源，不跨域，否则即便所有配置都正确还是会进入error</li>
-<li>2.如果保证不跨域情况下还有这个问题，大概率是dataType类型不匹配造成的，服务器返回的json格式不正确，导致解析失败进入error(排除这个问题的办法，dataType设置为’text’，同时让服务器返回纯文本，如果进入success则可以确定是服务器返回数据格式问题。)<blockquote>
-<p>排除2问题的前提是必须同源！！！否则即便服务器返回数据格式正确还是会进入error.</p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2019/12/06/JS/TypeScript在vscode中自动编译/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/12/06/JS/TypeScript在vscode中自动编译/" itemprop="url">TypeScript在vscode中自动编译</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-06T10:07:51+08:00">
-                2019-12-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="初始化配置文件"><a href="#初始化配置文件" class="headerlink" title="初始化配置文件"></a>初始化配置文件</h2><ul>
-<li>在对应的项目根目录下运行命令行工具,执行命令<code>tsc --init</code>,会生成一个<code>tsconfig.json</code>配置文件<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    /* Basic Options */</span><br><span class="line">    // "incremental": true,                   /* Enable incremental compilation */</span><br><span class="line">    "target": "es5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */</span><br><span class="line">    "module": "commonjs",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */</span><br><span class="line">    // "lib": [],                             /* Specify library files to be included in the compilation. */</span><br><span class="line">    // "allowJs": true,                       /* Allow javascript files to be compiled. */</span><br><span class="line">    // "checkJs": true,                       /* Report errors in .js files. */</span><br><span class="line">    // "jsx": "preserve",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */</span><br><span class="line">    // "declaration": true,                   /* Generates corresponding '.d.ts' file. */</span><br><span class="line">    // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */</span><br><span class="line">    // "sourceMap": true,                     /* Generates corresponding '.map' file. */</span><br><span class="line">    // "outFile": "./",                       /* Concatenate and emit output to single file. */</span><br><span class="line">    "outDir": "./js",                         /* 输出目录 */</span><br><span class="line">    // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */</span><br><span class="line">    // "composite": true,                     /* Enable project compilation */</span><br><span class="line">    // "tsBuildInfoFile": "./",               /* Specify file to store incremental compilation information */</span><br><span class="line">    // "removeComments": true,                /* Do not emit comments to output. */</span><br><span class="line">    // "noEmit": true,                        /* Do not emit outputs. */</span><br><span class="line">    // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */</span><br><span class="line">    // "downlevelIteration": true,            /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */</span><br><span class="line">    // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */</span><br><span class="line"></span><br><span class="line">    /* Strict Type-Checking Options */</span><br><span class="line">    "strict": true,                           /* Enable all strict type-checking options. */</span><br><span class="line">    // "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */</span><br><span class="line">    // "strictNullChecks": true,              /* Enable strict null checks. */</span><br><span class="line">    // "strictFunctionTypes": true,           /* Enable strict checking of function types. */</span><br><span class="line">    // "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */</span><br><span class="line">    // "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */</span><br><span class="line">    // "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */</span><br><span class="line">    // "alwaysStrict": true,                  /* Parse in strict mode and emit "use strict" for each source file. */</span><br><span class="line"></span><br><span class="line">    /* Additional Checks */</span><br><span class="line">    // "noUnusedLocals": true,                /* Report errors on unused locals. */</span><br><span class="line">    // "noUnusedParameters": true,            /* Report errors on unused parameters. */</span><br><span class="line">    // "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */</span><br><span class="line">    // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */</span><br><span class="line"></span><br><span class="line">    /* Module Resolution Options */</span><br><span class="line">    // "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */</span><br><span class="line">    // "baseUrl": "./",                       /* Base directory to resolve non-absolute module names. */</span><br><span class="line">    // "paths": &#123;&#125;,                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */</span><br><span class="line">    // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */</span><br><span class="line">    // "typeRoots": [],                       /* List of folders to include type definitions from. */</span><br><span class="line">    // "types": [],                           /* Type declaration files to be included in compilation. */</span><br><span class="line">    // "allowSyntheticDefaultImports": true,  /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */</span><br><span class="line">    "esModuleInterop": true                   /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */</span><br><span class="line">    // "preserveSymlinks": true,              /* Do not resolve the real path of symlinks. */</span><br><span class="line">    // "allowUmdGlobalAccess": true,          /* Allow accessing UMD globals from modules. */</span><br><span class="line"></span><br><span class="line">    /* Source Map Options */</span><br><span class="line">    // "sourceRoot": "",                      /* Specify the location where debugger should locate TypeScript files instead of source locations. */</span><br><span class="line">    // "mapRoot": "",                         /* Specify the location where debugger should locate map files instead of generated locations. */</span><br><span class="line">    // "inlineSourceMap": true,               /* Emit a single file with source maps instead of having a separate file. */</span><br><span class="line">    // "inlineSources": true,                 /* Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set. */</span><br><span class="line"></span><br><span class="line">    /* Experimental Options */</span><br><span class="line">    // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */</span><br><span class="line">    // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>请确保已安装typescript</p>
-</blockquote>
-<h2 id="开启vscode监视任务"><a href="#开启vscode监视任务" class="headerlink" title="开启vscode监视任务"></a>开启vscode监视任务</h2><ul>
-<li>选择终端 =&gt; 运行任务 =&gt; <code>tsc 监视</code>,即可实时编译ts文件</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1951,7 +1977,7 @@ deactivated () {
               
                 <a href="/blog/archives">
               
-                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-count">147</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

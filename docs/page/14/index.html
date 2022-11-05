@@ -405,6 +405,457 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/IOS/自定义底部个别tab按钮/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2018/12/07/IOS/自定义底部个别tab按钮/" itemprop="url">自定义底部个别tab按钮</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T23:16:28+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/ios/" itemprop="url" rel="index">
+                    <span itemprop="name">ios</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="占位方法"><a href="#占位方法" class="headerlink" title="占位方法"></a>占位方法</h2><pre><code>* 设置5个相同的tabBaritem,将中间的tabBaritem设置为不显示内容。[self creatNav:[[UIViewController alloc] init] image:[UIImage imageNamed:@&quot;&quot;] selectImage:[UIImage imageNamed:@&quot;&quot;] title:nil];
+* 并且在viewWillAppear中增加发布按钮。
+</code></pre><h2 id="重新自定义布局子空间UITabBar"><a href="#重新自定义布局子空间UITabBar" class="headerlink" title="重新自定义布局子空间UITabBar"></a>重新自定义布局子空间UITabBar</h2><ul>
+<li>新增UITabBar类并且继承自UITabBar</li>
+<li>在UITabBar.m中实现自定义布局原始的4个tabBar，并且添加自身创建的UIButton</li>
+<li>采用KVC来替换TabBar[self setValue:[[LCJTabBar alloc] init] forKeyPath:@”tabBar”];</li>
+</ul>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势:"></a>优势:</h2><pre><code>1.第二组不会有系统的UITabBar的内存占用浪费。
+2.灵活性更高，可定制性更高，位置和内容可以自行设置.
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/IOS/综合知识点/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2018/12/07/IOS/综合知识点/" itemprop="url">综合知识点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T23:15:43+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/ios/" itemprop="url" rel="index">
+                    <span itemprop="name">ios</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="导航控制器视图懒加载-即，如果用户只在第一个页面，其他页面应用启动时不加载"><a href="#导航控制器视图懒加载-即，如果用户只在第一个页面，其他页面应用启动时不加载" class="headerlink" title="导航控制器视图懒加载(即，如果用户只在第一个页面，其他页面应用启动时不加载)"></a>导航控制器视图懒加载(即，如果用户只在第一个页面，其他页面应用启动时不加载)</h2><pre><code>统一不能设置背景色
+凡是调用子控制器的view都会触发viewDidLoad方法，导致渲染，不能懒加载每个视图（即点击那个视图才显示哪个视图）viewController.view.backgroundColor = LCJCommonBgColor;
+解决办法:
+创建一个继承于UIViewController的类，然后其他视图所有继承这个类，在此类中定义统一背景
+特殊页面也可以自行重写背景颜色
+</code></pre><p>## </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/IOS/宏相关设置/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2018/12/07/IOS/宏相关设置/" itemprop="url">宏相关设置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T23:14:43+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/ios/" itemprop="url" rel="index">
+                    <span itemprop="name">ios</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="PCH文件可能引发的错误"><a href="#PCH文件可能引发的错误" class="headerlink" title="PCH文件可能引发的错误"></a>PCH文件可能引发的错误</h2><p><img src="/blog/images/ios/Snip20151105_8.png" alt="image"></p>
+<ul>
+<li>解决方案</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#ifndef PrefixHeader_pch</span></span><br><span class="line"><span class="meta">#define PrefixHeader_pch</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*** 如果希望某些内容能拷贝到任何源代码文件(OC\C\C++等), 那么就不要写在#ifdef __OBJC__和#endif之间 ***/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></span><br><span class="line"><span class="meta">#ifdef __OBJC__</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#endif</span></span><br></pre></td></tr></table></figure>
+<h2 id="在Build-Setting中配置宏"><a href="#在Build-Setting中配置宏" class="headerlink" title="在Build Setting中配置宏"></a>在Build Setting中配置宏</h2><ul>
+<li><p>如果项目中有些宏找不到, 可能是配置在Build Setting中<br><img src="/blog/images/ios/Snip20151105_9.png" alt="image"></p>
+</li>
+<li><p>注意点:宏的名字不能全部是小写字母</p>
+</li>
+<li><p>如果宏的名字全部是小写, 会出现以下错误<br><img src="/blog/images/ios/Snip20151105_10.png" alt="image"></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/IOS/初始化项目/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1435,448 +1886,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/Css/常用css效果/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2018/12/07/Css/常用css效果/" itemprop="url">常用css效果</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T22:37:23+08:00">
-                2018-12-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/css/" itemprop="url" rel="index">
-                    <span itemprop="name">css</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="modal中内容-未知宽度高度-绝对居中"><a href="#modal中内容-未知宽度高度-绝对居中" class="headerlink" title="modal中内容(未知宽度高度)绝对居中"></a>modal中内容(未知宽度高度)绝对居中</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father-box</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">5</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(0,0,0,0.6);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child-box</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">240px</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">-o-transform</span>: <span class="built_in">translate3d</span>(-50%,-50%,0);</span><br><span class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">translate3d</span>(-50%,-50%,0);</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(-50%,-50%,0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="modal侧滑效果"><a href="#modal侧滑效果" class="headerlink" title="modal侧滑效果"></a>modal侧滑效果</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father-box</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">5</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(0,0,0,0.6);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child-box</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: -<span class="number">45%</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">45%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">4.2rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 显示和隐藏modal</span></span><br><span class="line"><span class="comment"> * 显示=》先显示modal，再显示对应的内容节点</span></span><br><span class="line"><span class="comment"> * 隐藏=》先隐藏内容节点，再隐藏modal</span></span><br><span class="line"><span class="comment"> * 拿显示来说，为什么不将内容节点的显示放在modal显示的回调中，从测试来看，并行UI更舒服一些</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> hideModal = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">".child-box"</span>).animate(&#123;</span><br><span class="line">        right: <span class="string">'-45%'</span></span><br><span class="line">    &#125;, <span class="number">300</span>);</span><br><span class="line">    $(<span class="string">".father-box"</span>).fadeOut(<span class="number">300</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> showModal = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">".father-box"</span>).fadeIn(<span class="number">300</span>);</span><br><span class="line">    $(<span class="string">".child-box"</span>).animate(&#123;</span><br><span class="line">        right: <span class="number">0</span></span><br><span class="line">    &#125;, <span class="number">300</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 点击内容节点外的空白区域隐藏（事件冒泡）*/</span></span><br><span class="line">$(<span class="string">".child-box"</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    event.stopPropagation();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="安卓字体未垂直居中"><a href="#安卓字体未垂直居中" class="headerlink" title="安卓字体未垂直居中"></a>安卓字体未垂直居中</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*安卓浏览器字体不垂直居中，REM计算后小数点会导致，如果用偶数大于12px可以解决，如果使用REM则可以通过table布局来解决*/</span></span><br><span class="line">&lt;p class="h2"&gt;</span><br><span class="line">    &lt;span&gt;无缝对接&lt;i&gt;云ERP进销存、网店版&lt;/i&gt;&lt;/span&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.header-content</span> <span class="selector-tag">p</span><span class="selector-class">.h2</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12.8rem</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">1.35rem</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(../img/wulianbao/header_title_dec.png) no-repeat <span class="number">50%</span> <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">background-size</span>: cover;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto <span class="number">0.5rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.header-content</span> <span class="selector-tag">p</span><span class="selector-class">.h2</span> <span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table-cell;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">0.75rem</span>;</span><br><span class="line">    <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.header-content</span> <span class="selector-tag">p</span><span class="selector-class">.h2</span> <span class="selector-tag">i</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">0.75rem</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*注意点: 父元素不能设置line-height，vertical-align: middle设置在子元素上*/</span></span><br></pre></td></tr></table></figure>
-<h2 id="img图片（未知宽高）在div中居中显示"><a href="#img图片（未知宽高）在div中居中显示" class="headerlink" title="img图片（未知宽高）在div中居中显示"></a>img图片（未知宽高）在div中居中显示</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father-box</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">9.35rem</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.father-box</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">80%</span>;</span><br><span class="line">    <span class="attribute">height</span>: auto;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="css中计算属性calc"><a href="#css中计算属性calc" class="headerlink" title="css中计算属性calc"></a>css中计算属性calc</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="built_in">-webkit-calc</span>(100% - 2.5rem);</span><br><span class="line">    <span class="attribute">width</span>:<span class="built_in">-moz-calc</span>(100% - 2.5rem);</span><br><span class="line">    <span class="attribute">width</span>:<span class="built_in">calc</span>(100% - 2.5rem);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="手机端1px实现"><a href="#手机端1px实现" class="headerlink" title="手机端1px实现"></a>手机端1px实现</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 第一种</span></span><br><span class="line"><span class="comment"> * 伪类缩放</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:before</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#eaeaea</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-transform</span>:<span class="built_in">scale</span>(0.5);</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(0.5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="安卓浏览器字体不垂直居中"><a href="#安卓浏览器字体不垂直居中" class="headerlink" title="安卓浏览器字体不垂直居中"></a>安卓浏览器字体不垂直居中</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.banner-box</span> &gt; <span class="selector-tag">a</span><span class="selector-pseudo">:before</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">1px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="确定高度多行文本垂直居中"><a href="#确定高度多行文本垂直居中" class="headerlink" title="确定高度多行文本垂直居中"></a>确定高度多行文本垂直居中</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//最外层确定高度，第二层容器包含文本，不要确定高度，由内容撑开（table布局vertical-align: middle实现）</span><br><span class="line"><span class="selector-class">.footerBox</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">3.8rem</span>;</span><br><span class="line">    <span class="attribute">display</span>: table;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.footerTextBox</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">display</span>: table-cell;</span><br><span class="line">    <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.footerTextBox</span>&gt;<span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: .<span class="number">5rem</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">150%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="input修改placeholder提示文本属性"><a href="#input修改placeholder提示文本属性" class="headerlink" title="input修改placeholder提示文本属性"></a>input修改placeholder提示文本属性</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">::-webkit-input-placeholder</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:-moz-placeholder</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">::-moz-placeholder</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:-ms-input-placeholder</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="超出显示省略号"><a href="#超出显示省略号" class="headerlink" title="超出显示省略号"></a>超出显示省略号</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*---- 单行 ----*/</span></span><br><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">text-overflow</span>:ellipsis;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*---- 多行 ----*/</span></span><br><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">text-overflow</span>:ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="safair下input设置disabled导致透明"><a href="#safair下input设置disabled导致透明" class="headerlink" title="safair下input设置disabled导致透明"></a>safair下input设置disabled导致透明</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:disabled</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: blue;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">-webkit-text-fill-color</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="flex布局时不被挤压"><a href="#flex布局时不被挤压" class="headerlink" title="flex布局时不被挤压"></a>flex布局时不被挤压</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</span></span><br><span class="line"><span class="comment">如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">    <span class="attribute">flex-shrink</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="flex布局占据剩余宽度"><a href="#flex布局占据剩余宽度" class="headerlink" title="flex布局占据剩余宽度"></a>flex布局占据剩余宽度</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</span></span><br><span class="line"><span class="comment">如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">    <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="打字效果"><a href="#打字效果" class="headerlink" title="打字效果"></a>打字效果</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"typing-demo"</span>&gt;</span></span><br><span class="line">      有趣且实用的 CSS 小技巧</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* css部分 */</span></span><br><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.typing-demo</span> &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * 1ch = 1个英文 = 1个数字</span></span><br><span class="line"><span class="comment">     * 2ch = 1个中文</span></span><br><span class="line"><span class="comment">     * ch 是一个相对单位，所谓相对，意思是 ch 会根据当前容器的 ****font-size**** 变化而变化。</span></span><br><span class="line"><span class="comment">     * ch单位在chrome效果完好，在firfox中显示有问题，兼容性待商榷</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">22ch</span>;</span><br><span class="line">    <span class="attribute">animation</span>: typing <span class="number">2s</span> <span class="built_in">steps</span>(22), blink .<span class="number">5s</span> step-end infinite alternate;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">3px</span> solid;</span><br><span class="line">    <span class="attribute">font-family</span>: monospace;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">keyframes</span> typing &#123;</span><br><span class="line">    <span class="selector-tag">from</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">@<span class="keyword">keyframes</span> blink &#123;</span><br><span class="line">    50% &#123;</span><br><span class="line">        <span class="attribute">border-color</span>: transparent</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="自定义滚动条样式"><a href="#自定义滚动条样式" class="headerlink" title="自定义滚动条样式"></a>自定义滚动条样式</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">            <span class="selector-class">.wrapper</span> &#123;</span></span><br><span class="line"><span class="undefined">                height: 100vh;</span></span><br><span class="line"><span class="undefined">                display: flex;</span></span><br><span class="line"><span class="undefined">                align-items: center;</span></span><br><span class="line"><span class="undefined">                justify-content: center;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">            <span class="selector-class">.mr-1</span> &#123;</span></span><br><span class="line"><span class="undefined">                margin-right: 1em;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">            <span class="selector-class">.tile</span> &#123;</span></span><br><span class="line"><span class="undefined">                overflow: auto;</span></span><br><span class="line"><span class="undefined">                display: inline-block;</span></span><br><span class="line"><span class="css">                <span class="selector-tag">background-color</span>: <span class="selector-id">#ccc</span>;</span></span><br><span class="line"><span class="undefined">                height: 200px;</span></span><br><span class="line"><span class="undefined">                width: 180px;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">            <span class="selector-class">.tile-custom-scrollbar</span><span class="selector-pseudo">::-webkit-scrollbar</span> &#123;</span></span><br><span class="line"><span class="undefined">                width: 12px;</span></span><br><span class="line"><span class="css">                <span class="selector-tag">background-color</span>: <span class="selector-id">#eff1f5</span>;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">            <span class="selector-class">.tile-custom-scrollbar</span><span class="selector-pseudo">::-webkit-scrollbar-track</span> &#123;</span></span><br><span class="line"><span class="undefined">                border-radius: 3px;</span></span><br><span class="line"><span class="undefined">                background-color: transparent;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">            <span class="selector-class">.tile-custom-scrollbar</span><span class="selector-pseudo">::-webkit-scrollbar-thumb</span> &#123;</span></span><br><span class="line"><span class="undefined">                border-radius: 5px;</span></span><br><span class="line"><span class="css">                <span class="selector-tag">background-color</span>: <span class="selector-id">#515769</span>;</span></span><br><span class="line"><span class="css">                <span class="selector-tag">border</span>: 2<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#eff1f5</span>;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">            <span class="selector-class">.tile-content</span> &#123;</span></span><br><span class="line"><span class="undefined">                padding: 20px;</span></span><br><span class="line"><span class="undefined">                height: 500px;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tile mr-1"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tile-content"</span>&gt;</span>默认滚动条<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tile tile-custom-scrollbar"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tile-content"</span>&gt;</span>自定义滚动条<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="圆形渐变边框"><a href="#圆形渐变边框" class="headerlink" title="圆形渐变边框"></a>圆形渐变边框</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">            <span class="selector-class">.gradient-border</span> &#123;</span></span><br><span class="line"><span class="undefined">                border: solid 5px transparent;</span></span><br><span class="line"><span class="undefined">                border-radius: 10px;</span></span><br><span class="line"><span class="undefined">                background-image: linear-gradient(white, white), </span></span><br><span class="line"><span class="css">                <span class="selector-tag">linear-gradient</span>(315<span class="selector-tag">deg</span>,<span class="selector-id">#833ab4</span>,<span class="selector-id">#fd1d1d</span> 50%,<span class="selector-id">#fcb045</span>);</span></span><br><span class="line"><span class="undefined">                background-origin: border-box;</span></span><br><span class="line"><span class="undefined">                background-clip: content-box, border-box;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="css">            <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="undefined">                width: 350px;</span></span><br><span class="line"><span class="undefined">                height: 100px;</span></span><br><span class="line"><span class="undefined">                display: flex;</span></span><br><span class="line"><span class="undefined">                align-items: center;</span></span><br><span class="line"><span class="undefined">                justify-content: center;</span></span><br><span class="line"><span class="undefined">                margin: 100px auto;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box gradient-border"</span>&gt;</span>炫酷渐变边框<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/Css/IE8兼容字体图标/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2018/12/07/Css/IE8兼容字体图标/" itemprop="url">IE8兼容字体图标</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T22:36:35+08:00">
-                2018-12-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/css/" itemprop="url" rel="index">
-                    <span itemprop="name">css</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">其实下载下来的阿里巴巴iconfont图标引用方式，大多数的情况下是不可用的。存在无法解析路径问题。</span><br><span class="line">所以，图标就会出现小方框</span><br><span class="line"></span><br><span class="line">解决办法如下</span><br><span class="line">@font-face &#123;</span><br><span class="line">font-family: “iconfont”;</span><br><span class="line">src:url(‘../fonts/iconfont.eot’), <span class="comment">/* IE9*/</span></span><br><span class="line">url(‘../fonts/iconfont.eot’) format(’embedded-opentype’), <span class="comment">/* IE6-IE8 */</span></span><br><span class="line">url(‘../fonts/iconfont.woff’) format(‘woff’), <span class="comment">/* chrome, firefox */</span></span><br><span class="line">url(‘../fonts/iconfont.ttf’) format(‘truetype’), <span class="comment">/* chrome, firefox, opera, Safari, Android, iOS 4.2+*/</span></span><br><span class="line">url(‘../fonts/iconfont.svg’) format(‘svg’); <span class="comment">/* iOS 4.1- */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/Css/rem-css/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2018/12/07/Css/rem-css/" itemprop="url">rem.css</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T22:35:14+08:00">
-                2018-12-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/css/" itemprop="url" rel="index">
-                    <span itemprop="name">css</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*页面初始化*/</span></span><br><span class="line">@<span class="keyword">charset</span> <span class="string">'utf-8'</span>;</span><br><span class="line"><span class="selector-tag">html</span>,<span class="selector-tag">body</span>,<span class="selector-tag">div</span>,<span class="selector-tag">span</span>,<span class="selector-tag">iframe</span>,<span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>,<span class="selector-tag">p</span>,<span class="selector-tag">blockquote</span>,<span class="selector-tag">a</span>,<span class="selector-tag">address</span>,<span class="selector-tag">em</span>,<span class="selector-tag">img</span>,<span class="selector-tag">ol</span>,<span class="selector-tag">ul</span>,<span class="selector-tag">li</span>,<span class="selector-tag">fieldset</span>,<span class="selector-tag">form</span>,<span class="selector-tag">label</span>,<span class="selector-tag">legend</span>,<span class="selector-tag">table</span>,<span class="selector-tag">tbody</span>,<span class="selector-tag">tfoot</span>,<span class="selector-tag">thead</span>,<span class="selector-tag">tr</span>,<span class="selector-tag">th</span>,<span class="selector-tag">td</span>,<span class="selector-tag">i</span>,<span class="selector-tag">b</span>,<span class="selector-tag">s</span>&#123;<span class="attribute">font-family</span>:Helvetica,Arial,sans-serif;<span class="attribute">font-size</span>:<span class="number">62.5%</span>;<span class="attribute">font-weight</span>:inherit;<span class="attribute">font-style</span>:inherit;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>;<span class="attribute">border</span>:<span class="number">0</span>&#125;<span class="selector-tag">ul</span>,<span class="selector-tag">ol</span>&#123;<span class="attribute">list-style</span>:none&#125;<span class="selector-tag">a</span> <span class="selector-tag">img</span>&#123;<span class="attribute">vertical-align</span>:top;<span class="attribute">border</span>:none&#125;<span class="selector-tag">a</span>&#123;<span class="attribute">text-decoration</span>:none&#125;<span class="selector-tag">button</span>&#123;<span class="attribute">overflow</span>:visible;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>;<span class="attribute">border</span>:<span class="number">0</span> none;<span class="attribute">background-color</span>:transparent&#125;<span class="selector-tag">button</span><span class="selector-pseudo">::-moz-focus-inner</span>&#123;<span class="attribute">padding</span>:<span class="number">0</span>&#125;<span class="selector-tag">input</span><span class="selector-attr">[type=password]</span>&#123;<span class="attribute">-webkit-text-security</span>:disc&#125;<span class="selector-tag">textarea</span><span class="selector-pseudo">:focus</span>,<span class="selector-tag">input</span><span class="selector-pseudo">:focus</span>,<span class="selector-tag">button</span><span class="selector-pseudo">:focus</span>&#123;<span class="attribute">outline</span>:none&#125;<span class="selector-tag">body</span>&#123;<span class="attribute">word-wrap</span>:break-word&#125;*&#123;<span class="attribute">-webkit-tap-highlight-color</span>:<span class="built_in">rgba</span>(0,0,0,0)&#125;<span class="selector-class">.icon</span>&#123;<span class="attribute">display</span>:inline-block;<span class="attribute">zoom</span>:<span class="number">1</span>;<span class="attribute">vertical-align</span>:middle;<span class="attribute">background-repeat</span>:no-repeat;<span class="attribute">background-position</span>:left top&#125;<span class="selector-class">.btn</span>&#123;<span class="attribute">display</span>:inline-block;<span class="attribute">zoom</span>:<span class="number">1</span>;<span class="attribute">text-align</span>:center;<span class="attribute">vertical-align</span>:middle&#125;<span class="selector-class">.none</span>&#123;<span class="attribute">display</span>:none&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*375的iphone6设计稿转化*/</span></span><br><span class="line"><span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>: <span class="number">20px</span>;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (max-width: <span class="number">320px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">17px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">321px</span>) and (max-width: <span class="number">360px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">19.2px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">361px</span>) and (max-width: <span class="number">375px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">20px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">376px</span>) and (max-width: <span class="number">414px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">22px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">415px</span>) and (max-width: <span class="number">479px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">23px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">480px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">25.6px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">768px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">27.4px</span>;&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*320的iphone5设计稿转化*/</span></span><br><span class="line"><span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>: <span class="number">20px</span>;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (max-width: <span class="number">320px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">20px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">321px</span>) and (max-width: <span class="number">360px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">22.5px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">361px</span>) and (max-width: <span class="number">375px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">23.4px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">376px</span>) and (max-width: <span class="number">414px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">25.8px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">415px</span>) and (max-width: <span class="number">479px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">27px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">480px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">30px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">768px</span>) &#123;<span class="selector-tag">html</span> &#123;<span class="attribute">font-size</span>: <span class="number">32px</span>;&#125;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*IE8 兼容*/</span></span><br><span class="line"><span class="selector-class">.bg</span>&#123;</span><br><span class="line">    <span class="comment">/*background-position 不能连写在background内，否则在ie8会不显示*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(img/border_box.png) no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">50%</span> <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.line-height</span>&#123;</span><br><span class="line">    <span class="comment">/*在border-box盒子模型下，如果设置了高度，并且存在border，line-height高度要减去border高度*/</span></span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">38px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1927,7 +1936,7 @@
               
                 <a href="/blog/archives">
               
-                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-count">147</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

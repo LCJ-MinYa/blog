@@ -405,6 +405,474 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2019/03/21/JS/trim方法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/03/21/JS/trim方法/" itemprop="url">trim方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T16:33:51+08:00">
+                2019-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="自定义方法"><a href="#自定义方法" class="headerlink" title="自定义方法"></a>自定义方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除左右两端的空格</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> str !== <span class="string">'string'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/(^\s*)|(\s*$)/g</span>, <span class="string">""</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    trim</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="问题由来"><a href="#问题由来" class="headerlink" title="问题由来"></a>问题由来</h2><blockquote>
+<p>在其他页面调用trim()方法，发现写错方法也没有报错，并且具备了同样的删除左右两端的空格功能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import Utils from &apos;../Utils&apos;;</span><br><span class="line"></span><br><span class="line">test()&#123;</span><br><span class="line">    String.trim();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><ul>
+<li>String.prototype本身就有trim()方法，所以即便是上面写错了，只要类型是String就不会报错.</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2019/03/19/ReactNative/react-devtools教程/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/03/19/ReactNative/react-devtools教程/" itemprop="url">react-devtools教程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T16:42:12+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/reactnative/" itemprop="url" rel="index">
+                    <span itemprop="name">reactnative</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><ul>
+<li>主要是用来调试样式,自带的开发菜单无法满足需求.</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><code>sudo npm install -g react-devtools --unsafe-perm=true</code><blockquote>
+<p>必须加上sudo,加上后面unsafe-perm=true参数，必须使用vpn,否则都会导致安装不成功.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><ul>
+<li><code>react-devtools</code>(会自行启动工具)</li>
+</ul>
+<h2 id="调试方法"><a href="#调试方法" class="headerlink" title="调试方法"></a>调试方法</h2><ul>
+<li>启动RN app之后，Command+D打开开发菜单，选择Toggle Inspector，然后点击想要查看的区域即可.</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2019/03/19/Hexo/hexo添加搜索功能/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/03/19/Hexo/hexo添加搜索功能/" itemprop="url">hexo添加搜索功能</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T13:49:41+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><ul>
+<li><code>npm install hexo-generator-searchdb --save</code></li>
+</ul>
+<h2 id="修改hexo站点配置文件"><a href="#修改hexo站点配置文件" class="headerlink" title="修改hexo站点配置文件"></a>修改hexo站点配置文件</h2><ul>
+<li>路径: <code>blog/_config.yml</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">    path: search.xml</span><br><span class="line">    field: post</span><br><span class="line">    format: html</span><br><span class="line">    limit: 10000</span><br><span class="line"></span><br><span class="line">PS:每个冒号后面都有空格。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="修改next主题配置文件"><a href="#修改next主题配置文件" class="headerlink" title="修改next主题配置文件"></a>修改next主题配置文件</h2><ul>
+<li>路径: <code>/blog/themes/next/_config.yml</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">    enable: true</span><br><span class="line"></span><br><span class="line">PS: enable由false改为true。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="问题汇总"><a href="#问题汇总" class="headerlink" title="问题汇总"></a>问题汇总</h2><ul>
+<li><p>LocalSearch一直转圈，卡死问题.</p>
+<blockquote>
+<p>由于使用的是localSearch，会透过编译完后public里面的search.xml作为搜寻主体，有了搜寻主体后就要先去验证格式的正确性.内容量太大也没办法肉眼去验证，就找了线上验证的网站，<br>把 search.xml 的内容全部丢下去验证后跳出了这个错误。<br><a href="https://www.xmlvalidation.com/" target="_blank" rel="noopener">验证xml文件格式</a></p>
+</blockquote>
+</li>
+<li><p>编译后缺少index.html</p>
+<blockquote>
+<p><code>npm ls –depth 0</code>(查看npm安装各hexo插件的情况),然后逐一安装缺失的包即可。</p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2019/03/19/Git/git命令/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1541,499 +2009,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2019/01/09/MacOS/mac新电脑配置-开发环境篇/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/01/09/MacOS/mac新电脑配置-开发环境篇/" itemprop="url">mac新电脑配置-开发环境篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T14:56:26+08:00">
-                2019-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/macos/" itemprop="url" rel="index">
-                    <span itemprop="name">macos</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="ReactNative环境安装"><a href="#ReactNative环境安装" class="headerlink" title="ReactNative环境安装"></a>ReactNative环境安装</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2019/01/09/MacOS/mac新电脑配置-个人设置篇/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/01/09/MacOS/mac新电脑配置-个人设置篇/" itemprop="url">mac新电脑配置-个人设置篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T14:56:09+08:00">
-                2019-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/macos/" itemprop="url" rel="index">
-                    <span itemprop="name">macos</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="顶部栏"><a href="#顶部栏" class="headerlink" title="顶部栏"></a>顶部栏</h2><h3 id="WebDriver不显示在顶部"><a href="#WebDriver不显示在顶部" class="headerlink" title="WebDriver不显示在顶部"></a>WebDriver不显示在顶部</h3><ul>
-<li>打开设置-不显示在顶部栏</li>
-</ul>
-<h2 id="底部栏"><a href="#底部栏" class="headerlink" title="底部栏"></a>底部栏</h2><ul>
-<li>从Dock栏移除 =&gt; Siri,Safair,邮件,通讯录,日历,备忘录,提醒事项,地图,照片,信息,FaceTime,iTunes,iBooks,AppStore,下载</li>
-<li>增加至Dock栏 =&gt; Chrome,TeamViewer,QQ,终端,SourceTree,Sublime Text,Xcode,Robo 3T,Photoshop cc 2017,</li>
-</ul>
-<h2 id="系统偏好设置"><a href="#系统偏好设置" class="headerlink" title="系统偏好设置"></a>系统偏好设置</h2><ul>
-<li>通用-外观-勾选使用暗色菜单栏和程序坞</li>
-<li>桌面与屏幕保护程序-设置背景</li>
-<li>Dock-调整Dock栏大小</li>
-<li>Mission Control-设置触发角</li>
-<li>键盘-修饰键-Control与Command交换</li>
-<li>鼠标-取消勾选滚动方向：自然</li>
-<li>App Store-取消自动更新</li>
-<li>扩展-勾选计算器，取消勾选股票，天气等</li>
-<li>辅助功能-通用-取消VoiceOver勾选</li>
-<li>辅助功能-缩放-勾选配合修饰键滚动手势缩放-command</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2019/01/09/MacOS/mac新电脑配置-软件篇/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/01/09/MacOS/mac新电脑配置-软件篇/" itemprop="url">mac新电脑配置-软件篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T14:55:46+08:00">
-                2019-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/macos/" itemprop="url" rel="index">
-                    <span itemprop="name">macos</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Xcode"><a href="#Xcode" class="headerlink" title="Xcode"></a>Xcode</h2><ul>
-<li>App Store下载即可，因为系统是10.13.3，所以下载的是上一版本兼容。</li>
-</ul>
-<h2 id="TeamViewer"><a href="#TeamViewer" class="headerlink" title="TeamViewer"></a>TeamViewer</h2><ul>
-<li>通过TeamViewer官网下载</li>
-<li>禁止开机启动，配置账号，设置密码用于无人值守</li>
-</ul>
-<h2 id="ShadowsocksX-NG"><a href="#ShadowsocksX-NG" class="headerlink" title="ShadowsocksX-NG"></a>ShadowsocksX-NG</h2><ul>
-<li>通过github下载<a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases/" target="_blank" rel="noopener">ss客户端下载地址</a></li>
-</ul>
-<h2 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h2><ul>
-<li>连接SS之后通过官网下载Chrome</li>
-<li>登陆谷歌账号同步书签等信息</li>
-</ul>
-<h2 id="NodeJs"><a href="#NodeJs" class="headerlink" title="NodeJs"></a>NodeJs</h2><ul>
-<li>官网下载安装<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">NodeJs下载地址</a></li>
-<li><code>npm list -g –depth 0</code>(查看全局安装过的包)</li>
-</ul>
-<h3 id="nrm源切换"><a href="#nrm源切换" class="headerlink" title="nrm源切换"></a>nrm源切换</h3><ul>
-<li><code>sudo npm i nrm@版本号 -g</code>1.0.2<ul>
-<li><code>nrm use taobao</code>(切换taobao源)</li>
-<li><code>nrm ls</code>(查看当前源列表和选择的源)</li>
-</ul>
-</li>
-</ul>
-<h3 id="hexo-cli播客"><a href="#hexo-cli播客" class="headerlink" title="hexo-cli播客"></a>hexo-cli播客</h3><ul>
-<li><code>sudo npm i hexo-cli@版本号 -g</code>1.1.0</li>
-</ul>
-<h2 id="Sourcetree"><a href="#Sourcetree" class="headerlink" title="Sourcetree"></a>Sourcetree</h2><ul>
-<li>官网下载安装<a href="https://www.sourcetreeapp.com/" target="_blank" rel="noopener">Sourcetree下载地址</a></li>
-<li>验证关联Github账号，克隆对应项目</li>
-</ul>
-<h2 id="Sublime-Text3"><a href="#Sublime-Text3" class="headerlink" title="Sublime-Text3"></a>Sublime-Text3</h2><ul>
-<li>官网下载安装<a href="http://www.sublimetext.com/" target="_blank" rel="noopener">Sublime-Text3下载地址</a></li>
-</ul>
-<h2 id="robomongo"><a href="#robomongo" class="headerlink" title="robomongo"></a>robomongo</h2><ul>
-<li>官网下载安装<a href="https://robomongo.org/download" target="_blank" rel="noopener">robomongo下载地址</a></li>
-</ul>
-<h2 id="Microsoft-for-Mac"><a href="#Microsoft-for-Mac" class="headerlink" title="Microsoft for Mac"></a>Microsoft for Mac</h2><ul>
-<li>从百度云盘下载安装</li>
-</ul>
-<h2 id="Photoshop-cc-2017"><a href="#Photoshop-cc-2017" class="headerlink" title="Photoshop cc 2017"></a>Photoshop cc 2017</h2><ul>
-<li>从百度云盘下载安装</li>
-</ul>
-<h2 id="QQ"><a href="#QQ" class="headerlink" title="QQ"></a>QQ</h2><ul>
-<li>设置-应用-关闭天气</li>
-<li>设置-应用-关闭腾讯新闻</li>
-<li>设置-应用-关闭自选股</li>
-<li>设置-应用-关闭日程</li>
-<li>设置-应用-关闭富途牛牛</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2084,7 +2059,7 @@
               
                 <a href="/blog/archives">
               
-                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-count">147</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

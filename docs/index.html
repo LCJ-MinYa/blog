@@ -405,6 +405,433 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2022/10/26/JS/vue外部监听生命周期函数/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2022/10/26/JS/vue外部监听生命周期函数/" itemprop="url">vue外部监听生命周期函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-26T10:09:38+08:00">
+                2022-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">child</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">title</span>=<span class="string">"我是child"</span></span></span><br><span class="line"><span class="tag">                    @<span class="attr">hook:updated</span>=<span class="string">"handleUpdated"</span></span></span><br><span class="line"><span class="tag">                    @<span class="attr">hook:mounted</span>=<span class="string">"handleMounted"</span></span></span><br><span class="line"><span class="tag">                /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        el: <span class="string">'#app'</span>,</span></span><br><span class="line"><span class="undefined">        components: &#123;</span></span><br><span class="line"><span class="undefined">            child: &#123;</span></span><br><span class="line"><span class="undefined">                props: &#123;</span></span><br><span class="line"><span class="javascript">                    title: <span class="built_in">String</span>,</span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="undefined">                data() &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">                        ownTitle: <span class="string">'child自己得title'</span>,</span></span><br><span class="line"><span class="undefined">                    &#125;;</span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="undefined">                methods: &#123;</span></span><br><span class="line"><span class="undefined">                    changeOwnTitle() &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">this</span>.ownTitle += <span class="number">1</span>;</span></span><br><span class="line"><span class="undefined">                    &#125;,</span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="undefined">                template:</span></span><br><span class="line"><span class="xml">                    '<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> @<span class="attr">click</span>=<span class="string">"changeOwnTitle"</span>&gt;</span>&#123;&#123; ownTitle &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>',</span></span><br><span class="line"><span class="undefined">            &#125;,</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        data() &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">                message: <span class="string">'我是主体vue组件'</span>,</span></span><br><span class="line"><span class="undefined">            &#125;;</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        mounted() &#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        methods: &#123;</span></span><br><span class="line"><span class="undefined">            handleUpdated() &#123;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">console</span>.log(<span class="string">'handleUpdated'</span>);</span></span><br><span class="line"><span class="undefined">            &#125;,</span></span><br><span class="line"><span class="undefined">            handleMounted() &#123;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">console</span>.log(<span class="string">'handleMounted'</span>);</span></span><br><span class="line"><span class="undefined">            &#125;,</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2022/10/25/JS/vue项目中引入sass全局变量/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2022/10/25/JS/vue项目中引入sass全局变量/" itemprop="url">vue项目中引入sass全局变量</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-25T14:20:38+08:00">
+                2022-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="页面引入"><a href="#页面引入" class="headerlink" title="页面引入"></a>页面引入</h2><p>场景说明<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是一个存放变量的scss文件 "@/styles/_variables.scss"</span></span><br><span class="line"><span class="variable">$cf-light</span>: <span class="number">#B6B6B6</span>;</span><br><span class="line"><span class="variable">$cf-gray</span>: <span class="number">#8C8C8C</span>;</span><br><span class="line"><span class="variable">$cf-med</span>: <span class="number">#505050</span>;</span><br><span class="line"><span class="variable">$cf-dark</span>: <span class="number">#333333</span>;</span><br><span class="line"><span class="variable">$cf-highlight</span>: <span class="number">#1775F0</span>;</span><br></pre></td></tr></table></figure></p>
+<p>我要在其他文件内都用这个来保证样式统一。比如某个组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;notice&quot;&gt;注意！&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">@import &quot;@/styles/_variables.scss&quot;;</span><br><span class="line">.notice &#123;</span><br><span class="line">  color: $cf-highlight;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="sass-resources-loader"><a href="#sass-resources-loader" class="headerlink" title="sass-resources-loader"></a>sass-resources-loader</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2022/10/25/JS/vue单文件中添加多个组件/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2022/10/25/JS/vue单文件中添加多个组件/" itemprop="url">vue单文件中添加多个组件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-25T14:09:38+08:00">
+                2022-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- &lt;child1 title="我是child1" /&gt; 用单标签的时候，只会显示第一个组件，改成双标签后，就会显示两个组件了。 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">child1</span> <span class="attr">title</span>=<span class="string">"我是child1"</span>&gt;</span><span class="tag">&lt;/<span class="name">child1</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">child2</span> <span class="attr">title</span>=<span class="string">"我是child2"</span>&gt;</span><span class="tag">&lt;/<span class="name">child2</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">child3</span> <span class="attr">title</span>=<span class="string">"我是child3"</span>&gt;</span><span class="tag">&lt;/<span class="name">child3</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        el: <span class="string">'#app'</span>,</span></span><br><span class="line"><span class="undefined">        components: &#123;</span></span><br><span class="line"><span class="undefined">            child1: &#123;</span></span><br><span class="line"><span class="undefined">                /*</span></span><br><span class="line"><span class="undefined">                 * 函数式组件，$children中不会存在该组件</span></span><br><span class="line"><span class="javascript">                 * 函数式组件即无状态组件，没有data、computed、watch，也没有生命周期方法，组件中也没有<span class="keyword">this</span>上下文，只有props传参和slots插槽</span></span><br><span class="line"><span class="undefined">                 * 它只会原封不动的接收传递给组件的数据做处理，并渲染需要的内容。因此作为纯粹的函数可以也大大降低渲染的开销</span></span><br><span class="line"><span class="undefined">                 */</span></span><br><span class="line"><span class="javascript">                functional: <span class="literal">true</span>,</span></span><br><span class="line"><span class="undefined">                props: &#123;</span></span><br><span class="line"><span class="javascript">                    title: <span class="built_in">String</span>,</span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="javascript">                render: <span class="function">(<span class="params">h, ctx</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">return</span> h(<span class="string">'div'</span>, &#123;&#125;, ctx.props.title);</span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="undefined">            &#125;,</span></span><br><span class="line"><span class="undefined">            child2: &#123;</span></span><br><span class="line"><span class="undefined">                props: &#123;</span></span><br><span class="line"><span class="javascript">                    title: <span class="built_in">String</span>,</span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="xml">                template: '<span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>',</span></span><br><span class="line"><span class="undefined">            &#125;,</span></span><br><span class="line"><span class="undefined">            child3: &#123;</span></span><br><span class="line"><span class="undefined">                props: &#123;</span></span><br><span class="line"><span class="javascript">                    title: <span class="built_in">String</span>,</span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="xml">                template: '<span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>',</span></span><br><span class="line"><span class="undefined">            &#125;,</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        data() &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">                message: <span class="string">'我是主体vue组件'</span>,</span></span><br><span class="line"><span class="undefined">            &#125;;</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        mounted() &#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2022/06/29/Centos服务器/windows安装java、jenkins/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -518,6 +945,167 @@
 <li>打开浏览器，输入localhost:9000，进入Jenkins界面，初始化配置即可。</li>
 </ul>
 <h2 id="配置gitlab的webhook自动触发jenkins构建"><a href="#配置gitlab的webhook自动触发jenkins构建" class="headerlink" title="配置gitlab的webhook自动触发jenkins构建"></a>配置gitlab的webhook自动触发jenkins构建</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2022/06/29/Centos服务器/centos安装gitlab-ce/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2022/06/29/Centos服务器/centos安装gitlab-ce/" itemprop="url">centos安装gitlab-ce</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-06-29T16:10:57+08:00">
+                2022-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/centos/" itemprop="url" rel="index">
+                    <span itemprop="name">centos</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><ul>
+<li><code>yum -y install policycoreutils openssh-server openssh-clients policycoreutils-python</code></li>
+</ul>
+<h2 id="添加GitLab包存储库"><a href="#添加GitLab包存储库" class="headerlink" title="添加GitLab包存储库"></a>添加GitLab包存储库</h2><ul>
+<li><code>curl <a href="https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh" target="_blank" rel="noopener">https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh</a> | bash</code></li>
+</ul>
+<h2 id="安装gitlab-ce"><a href="#安装gitlab-ce" class="headerlink" title="安装gitlab-ce"></a>安装gitlab-ce</h2><ul>
+<li><code>yum -y install gitlab-ce</code></li>
+</ul>
+<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/gitlab/gitlab.rb</span><br><span class="line">external_url：http://localhost:10000    #修改端口</span><br><span class="line"></span><br><span class="line">gitlab-ctl reconfigure                  #重新配置服务,第一次时间很长需要耐心等待。</span><br></pre></td></tr></table></figure>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><ul>
+<li><code>gitlab-ctl start</code>启动完成后用户名为root,密码存储在<code>/etc/gitlab/initial_root_password</code></li>
+</ul>
+<h2 id="服务命令"><a href="#服务命令" class="headerlink" title="服务命令"></a>服务命令</h2><ul>
+<li><code>gitlab-ctl start</code>启动</li>
+<li><code>gitlab-ctl stop</code>停止</li>
+<li><code>gitlab-ctl restart</code>重启</li>
+<li><code>systemctl enable gitlab-runsvdir.service</code>开机启动</li>
+<li><code>systemctl disable gitlab-runsvdir.service</code>禁止开机自启动</li>
+</ul>
+
           
         
       
@@ -692,167 +1280,6 @@
 <li><code>systemctl status jenkins</code></li>
 </ul>
 <h2 id="配置gitlab的webhook自动触发jenkins构建"><a href="#配置gitlab的webhook自动触发jenkins构建" class="headerlink" title="配置gitlab的webhook自动触发jenkins构建"></a>配置gitlab的webhook自动触发jenkins构建</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2022/06/29/Centos服务器/centos安装gitlab-ce/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2022/06/29/Centos服务器/centos安装gitlab-ce/" itemprop="url">centos安装gitlab-ce</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-06-29T16:10:57+08:00">
-                2022-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/centos/" itemprop="url" rel="index">
-                    <span itemprop="name">centos</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><ul>
-<li><code>yum -y install policycoreutils openssh-server openssh-clients policycoreutils-python</code></li>
-</ul>
-<h2 id="添加GitLab包存储库"><a href="#添加GitLab包存储库" class="headerlink" title="添加GitLab包存储库"></a>添加GitLab包存储库</h2><ul>
-<li><code>curl <a href="https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh" target="_blank" rel="noopener">https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh</a> | bash</code></li>
-</ul>
-<h2 id="安装gitlab-ce"><a href="#安装gitlab-ce" class="headerlink" title="安装gitlab-ce"></a>安装gitlab-ce</h2><ul>
-<li><code>yum -y install gitlab-ce</code></li>
-</ul>
-<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/gitlab/gitlab.rb</span><br><span class="line">external_url：http://localhost:10000    #修改端口</span><br><span class="line"></span><br><span class="line">gitlab-ctl reconfigure                  #重新配置服务,第一次时间很长需要耐心等待。</span><br></pre></td></tr></table></figure>
-<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><ul>
-<li><code>gitlab-ctl start</code>启动完成后用户名为root,密码存储在<code>/etc/gitlab/initial_root_password</code></li>
-</ul>
-<h2 id="服务命令"><a href="#服务命令" class="headerlink" title="服务命令"></a>服务命令</h2><ul>
-<li><code>gitlab-ctl start</code>启动</li>
-<li><code>gitlab-ctl stop</code>停止</li>
-<li><code>gitlab-ctl restart</code>重启</li>
-<li><code>systemctl enable gitlab-runsvdir.service</code>开机启动</li>
-<li><code>systemctl disable gitlab-runsvdir.service</code>禁止开机自启动</li>
-</ul>
-
           
         
       
@@ -1478,870 +1905,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2021/09/08/JS/antd-desgin-vue/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2021/09/08/JS/antd-desgin-vue/" itemprop="url">antd-desgin-vue</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-08T10:21:45+08:00">
-                2021-09-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="select-中添加新增输入框和按钮"><a href="#select-中添加新增输入框和按钮" class="headerlink" title="select 中添加新增输入框和按钮"></a>select 中添加新增输入框和按钮</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">text数据结构</span><br><span class="line">text: &#123;</span><br><span class="line">    open: false,</span><br><span class="line">    value: &apos;&apos;,</span><br><span class="line">    input: &apos;&apos;,</span><br><span class="line">&#125;</span><br><span class="line">--&gt;</span><br><span class="line">&lt;template slot=&quot;groupName&quot; slot-scope=&quot;text&quot;&gt;</span><br><span class="line">    &lt;div</span><br><span class="line">        v-if=&quot;text !== null&quot;</span><br><span class="line">        @mousedown=&quot;</span><br><span class="line">            (e) =&gt; &#123;</span><br><span class="line">                e.preventDefault();</span><br><span class="line">                text.open = true;</span><br><span class="line">            &#125;</span><br><span class="line">        &quot;</span><br><span class="line">    &gt;</span><br><span class="line">        &lt;a-select placeholder=&quot;请选择产品组名称&quot; style=&quot;width: 200px&quot; v-model=&quot;text[&apos;value&apos;]&quot; :open=&quot;text.open&quot; @select=&quot;() =&gt; (text.open = false)&quot;&gt;</span><br><span class="line">            &lt;div slot=&quot;dropdownRender&quot; slot-scope=&quot;menu&quot; @mousedown=&quot;(e) =&gt; e.preventDefault()&quot;&gt;</span><br><span class="line">                &lt;v-nodes :vnodes=&quot;menu&quot; /&gt;</span><br><span class="line">                &lt;a-divider style=&quot;margin: 4px 0;&quot; /&gt;</span><br><span class="line">                &lt;div class=&quot;product-group-input&quot;&gt;</span><br><span class="line">                    &lt;a-input @click=&quot;(e) =&gt; e.target.focus()&quot; v-model=&quot;text[&apos;input&apos;]&quot; placeholder=&quot;请输入产品组名称&quot; size=&quot;small&quot; /&gt;</span><br><span class="line">                    &lt;a-button type=&quot;primary&quot; size=&quot;small&quot; style=&quot;margin-left: 10px&quot; @click=&quot;() =&gt; addProductGroupName(text)&quot;&gt;新增&lt;/a-button&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;a-select-option :value=&quot;item&quot; v-for=&quot;item in groupNameList&quot; :key=&quot;item&quot; @click=&quot;() =&gt; (text.open = false)&quot;&gt;&#123;&#123; item &#125;&#125;&lt;/a-select-option&gt;</span><br><span class="line">        &lt;/a-select&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;span v-else&gt;-&lt;/span&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="upload-组件-fileList-自定义请求-customRequest-不显示上传进度问题"><a href="#upload-组件-fileList-自定义请求-customRequest-不显示上传进度问题" class="headerlink" title="upload 组件 fileList 自定义请求 customRequest 不显示上传进度问题"></a>upload 组件 fileList 自定义请求 customRequest 不显示上传进度问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;a-upload</span><br><span class="line">        ref=&quot;uploadRef&quot;</span><br><span class="line">        name=&quot;file&quot;</span><br><span class="line">        :multiple=&quot;true&quot;</span><br><span class="line">        :showUploadList=&quot;true&quot;</span><br><span class="line">        :action=&quot;uploadUrl&quot;</span><br><span class="line">        :headers=&quot;headers&quot;</span><br><span class="line">        :remove=&quot;handRemove&quot;</span><br><span class="line">        :customRequest=&quot;customRequestUpload&quot;</span><br><span class="line">        :accept=&quot;acceptFile&quot;</span><br><span class="line">        :beforeUpload=&quot;beforeUpload&quot;</span><br><span class="line">        :file-list=&quot;form.fileList&quot;</span><br><span class="line">        @change=&quot;fileChange&quot;</span><br><span class="line">    &gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        form: &#123;</span><br><span class="line">            fileList: []</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">    methods: &#123;</span><br><span class="line">        fileChange(&#123; file &#125;)&#123;</span><br><span class="line">            if (file.status == &quot;uploading&quot;) &#123;</span><br><span class="line">                /** 开始上传加入fileList */</span><br><span class="line">                this.form.fileList.push(file)</span><br><span class="line">            &#125;</span><br><span class="line">            if (file.status == &quot;done&quot;) &#123;</span><br><span class="line">                /** 业务处理流程 */</span><br><span class="line">                const &#123;</span><br><span class="line">                    like,</span><br><span class="line">                    key,</span><br><span class="line">                &#125; = file.response.data.data;</span><br><span class="line">                let index = this.form.fileList.findIndex(item=&gt;&#123;</span><br><span class="line">                    return item.uid === file.uid;</span><br><span class="line">                &#125;);</span><br><span class="line">                this.form.fileList[index] = &#123;</span><br><span class="line">                    ...this.form.fileList[index],</span><br><span class="line">                    url: like,</span><br><span class="line">                    uid: key,</span><br><span class="line">                    name: file.name</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            if (file.status == &quot;error&quot;) &#123;</span><br><span class="line">                /** 上传失败移除fileList */</span><br><span class="line">                this.handRemove(file);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        /** 自定义上传 */</span><br><span class="line">        customRequestUpload(data) &#123;</span><br><span class="line">            if (this.form.fileList.length &gt; 3) &#123;</span><br><span class="line">                this.$message.info(&apos;附件最多只能上传三个&apos;);</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            const formData = new FormData();</span><br><span class="line">            formData.append(&apos;file&apos;, data.file);</span><br><span class="line">            formData.append(&apos;manufacturer&apos;, &apos;TENCENT&apos;);</span><br><span class="line"></span><br><span class="line">            /** 任何失败都必须调用onError */</span><br><span class="line">            this.$api</span><br><span class="line">                .uploadFile(formData)</span><br><span class="line">                .then((res) =&gt; &#123;</span><br><span class="line">                    if (res.data.data &amp;&amp; res.data.code === &apos;200&apos;) &#123;</span><br><span class="line">                        this.$refs.uploadRef.onSuccess(res, data.file);</span><br><span class="line">                        this.$message.success(&apos;上传附件成功&apos;);</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        this.$refs.uploadRef.onError(err, err, data.file);</span><br><span class="line">                        this.$message.error(&apos;上传附件失败&apos;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .catch((err) =&gt; &#123;</span><br><span class="line">                    this.$refs.uploadRef.onError(err, err, data.file);</span><br><span class="line">                    this.$message.error(&apos;上传附件失败&apos;);</span><br><span class="line">                &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">        handRemove(file) &#123;</span><br><span class="line">            let index = this.form.fileList.findIndex((item) =&gt; &#123;</span><br><span class="line">                return item.uid === file.uid;</span><br><span class="line">            &#125;);</span><br><span class="line">            if (index !== -1) &#123;</span><br><span class="line">                this.form.fileList.splice(index, 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="递归需要返回值的处理"><a href="#递归需要返回值的处理" class="headerlink" title="递归需要返回值的处理"></a>递归需要返回值的处理</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dealTreeData</span>(<span class="params">dataArr, catId, result = []</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; dataArr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (result.length) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dataArr[i].catId == catId) &#123;</span><br><span class="line">            <span class="comment">/** 重点，必须使用push才能改变到result的值 */</span></span><br><span class="line">            result.push(...dataArr);</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * result = dataArr;</span></span><br><span class="line"><span class="comment">             * 这种写法改变了数组内存地址，currentLevelDataArr的值不会改变还是空数组</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(dataArr[i].children &amp;&amp; dataArr[i].children.length) &#123;</span><br><span class="line">            dealTreeData(dataArr[i].children, catId, result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 需要递归的数据 */</span></span><br><span class="line"><span class="keyword">const</span> dataArr = [&#123;</span><br><span class="line">    catId: <span class="string">'1000'</span>,</span><br><span class="line">    name: <span class="string">'水果'</span>,</span><br><span class="line">    childList: [&#123;</span><br><span class="line">        catId: <span class="string">'10000'</span>,</span><br><span class="line">        name: <span class="string">'水果分类1'</span>,</span><br><span class="line">        children: [&#123;</span><br><span class="line">            catId: <span class="string">'100000'</span>,</span><br><span class="line">            name: <span class="string">'苹果'</span>,</span><br><span class="line">            children: []</span><br><span class="line">        &#125;],</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        catId: <span class="string">'10001'</span>,</span><br><span class="line">        name: <span class="string">'水果分类2'</span>,</span><br><span class="line">        children: [],</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;,&#123;</span><br><span class="line">    catId: <span class="string">'2000'</span>,</span><br><span class="line">    name: <span class="string">'蔬菜'</span>,</span><br><span class="line">    childList: []</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">/** 需要匹配的某个层级id */</span></span><br><span class="line"><span class="keyword">const</span> catId = <span class="string">'10001'</span>;</span><br><span class="line"><span class="comment">/** 返回值(只返回当前层级的所有数据) */</span></span><br><span class="line"><span class="keyword">const</span> currentLevelDataArr = [];</span><br><span class="line">dealTreeData(dataArr, catId, currentLevelDataArr);</span><br></pre></td></tr></table></figure>
-<h2 id="按需引入element-ui"><a href="#按需引入element-ui" class="headerlink" title="按需引入element-ui"></a>按需引入element-ui</h2><ul>
-<li><code>yarn add element-ui</code></li>
-<li><code>yarn add babel-plugin-component --dev</code></li>
-<li><p>编辑babel.config.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> IS_PROD = [<span class="string">'production'</span>, <span class="string">'prod'</span>].includes(process.env.NODE_ENV)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> plugins = [</span><br><span class="line">    [</span><br><span class="line">        <span class="string">'component'</span>,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"libraryName"</span>: <span class="string">"element-ui"</span>,</span><br><span class="line">            <span class="string">"styleLibraryName"</span>: <span class="string">"theme-chalk"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">]</span><br><span class="line"><span class="keyword">if</span> (IS_PROD) &#123;</span><br><span class="line">  plugins.push(<span class="string">'transform-remove-console'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  presets: [</span><br><span class="line">    <span class="string">'@vue/cli-plugin-babel/preset'</span></span><br><span class="line">  ],</span><br><span class="line">  plugins</span><br><span class="line">  <span class="comment">// plugins: [</span></span><br><span class="line">  <span class="comment">//   [</span></span><br><span class="line">  <span class="comment">//     "import",</span></span><br><span class="line">  <span class="comment">//     &#123; libraryName: "ant-design-vue", libraryDirectory: "es", style: true &#125;</span></span><br><span class="line">  <span class="comment">//   ]</span></span><br><span class="line">  <span class="comment">// ]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在main.js中按需引入</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Table, TableColumn, Input &#125; <span class="keyword">from</span> <span class="string">'element-ui'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Table);</span><br><span class="line">Vue.use(TableColumn);</span><br><span class="line">Vue.use(Input);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>验证按需加载是否成功，每次添加一个组件，然后<code>yarn build</code>后查看<code>www/static/js/chunk-vendors.xxxx.js</code>文件大小</p>
-</li>
-</ul>
-<h2 id="element-table排序"><a href="#element-table排序" class="headerlink" title="element-table排序"></a>element-table排序</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortMethod</span>(<span class="params">prev, cur</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> rule = [<span class="string">'2'</span>, <span class="string">'1'</span>, <span class="string">'3'</span>];</span><br><span class="line">    <span class="keyword">return</span> rule.indexOf(prev.applyStatus) - rule.indexOf(cur.applyStatus);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2020/12/02/JS/javascript面试知识点/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2020/12/02/JS/javascript面试知识点/" itemprop="url">javascript面试知识点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-02T16:52:45+08:00">
-                2020-12-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="html部分"><a href="#html部分" class="headerlink" title="html部分"></a>html部分</h1><h2 id="html语义化标签的理解"><a href="#html语义化标签的理解" class="headerlink" title="html语义化标签的理解"></a>html语义化标签的理解</h2><ul>
-<li><p>什么是语义化，语义化之后文档会有什么效果呢？</p>
-<div class="note "><ol>
-<li><p>首先，语义化，顾名思义，就是你写的HTML结构，是用相对应的有一定语义的英文字母（标签）表示的，标记的，因为HTML本身就是标记语言。不仅对自己来说，容易阅读，书写。别人看你的代码和结构也容易理解，甚至对一些不是做网页开发的人来说，也容易阅读。那么，我们以后再开发的过程中，一定要注意了，尽量使用官方的有语义的标签，不要再使用一堆无意义的标签去堆你的结构。怎么知道，自己的页面结构是否语义化，那就要看你的HTML结构，在去掉CSS样式表之后，是否，依然能很好的呈现内容的结构，代码结构。也就是说，脱掉css的外衣，依然头是头，脚是脚。赤裸裸的完整的一篇文档。这也就是，语义化之后文档的效果。</p>
-</li>
-<li><p>其实语义化，也无非就是自己在使用标签的时候多使用有英文语义的标签，比如h标签，在HTML中就是就是用来定义标题，还有p标签，英文是paragraph段落，table表格标签,等等。</p>
-</li>
-</ol></div>
-</li>
-<li><p>为什么要语义化?</p>
-<div class="note "><ol>
-<li>为了在没有CSS的情况下，页面也能呈现出很好地内容结构、代码结构:为了裸奔时好看；</li>
-<li>用户体验：例如title、alt用于解释名词或解释图片信息的标签尽量填写有含义的词语、label标签的活用；</li>
-<li>有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；</li>
-<li>方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以有意义的方式来渲染网页；</li>
-<li>便于团队开发和维护，语义化更具可读性，遵循W3C标准的团队都遵循这个标准，可以减少差异化。</li>
-</ol></div>
-</li>
-<li><p>html5新增的语义化标签</p>
-<div class="note "><ol>
-<li>header元素</li>
-<li>footer元素</li>
-<li>hgroup元素<br>hgroup元素代表“网页”或“section”的标题，当元素有多个层级时，该元素可以将h1到h6元素放在其内，譬如文章的主标题和副标题的组合</li>
-<li>nav元素</li>
-<li>aside元素<br>aside元素被包含在article元素中作为主要内容的附属信息部分，其中的内容可以是与当前文章有关的相关资料、标签、名词解释等。</li>
-<li>article元素</li>
-<li>section元素<br>是一个主题性的内容分组，通常用于对页面进行分块或者对文章等进行分段</li>
-</ol></div>
-</li>
-</ul>
-<h2 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h2><ul>
-<li><p>DOCTYPE有什么作用？标准模式与混杂模式如何区分？它们有何意义?</p>
-<div class="note "><p>告诉浏览器使用哪个版本的HTML规范来渲染文档。DOCTYPE不存在或形式不正确会导致HTML文档以混杂模式呈现。<br>标准模式（Standards mode）以浏览器支持的最高标准运行；混杂模式（Quirks mode）中页面是一种比较宽松的向后兼容的方式显示。</p></div>
-</li>
-<li><p>HTML5的DOCTYPE格式</p>
-<div class="note "><p>&lt;!DOCTYPE HTML&gt;</p></div>
-</li>
-<li><p>HTML5为什么只需要写 &lt;!DOCTYPE HTML&gt;？</p>
-<div class="note "><p>HTML5不基于SGML（Standard Generalized Markup Language 标准通用标记语言），因此不需要对DTD（DTD 文档类型定义）进行引用，但是需要DOCTYPE来规范浏览器行为。</p>
-<p>HTML4.01基于SGML，所以需要引用DTD。才能告知浏览器文档所使用的文档类型，如下：<br>&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “<a href="http://www.w3.org/TR/html4/strict.dtd&quot;&gt;" target="_blank" rel="noopener">http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</a></p></div>
-</li>
-</ul>
-<h2 id="行内元素与块级元素"><a href="#行内元素与块级元素" class="headerlink" title="行内元素与块级元素"></a>行内元素与块级元素</h2><ul>
-<li><p>含义</p>
-<div class="note "><ol>
-<li>行内元素 -&gt; 一个行内元素只占据它对应标签的边框所包含的空间。</li>
-<li>块级元素 -&gt; 块级元素占据其父元素（容器）的整个空间，因此创建了一个“块”。通常浏览器会在块级元素前后另起一个新行。</li>
-</ol></div>
-</li>
-<li><p>区别</p>
-<div class="note "><ol>
-<li>块元素，总是在新行上开始；内联元素，和其他元素在一行；</li>
-<li>块元素，能容纳其他块元素或者内联元素；内联元素，只能容纳文本或其他内联元素；</li>
-<li>块元素中高度，行高以及顶和底边距都可以控制；内联元素中高，行高及顶和底边距不可改变。</li>
-</ol></div>
-</li>
-<li><p>块级元素</p>
-<div class="note "><p>address - 地址<br>blockquote - 块引用<br>center - 举中对齐块<br>dir - 目录列表<br>div - 常用块级容易，也是css layout的主要标签<br>dl - 定义列表<br>fieldset - form控制组<br>form - 交互表单<br>h1 - 大标题<br>h2 - 副标题<br>h3 - 3级标题<br>h4 - 4级标题<br>h5 - 5级标题<br>h6 - 6级标题<br>hr - 水平分隔线<br>isindex - input prompt<br>menu - 菜单列表<br>noframes - frames可选内容（对于不支持frame的浏览器显示此区块内容）<br>noscript - 可选脚本内容（对于不支持script的浏览器显示此内容）<br>ol - 排序列表<br>p - 段落<br>pre - 格式化文本<br>table - 表格<br>ul - 非排序列表</p></div>
-</li>
-<li><p>行内元素</p>
-<div class="note "><p>a - 锚点<br>abbr - 缩写<br>acronym - 首字<br>b - 粗体（不推荐）<br>bdo - bidi override<br>big - 大字体<br>br - 换行<br>cite - 引用<br>code - 计算机代码（在引用源码的时候需要）<br>dfn - 定义字段<br>em - 强调<br>font - 字体设定（不推荐）<br>i - 斜体<br>img - 图片<br>input - 输入框<br>kbd - 定义键盘文本<br>label - 表格标签<br>q - 短引用<br>s - 中划线（不推荐）<br>samp - 定义范例计算机代码<br>select - 项目选择<br>small - 小字体文本<br>span - 常用内联容器，定义文本内区块<br>strike - 中划线<br>strong - 粗体强调<br>sub - 下标<br>sup - 上标<br>textarea - 多行文本输入框<br>tt - 电传文本<br>u - 下划线<br>var - 定义变量</p></div>
-</li>
-<li><p>如何转换</p>
-<div class="note "><ol>
-<li>display</li>
-<li>float<br>当把行内元素设置完float:left/right后，该行内元素的display属性会被赋予block值，且拥有浮动特性。行内元素去除了之间的莫名空白。</li>
-<li>position<br>当为行内元素进行定位时，position:absolute与position:fixed.都会使得原先的行内元素变为块级元素。</li>
-</ol></div>
-</li>
-</ul>
-<h2 id="导入样式link和-import区别"><a href="#导入样式link和-import区别" class="headerlink" title="导入样式link和@import区别"></a>导入样式link和@import区别</h2><div class="note "><ol>
-<li><p>从属关系区别<br>@import是 CSS 提供的语法规则，只有导入样式表的作用；link是HTML提供的标签，不仅可以加载 CSS 文件，还可以定义 RSS、rel 连接属性等。</p>
-</li>
-<li><p>加载顺序区别<br>加载页面时，link标签引入的 CSS 被同时加载；@import引入的 CSS 将在页面加载完毕后被加载。</p>
-</li>
-<li><p>兼容性区别<br>@import是 CSS2.1 才有的语法，故只可在 IE5+ 才能识别；link标签作为 HTML 元素，不存在兼容性问题。</p>
-</li>
-<li><p>DOM可控性区别<br>可以通过 JS 操作 DOM ，插入link标签来改变样式；由于 DOM 方法是基于文档的，无法使用@import的方式插入样式。</p>
-</li>
-</ol></div>
-<h2 id="浏览器内核的理解-低"><a href="#浏览器内核的理解-低" class="headerlink" title="浏览器内核的理解(低)"></a>浏览器内核的理解(低)</h2><div class="note "><p>主要分成两部分：渲染引擎(Layout Engine或Rendering Engine)和JS引擎。</p>
-<p>渲染引擎：负责取得网页的内容（HTML、XML、图像等等）、整理讯息（例如加入CSS等），以及计算网页的显示方式，然后会输出至显示器或打印机。浏览器的内核的不同对于网页的语法解释会有不同，所以渲染的效果也不相同。<br>JS引擎：解析和执行javascript来实现网页的动态效果。</p>
-<p>最开始渲染引擎和JS引擎并没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只指渲染引擎。</p></div>
-<h2 id="常见的浏览器内核有哪些？-低"><a href="#常见的浏览器内核有哪些？-低" class="headerlink" title="常见的浏览器内核有哪些？(低)"></a>常见的浏览器内核有哪些？(低)</h2><div class="note "><p>Trident( MSHTML )：IE MaxThon TT The World 360 搜狗浏览器<br>Geckos：Netscape6及以上版本 FireFox Mozilla Suite/SeaMonkey<br>Presto：Opera7及以上(Opera内核原为：Presto，现为：Blink)<br>Webkit：Safari Chrome 微软Edge</p></div>
-<h2 id="HTML5新特性"><a href="#HTML5新特性" class="headerlink" title="HTML5新特性"></a>HTML5新特性</h2><div class="note "><ol>
-<li>canvas</li>
-<li>用于媒介回放的video和audio元素</li>
-<li>本地离线存储。localStorage长期存储数据，浏览器关闭后数据不丢失;sessionStorage的数据在浏览器关闭后自动删除</li>
-<li>语意化更好的内容元素，比如 article footer header nav section</li>
-<li>位置API：Geolocation</li>
-<li>表单控件，calendar date time email url search</li>
-<li>新的技术：web worker(web worker是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 在后台运行) web socket<br>拖放API：drag、drop</li>
-</ol></div>
-<h2 id="iframe框架有那些优缺点？-低"><a href="#iframe框架有那些优缺点？-低" class="headerlink" title="iframe框架有那些优缺点？(低)"></a>iframe框架有那些优缺点？(低)</h2><ul>
-<li><p>优点</p>
-<div class="note "><ol>
-<li>iframe能够原封不动的把嵌入的网页展现出来。</li>
-<li>如果有多个网页引用iframe，那么你只需要修改iframe的内容，就可以实现调用的每一个页面内容的更改，方便快捷。</li>
-<li>网页如果为了统一风格，头部和版本都是一样的，就可以写成一个页面，用iframe来嵌套，可以增加代码的可重用。</li>
-<li>如果遇到加载缓慢的第三方内容如图标和广告，这些问题可以由iframe来解决。</li>
-</ol></div>
-</li>
-<li><p>缺点</p>
-<div class="note "><ol>
-<li>搜索引擎的爬虫程序无法解读这种页面</li>
-<li>框架结构中出现各种滚动条</li>
-<li>使用框架结构时，保证设置正确的导航链接。</li>
-<li>iframe页面会增加服务器的http请求</li>
-</ol></div>
-</li>
-</ul>
-<h2 id="页面可见性（Page-Visibility）API-可以有哪些用途？-低"><a href="#页面可见性（Page-Visibility）API-可以有哪些用途？-低" class="headerlink" title="页面可见性（Page Visibility）API 可以有哪些用途？(低)"></a>页面可见性（Page Visibility）API 可以有哪些用途？(低)</h2><div class="note "><ol>
-<li>通过visibility state的值得检测页面当前是否可见，以及打开网页的时间。</li>
-<li>在页面被切换到其他后台进程时，自动暂停音乐或视频的播放。</li>
-</ol></div>
-<h1 id="css部分"><a href="#css部分" class="headerlink" title="css部分"></a>css部分</h1><h2 id="css权重"><a href="#css权重" class="headerlink" title="css权重"></a>css权重</h2><div class="note "><p>CSS 权重优先级顺序简单表示为：<br>!important &gt; 行内样式 &gt; ID &gt; 类、伪类、属性 &gt; 标签名 &gt; 继承 &gt; 通配符</p></div>
-<table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>权重</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>通配符</td>
-<td>0</td>
-</tr>
-<tr>
-<td>标签</td>
-<td>1</td>
-</tr>
-<tr>
-<td>类/伪类/属性</td>
-<td>10</td>
-</tr>
-<tr>
-<td>ID</td>
-<td>100</td>
-</tr>
-<tr>
-<td>行内样式</td>
-<td>1000</td>
-</tr>
-<tr>
-<td>important</td>
-<td>1/0(无穷大)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="移动端1px实现"><a href="#移动端1px实现" class="headerlink" title="移动端1px实现"></a>移动端1px实现</h2><ul>
-<li>问题根源<div class="note "><p>从移动端的角度说个具体的场景，以iphone6为例。</p>
-<p>iphone6的屏幕宽度为375px，设计师做的视觉稿一般是750px，也就是2x，这个时候设计师在视觉稿上画了1px的边框，于是你就写了“border-width:1px”，so…1px边框问题产生了。</p>
-<p>对设计师来说它的1px是相对于750px的（物理像素），对你来说你的1px是相对于375px的（css像素）“实际上你应该是border-width:0.5px”。</p></div></li>
-<li><p>使用伪类 + transform实现</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:before</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#eaeaea</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-transform</span>:<span class="built_in">scale</span>(0.5);</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(0.5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过 viewport + rem 实现</p>
-<div class="note "><p>将border设置为1px,然后将页面根据设备的dpr缩小相应的倍数，接着将rem放大相应的倍数，这样页面中只有1px的边框缩小了，而其他内容经过缩小和扩大，还是原来的状态。(rem元素大小不变，仅仅是px元素会根据dpr进行缩放)。</p></div>
-</li>
-</ul>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><ul>
-<li><p>transform</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father-box</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">5</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(0,0,0,0.6);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child-box</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">240px</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">-o-transform</span>: <span class="built_in">translate3d</span>(-50%,-50%,0);</span><br><span class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">translate3d</span>(-50%,-50%,0);</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(-50%,-50%,0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>flex布局实现</p>
-</li>
-<li>绝对定位<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.use-absolute</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.use-absolute</span> <span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin</span>:auto;</span><br><span class="line">    <span class="attribute">background</span>:<span class="number">#f60</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><ul>
-<li>标准盒模型<div class="note "><p>标准盒模型：W3C标准<br>定义：一个块的总宽度=width+margin(左右)+padding(左右)+border(左右)</p></div></li>
-<li>怪异盒模型<div class="note "><p>怪异盒模型：IE标准盒子模型<br>定义：一个块的总宽度=width+margin（左右）（既width已经包含了padding和border值）</p></div></li>
-<li>怪异盒模型用处<div class="note "><p>box-sizing:content-box || border-box || inherit;<br>当设置为box-sizing:border-box时，将采用怪异模式解析计算；好处是便于整体计算，例如一个页面1000px，指定左右各500px，如果采用怪异模式，不需要care宽度和border，padding的影响，因为border,padding都归属于width。</p></div>
-</li>
-</ul>
-<h2 id="隐藏元素方法"><a href="#隐藏元素方法" class="headerlink" title="隐藏元素方法"></a>隐藏元素方法</h2><ul>
-<li><code>visibility: hidden</code><div class="note "><p>使对象在网页上不可见，但该对象在网页上所占的空间没有改变，通俗来说就是看不见但摸得到。具体表现如下：</p>
-<ol>
-<li>DOM结构：被渲染，但是被隐藏，会占据空间；</li>
-<li>事件监听：无法进行DOM事件监听；</li>
-<li>性能：动态改变此属性会引起重绘，性能较高；</li>
-<li>继承：会被子元素继承，子元素可以通过设置visibility:visible来取消隐藏；</li>
-<li>transition：visibility会立即显示，隐藏时会延时。</li>
-</ol></div></li>
-<li><code>display: none</code><div class="note "><p>不为被隐藏的对象保留其物理空间，即该对象在页面上彻底消失，通俗来说就是看不见也摸不到。具体表现如下：</p>
-<ol>
-<li>DOM结构，浏览器不会渲染display:none的元素，不占据空间；</li>
-<li>事件监听：无法进行DOM事件监听；</li>
-<li>性能：动态改变此属性会引起重排，性能较差；</li>
-<li>继承：不会被子元素继承，毕竟子类也不会渲染；</li>
-<li>transition：transition不支持display。</li>
-</ol></div></li>
-<li><code>opacity: 0</code><div class="note "><p>与visibility: hidden相似，使对象在网页上不可见，但该对象在网页上所占的空间没有改变，但是可以进行DOM事件监听，visibility：hidden不可以,通俗来说就是看不见但是摸得着。具体表现如下：</p>
-<ol>
-<li>DOM结构：透明度为100%，元素被隐藏，会占据空间；</li>
-<li>事件监听：可以进行DOM事件监听；</li>
-<li>性能：提升为合成层，不会引起重绘，性能较高；</li>
-<li>继承：会被子元素继承，子元素并不能通过opacity:1来取消隐藏；</li>
-<li>transition：opacity可以延迟显示和隐藏。</li>
-</ol></div></li>
-<li><code>position: absolute</code>通过使用绝对定位将元素移除可视区域内</li>
-<li><code>z-index: -999</code>来使其他元素遮盖住该元素</li>
-<li><code>clip/clip-path</code>使用元素裁剪,元素仍在页面中占据位置，但是不会响应绑定的监听事件。</li>
-<li><code>transform: scale(0,0)</code>将元素缩放为 0，元素仍在页面中占据位置，但是不会响应绑定的监听事件。</li>
-</ul>
-<h2 id="transition和animation的区别"><a href="#transition和animation的区别" class="headerlink" title="transition和animation的区别"></a>transition和animation的区别</h2><div class="note "><ul>
-<li>transition是过度属性，强调过度，它的实现需要触发一个事件（比如鼠标移动上去，焦点，点击等）才执行动画。它类似于flash的补间动画，设置一个开始关键帧，一个结束关键帧。</li>
-<li>animation是动画属性，它的实现不需要触发事件，设定好时间之后可以自己执行，且可以循环一个动画。它也类似于flash的补间动画，但是它可以设置多个关键帧（用@keyframe定义）完成动画。</li>
-</ul></div>
-<h2 id="css3新特性"><a href="#css3新特性" class="headerlink" title="css3新特性"></a>css3新特性</h2><div class="note "><p>新增各种CSS选择器 （: not(.input)：所有 class 不是“input”的节点）<br>多列布局 （multi-column layout）<br>阴影和反射 （Shadoweflect）<br>文字特效 （text-shadow）<br>文字渲染 （Text-decoration）<br>线性渐变 （gradient）<br>旋转 （transform）增加了旋转,缩放,定位,倾斜,动画,多背景<br>边框新增属性 border-radius、box-shadow和border-image<br>box-sizing</p></div>
-<h2 id="CSS-Sprites-雪碧图"><a href="#CSS-Sprites-雪碧图" class="headerlink" title="CSS Sprites 雪碧图"></a>CSS Sprites 雪碧图</h2><div class="note "><p>将一个页面涉及到的所有图片都包含到一张大图中去，然后利用CSS的 background-image，background-repeat，background-position属性的组合进行背景定位。</p>
-<ul>
-<li><p>优点<br>能很好地减少网页的http请求，从而大大提高了页面的性能<br>能减少图片的字节，把3张图片合并成1张图片的字节总是小于这3张图片的字节总和。</p>
-</li>
-<li><p>缺点<br>在图片合并时，要把多张图片有序的、合理的合并成一张图片，还要留好足够的空间，防止板块内出现不必要的背景。在宽屏及高分辨率下的自适应页面，如果背景不够宽，很容易出现背景断裂；<br>在开发的时候相对来说有点麻烦，需要借助photoshop或其他工具来对每个背景单元测量其准确的位置<br>在维护的时候比较麻烦，页面背景有少许改动时，就要改这张合并的图片，无需改的地方尽量不要动，这样避免改动更多的CSS，如果在原来的地方放不下，又只能（最好）往下加图片，这样图片的字节就增加了，还要改动CSS</p>
-</li>
-</ul></div>
-<h2 id="before-和-after-的双冒号和单冒号有什么区别？-低"><a href="#before-和-after-的双冒号和单冒号有什么区别？-低" class="headerlink" title="::before 和 :after 的双冒号和单冒号有什么区别？(低)"></a>::before 和 :after 的双冒号和单冒号有什么区别？(低)</h2><div class="note "><ol>
-<li>冒号(:)用于CSS3伪类，双冒号(::)用于CSS3伪元素。</li>
-<li>::before就是以一个子元素的存在，定义在元素主体内容之前的一个伪元素。并不存在于dom之中，只存在在页面之中。</li>
-</ol>
-<p>注意： :before 和 :after 这两个伪元素，是在CSS2.1里新出现的。起初，伪元素的前缀使用的是单冒号语法，但随着Web的进化，在CSS3的规范里，伪元素的语法被修改成使用双冒号，成为::before、::after。</p></div>
-<h2 id="移动端适配方法"><a href="#移动端适配方法" class="headerlink" title="移动端适配方法"></a>移动端适配方法</h2><ul>
-<li><p>viewport适配</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原理：通过设置 initial-scale , 将所有设备布局视口的宽度调整为设计图的宽度.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//获取meta节点</span></span><br><span class="line"><span class="keyword">var</span> metaNode = <span class="built_in">document</span>.querySelector(<span class="string">'meta[name=viewport]'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//定义设计稿宽度为375</span></span><br><span class="line"><span class="keyword">var</span> designWidth = <span class="number">375</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//计算当前屏幕的宽度与设计稿比例</span></span><br><span class="line"><span class="keyword">var</span> scale = <span class="built_in">document</span>.documentElement.clientWidth/designWidth;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//通过设置meta元素中content的initial-scale值达到移动端适配</span></span><br><span class="line">meta.content=<span class="string">"initial-scale="</span>+scale+<span class="string">",minimum-scale="</span>+scale+<span class="string">",maximum-scale="</span>+scale+<span class="string">",user-scalable=no"</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>借助media实现rem适配</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//对屏幕大小划分了html不同的font-size</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">320px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">50px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">360px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">56.25px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">375px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">58.59375px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">400px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">62.5px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">414px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">64.6875px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">440px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">68.75px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">480px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">75px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">520px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">81.25px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">560px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">87.5px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">600px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">93.75px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">640px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">100px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">680px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">106.25px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">720px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">112.5px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">760px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">118.75px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">800px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">125px</span>;&#125;&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">960px</span>) &#123;<span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">150px</span>;&#125;&#125;</span><br></pre></td></tr></table></figure>
-  <div class="note "><p>rem：CSS的长度单位， 根元素字体大小的倍数，只有根元素字体大小有关； html 中的根元素即 html 元素。</p>
-<p>大部分浏览器的默认字体大小都是16px，所以1rem = 16px；</p>
-<p>rem适配原理:<br>长度单位都是用 rem 设置<br>当屏幕尺寸改变时，只需要修改 html 元素的 font-size 即可实现等比适配<br>我们在制作页面的时候，只考虑跟设计稿相同的屏幕尺寸即可，其他尺寸屏幕自动适配</p></div>
-</li>
-<li><p>Flex弹性布局</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-  <div class="note "><p>高度定死，宽度自适应，元素都采用px做单位。</p>
-<p>随着屏幕宽度变化，页面也会跟着变化，效果就和PC页面的流体布局差不多，在哪个宽度需要调整的时候使用响应式布局调调就行（比如网易新闻），这样就实现了『适配』。</p></div>
-</li>
-</ul>
-<h2 id="px、em、rem的区别及使用场景"><a href="#px、em、rem的区别及使用场景" class="headerlink" title="px、em、rem的区别及使用场景"></a>px、em、rem的区别及使用场景</h2><div class="note "><ul>
-<li>px是固定的像素，一旦设置了就无法因为适应页面大小而改变。</li>
-<li>em和rem相对于px更具有灵活性，他们是相对长度单位，其长度不是固定的，更适用于响应式布局。</li>
-<li>em是相对于其父元素来设置字体大小，这样就会存在一个问题，进行任何元素设置，都有可能需要知道他父元素的大小。而rem是相对于根元素，这样就意味着，只需要在根元素确定一个参考值。</li>
-</ul></div>
-<h2 id="为什么需要清除浮动？清除浮动的方式"><a href="#为什么需要清除浮动？清除浮动的方式" class="headerlink" title="为什么需要清除浮动？清除浮动的方式"></a>为什么需要清除浮动？清除浮动的方式</h2><ul>
-<li><p>浮动的定义</p>
-<div class="note "><p>非IE浏览器下，容器不设高度且子元素浮动时，容器高度不能被内容撑开。 此时，内容会溢出到容器外面而影响布局。这种现象被称为浮动（溢出）。</p></div>
-</li>
-<li><p>浮动的工作原理：</p>
-<div class="note "><p>浮动元素脱离文档流，不占据空间（引起“高度塌陷”现象）<br>浮动元素碰到包含它的边框或者其他浮动元素的边框停留</p>
-<p>浮动元素可以左右移动，直到遇到另一个浮动元素或者遇到它外边缘的包含框。浮动框不属于文档流中的普通流，当元素浮动之后，不会影响块级元素的布局，只会影响内联元素布局。此时文档流中的普通流就会表现得该浮动框不存在一样的布局模式。当包含框的高度小于浮动框的时候，此时就会出现“高度塌陷”。</p></div>
-</li>
-<li><p>浮动元素引起的问题？</p>
-<div class="note "><p>父元素的高度无法被撑开，影响与父元素同级的元素<br>与浮动元素同级的非浮动元素会跟随其后<br>若浮动的元素不是第一个元素，则该元素之前的元素也要浮动，否则会影响页面的显示结构</p></div>
-</li>
-<li><p>清除浮动的方式如下：</p>
-<div class="note "><p>给父级div定义height属性<br>最后一个浮动元素之后添加一个空的div标签，并添加clear:both样式<br>包含浮动元素的父级标签添加overflow:hidden或者overflow:auto<br>使用 :after 伪元素。由于IE6-7不支持 :after，使用 zoom:1 触发 hasLayout**</p></div>
-</li>
-</ul>
-<h2 id="BFC-待"><a href="#BFC-待" class="headerlink" title="BFC(待)"></a>BFC(待)</h2><h2 id="设置小于12px的字体-低"><a href="#设置小于12px的字体-低" class="headerlink" title="设置小于12px的字体(低)"></a>设置小于12px的字体(低)</h2><div class="note "><p>在谷歌下css设置字体大小为12px及以下时，显示都是一样大小，都是默认12px。</p>
-<p>解决办法：<br>使用Webkit的内核的-webkit-text-size-adjust的私有CSS属性来解决，只要加了-webkit-text-size-adjust:none;字体大小就不受限制了。但是chrome更新到27版本之后就不可以用了。所以高版本chrome谷歌浏览器已经不再支持-webkit-text-size-adjust样式，所以要使用时候慎用。<br>使用css3的transform缩放属性-webkit-transform:scale(0.5); 注意-webkit-transform:scale(0.75);收缩的是整个元素的大小，这时候，如果是内联元素，必须要将内联元素转换成块元素，可以使用display：block/inline-block/…；<br>使用图片：如果是内容固定不变情况下，使用将小于12px文字内容切出做图片，这样不影响兼容也不影响美观。</p></div>
-<h1 id="js部分"><a href="#js部分" class="headerlink" title="js部分"></a>js部分</h1><h2 id="js数据类型"><a href="#js数据类型" class="headerlink" title="js数据类型"></a>js数据类型</h2><p>根据ES6规范，共7种数据类型，分为基本数据类型（值类型）和对象数据类型（引用类型）</p>
-<blockquote>
-<p>不能按照typeof函数的返回值划分简单类型：string,number,boolean,undefined; 复杂类型：object,function, typeof只是作为判断数据类型的存在</p>
-</blockquote>
-<ul>
-<li>基本数据类型（值类型）<ul>
-<li>数字<code>number</code></li>
-<li>字符串<code>string</code></li>
-<li>布尔值<code>boolean</code></li>
-<li>空值<code>null</code></li>
-<li>未定义<code>undefined</code></li>
-<li>符号<code>symbol</code></li>
-</ul>
-</li>
-<li>对象数据类型（引用类型）：   <ul>
-<li>对象<code>object</code></li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="undefined和null的区别"><a href="#undefined和null的区别" class="headerlink" title="undefined和null的区别"></a>undefined和null的区别</h2><p><code>null</code>表示没有对象，即该处不应该有值,<code>undefined</code>表示缺少值，即此处应该有值，但没有定义<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>);     <span class="comment">//true  因为两者都默认转换成了false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">undefined</span>);      <span class="comment">//"undefined"  </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">null</span>);           <span class="comment">//"object"  </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> === <span class="literal">undefined</span>);    <span class="comment">//false   "==="表示绝对相等，null和undefined类型是不一样的，所以输出“false”</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="扁平化数组"><a href="#扁平化数组" class="headerlink" title="扁平化数组"></a>扁平化数组</h2><ul>
-<li>toString</li>
-</ul>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ul>
-<li><p>概念</p>
-<div class="note "><p>闭包就是能够读取其他函数内部变量的函数。<br>由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。<br>所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</p></div>
-</li>
-<li><p>用途</p>
-<div class="note "><ol>
-<li>可以读取函数内部的变量</li>
-<li>让这些变量的值始终保持在内存中。</li>
-</ol></div>
-</li>
-</ul>
-<h2 id="原型链与继承"><a href="#原型链与继承" class="headerlink" title="原型链与继承"></a>原型链与继承</h2><h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><h2 id="es6新特性"><a href="#es6新特性" class="headerlink" title="es6新特性"></a>es6新特性</h2><div class="note "><p>字符串, 数组, 对象 扩展的api<br>变量扩展: let const 解构赋值 块级作用域<br>函数扩展: 箭头函数 默认参数, rest参数<br>展开运算符, 模板字符串<br>set 和 map数据结构<br>迭代器和生成器函数 next 和 yield的理解<br>proxy对象 属性代理器: 属性的读取（get）和设置（set）相关操作<br>promise对象, 异步编程的解决方案<br>async + await: 异步编程的终极方案 promise + generator的语法糖<br>class语法 构造函数的语法糖<br>模块化编程 export + import 的 导出和导入</p></div>
-<h2 id="箭头函数与函数区别"><a href="#箭头函数与函数区别" class="headerlink" title="箭头函数与函数区别"></a>箭头函数与函数区别</h2><h2 id="http状态码"><a href="#http状态码" class="headerlink" title="http状态码"></a>http状态码</h2><h2 id="cookie-session-token"><a href="#cookie-session-token" class="headerlink" title="cookie,session,token"></a>cookie,session,token</h2><div class="note "><p>Cookie：cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下,存储的大小很小只有4K左右。（key：可以在浏览器和服务器端来回传递，存储容量小，只有大约4K左右）</p>
-<p>sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持，localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。（key：本身就是一个回话过程，关闭浏览器后消失，session为一个回话，当页面不同即使是同一页面打开两次，也被视为同一次回话）</p>
-<p>localStorage：localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的。（key：同源窗口都会共享，并且不会失效，不管窗口或者浏览器关闭与否都会始终生效）</p></div>
-<h2 id="前端性能优化"><a href="#前端性能优化" class="headerlink" title="前端性能优化"></a>前端性能优化</h2><h2 id="js运行机制，事件队列和循环"><a href="#js运行机制，事件队列和循环" class="headerlink" title="js运行机制，事件队列和循环"></a>js运行机制，事件队列和循环</h2><h2 id="异步编程"><a href="#异步编程" class="headerlink" title="异步编程"></a>异步编程</h2><ul>
-<li>callback</li>
-<li>Promises</li>
-<li>async await</li>
-<li>事件监听,发布订阅<h2 id="setTimeout、Promise、Async-Await-的区别"><a href="#setTimeout、Promise、Async-Await-的区别" class="headerlink" title="setTimeout、Promise、Async/Await 的区别"></a>setTimeout、Promise、Async/Await 的区别</h2><div class="note "><p>事件循环中分为宏任务队列和微任务队列。<br>其中settimeout的回调函数放到宏任务队列里，等到执行栈清空以后执行；<br>promise.then里的回调函数会放到相应宏任务的微任务队列里，等宏任务里面的同步代码执行完再执行；async函数表示函数里面可能会有异步方法，await后面跟一个表达式，async方法执行时，遇到await会立即执行表达式，然后把表达式后面的代码放到微任务队列里，让出执行栈让同步代码先执行。</p></div>
-</li>
-</ul>
-<h2 id="Promise-构造函数是同步执行还是异步执行，那么-then-方法呢？"><a href="#Promise-构造函数是同步执行还是异步执行，那么-then-方法呢？" class="headerlink" title="Promise 构造函数是同步执行还是异步执行，那么 then 方法呢？"></a>Promise 构造函数是同步执行还是异步执行，那么 then 方法呢？</h2><div class="note "><p>promise构造函数是同步执行的，then方法是异步执行的</p></div>
-<h2 id="new关键字做了什么"><a href="#new关键字做了什么" class="headerlink" title="new关键字做了什么"></a>new关键字做了什么</h2><div class="note "><p>1.声明一个中间对象<br>2.将该中间对象的proto指向构造函数的原型<br>3.将构造函数的this通过apply指向中间对象<br>4.返回该中间对象,也就是返回了实例对象</p></div>
-<h2 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h2><ul>
-<li><p>概念</p>
-<div class="note "><p>如何区分深拷贝与浅拷贝，简单点来说，就是假设B复制了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，拿人手短，如果B没变，那就是深拷贝，自食其力。</p></div>
-</li>
-<li><p>深拷贝实现方式</p>
-</li>
-</ul>
-<ol>
-<li><p>递归递归去复制所有层级属性(PS：只是一个基本实现的展示，并非最佳实践)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> objClone = <span class="built_in">Array</span>.isArray(obj)?[]:&#123;&#125;;</span><br><span class="line">    <span class="keyword">if</span>(obj &amp;&amp; <span class="keyword">typeof</span> obj===<span class="string">"object"</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(key <span class="keyword">in</span> obj)&#123;</span><br><span class="line">            <span class="keyword">if</span>(obj.hasOwnProperty(key))&#123;</span><br><span class="line">                <span class="comment">//判断ojb子元素是否为对象，如果是，递归复制</span></span><br><span class="line">                <span class="keyword">if</span>(obj[key]&amp;&amp;<span class="keyword">typeof</span> obj[key] ===<span class="string">"object"</span>)&#123;</span><br><span class="line">                    objClone[key] = deepClone(obj[key]);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="comment">//如果不是，简单复制</span></span><br><span class="line">                    objClone[key] = obj[key];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> objClone;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过JSON对象来实现深拷贝</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//缺点： 无法实现对对象中方法的深拷贝，会显示为undefined</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone2</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _obj = <span class="built_in">JSON</span>.stringify(obj),</span><br><span class="line">    objClone = <span class="built_in">JSON</span>.parse(_obj);</span><br><span class="line">    <span class="keyword">return</span> objClone;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过jQuery的extend方法实现深拷贝</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">var</span> newArray = $.extend(<span class="literal">true</span>,[],array); <span class="comment">// true为深拷贝，false为浅拷贝</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>lodash函数库实现深拷贝</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result = _.cloneDeep(test)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果对象的value是基本类型的话，也可以用Object.assign来实现深拷贝，但是要把它赋值给一个空对象</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj1 = <span class="built_in">Object</span>.assign(&#123;&#125;, obj); <span class="comment">// obj赋值给一个空&#123;&#125;</span></span><br><span class="line">obj1.a = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj.a)；<span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="跨域解决方案"><a href="#跨域解决方案" class="headerlink" title="跨域解决方案"></a>跨域解决方案</h2><ul>
-<li>通过jsonp跨域</li>
-<li>postMessage跨域<div class="note "><p>postMessage是HTML5 XMLHttpRequest Level 2中的API，且是为数不多可以跨域操作的window属性之一，它可用于解决以下方面的问题：<br>a.） 页面和其打开的新窗口的数据传递<br>b.） 多窗口之间消息传递<br>c.） 页面与嵌套的iframe消息传递<br>d.） 上面三个场景的跨域数据传递</p>
-<p>用法：postMessage(data,origin)方法接受两个参数<br>data： html5规范支持任意基本类型或可复制的对象，但部分浏览器只支持字符串，所以传参时最好用JSON.stringify()序列化。<br>origin： 协议+主机+端口号，也可以设置为”*”，表示可以传递给任意窗口，如果要指定和当前窗口同源的话设置为”/“。</p></div></li>
-<li>跨域资源共享（CORS）<div class="note "><p>普通跨域请求：只服务端设置Access-Control-Allow-Origin即可，前端无须设置，若要带cookie请求：前后端都需要设置。</p></div></li>
-<li>nodejs中间件代理跨域</li>
-<li>nginx代理跨域</li>
-<li>WebSocket协议跨域</li>
-</ul>
-<h2 id="如果通过点击空白区域关闭一个弹窗"><a href="#如果通过点击空白区域关闭一个弹窗" class="headerlink" title="如果通过点击空白区域关闭一个弹窗"></a>如果通过点击空白区域关闭一个弹窗</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'click'</span>, bodyClosePopup);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bodyClosePopup</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> selectBox = <span class="built_in">document</span>.querySelector(<span class="string">'.ant-select-dropdown'</span>);</span><br><span class="line">    <span class="keyword">let</span> modalBox = <span class="built_in">document</span>.querySelector(<span class="string">'.ant-modal-root'</span>);</span><br><span class="line">    <span class="keyword">const</span> path = event.path || (event.composedPath &amp;&amp; event.composedPath());</span><br><span class="line">    <span class="keyword">if</span> (path.includes(modalBox) || path.includes(selectBox)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.dataSource.length) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//符合条件,关闭弹窗</span></span><br><span class="line">    <span class="keyword">this</span>.popup = <span class="literal">false</span>;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h1 id="vue部分"><a href="#vue部分" class="headerlink" title="vue部分"></a>vue部分</h1><h2 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h2><h2 id="Vue-的父组件和子组件生命周期钩子执行顺序是什么"><a href="#Vue-的父组件和子组件生命周期钩子执行顺序是什么" class="headerlink" title="Vue 的父组件和子组件生命周期钩子执行顺序是什么"></a>Vue 的父组件和子组件生命周期钩子执行顺序是什么</h2><div class="note "><p>加载渲染过程<br>父beforeCreate-&gt;父created-&gt;父beforeMount-&gt;子beforeCreate-&gt;子created-&gt;子beforeMount-&gt;子mounted-&gt;父mounted<br>子组件更新过程<br>父beforeUpdate-&gt;子beforeUpdate-&gt;子updated-&gt;父updated<br>父组件更新过程<br>父beforeUpdate-&gt;父updated<br>销毁过程<br>父beforeDestroy-&gt;子beforeDestroy-&gt;子destroyed-&gt;父destroyed</p></div>
-<h2 id="vue响应式实现原理"><a href="#vue响应式实现原理" class="headerlink" title="vue响应式实现原理"></a>vue响应式实现原理</h2><ul>
-<li>Object.defineProperty</li>
-<li>Object.defineProperty的缺陷<div class="note "><p>Object.defineProperty无法监控到数组下标的变化，导致通过数组下标添加元素，不能实时响应; 为了解决这个问题，经过vue内部处理后可以使用以下几种方法来监听数组<br>push()<br>pop()<br>shift()<br>unshift()<br>splice()<br>sort()<br>reverse()</p>
-<p>Object.defineProperty只能劫持对象的属性，从而需要对每个对象，每个属性进行遍历，如果，属性值是对象，还需要深度遍历。Proxy可以劫持整个对象，并返回一个新的对象。<br>Proxy不仅可以代理对象，还可以代理数组。还可以代理动态增加的属性。</p></div>
-</li>
-</ul>
-<h2 id="写-React-Vue-项目时为什么要在列表组件中写-key，其作用是什么？"><a href="#写-React-Vue-项目时为什么要在列表组件中写-key，其作用是什么？" class="headerlink" title="写 React / Vue 项目时为什么要在列表组件中写 key，其作用是什么？"></a>写 React / Vue 项目时为什么要在列表组件中写 key，其作用是什么？</h2><div class="note "><p>不用 key：<br>就地复用节点。在比较新旧两个节点是否是同一个节点的过程中会判断成新旧两个节点是同一个节点，因为 a.key 和 b.key 都是 undefined。所以不会重新创建节点和删除节点，只会在节点的属性层面上进行比较和更新。所以可能在某种程度上（创建和删除节点方面）会有渲染性能上的提升；</p>
-<p>无法维持组件的状态。由于就地复用节点的关系，可能在维持组件状态方面会导致不可预知的错误，比如无法维持改组件的动画效果、开关等状态；</p>
-<p>也有可能会带来性能下降。因为是直接就地复用节点，如果修改的组件，需要复用的很多节点，顺序又和原来的完全不同的话，那么创建和删除的节点数量就会比带 key 的时候增加很多，性能就会有所下降；</p>
-<p>用 key：<br>维持组件的状态，保证组件的复用。因为有 key 唯一标识了组件，不会在每次比较新旧两个节点是否是同一个节点的时候直接判断为同一个节点，而是会继续在接下来的节点中找到 key 相同的节点去比较，能找到相同的 key 的话就复用节点，不能找到的话就增加或者删除节点。</p>
-<p>查找性能上的提升。有 key 的时候，会生成 hash，这样在查找的时候就是 hash 查找了，基本上就是 O(1) 的复杂度。</p>
-<p>节点复用带来的性能提升。因为有 key 唯一标识了组件，所以会尽可能多的对组件进行复用（尽管组件顺序不同），那么创建和删除节点数量就会变少，这方面的消耗就会下降，带来性能的提升。</p>
-<p>总结：性能提升不能只考虑一方面，不是 diff 快了性能就快，不是增删节点少了性能就快，不考虑量级的去评价性能，都只是泛泛而谈。<br>说明：以上描述的「节点」和「组件」其实是同一个东西，只是表达上不同而已。</p></div>
-<h2 id="为什么-Vuex-的-mutation中不能做异步操作"><a href="#为什么-Vuex-的-mutation中不能做异步操作" class="headerlink" title="为什么 Vuex 的 mutation中不能做异步操作"></a>为什么 Vuex 的 mutation中不能做异步操作</h2><div class="note "><p>因为异步操作是成功还是失败不可预测，什么时候进行异步操作也不可预测；当异步操作成功或失败时，如果不 commit(mutation) 或者 dispatch(action)，Vuex 和 Redux 就不能捕获到异步的结果从而进行相应的操作</p>
-<p>因为更改state的函数必须是纯函数，纯函数既是统一输入就会统一输出，没有任何副作用；如果是异步则会引入额外的副作用，导致更改后的state不可预测</p>
-<p>Vuex的异步操作可以放在action里面</p></div>
-<h2 id="vue-不推荐for和if嵌套使用原因"><a href="#vue-不推荐for和if嵌套使用原因" class="headerlink" title="vue 不推荐for和if嵌套使用原因"></a>vue 不推荐for和if嵌套使用原因</h2><div class="note "><p>原因：v-for比v-if优先级高，所以嵌套使用的的话，每次v-for都会执行v-if，造成不必要的计算，影响性能，尤其是当之需要渲染很小一部分的时候。</p></div>
-<h2 id="v-show-与-v-if-有什么区别？"><a href="#v-show-与-v-if-有什么区别？" class="headerlink" title="v-show 与 v-if 有什么区别？"></a>v-show 与 v-if 有什么区别？</h2><div class="note "><p>v-if 是真正的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建；也是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。<br>v-show 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 的 “display” 属性进行切换。<br>所以，v-if 适用于在运行时很少改变条件，不需要频繁切换条件的场景；v-show 则适用于需要非常频繁切换条件的场景。</p></div>
-<h2 id="vue组件通信方式"><a href="#vue组件通信方式" class="headerlink" title="vue组件通信方式"></a>vue组件通信方式</h2><ul>
-<li>props / $emit 适用 父子组件通信</li>
-<li>ref 与 $parent / $children 适用 父子组件通信</li>
-<li>EventBus （$emit / $on） 适用于 父子、隔代、兄弟组件通信</li>
-<li>$attrs/$listeners 适用于 隔代组件通信</li>
-<li>provide / inject 适用于 隔代组件通信</li>
-<li>Vuex 适用于 父子、隔代、兄弟组件通信</li>
-</ul>
-<h2 id="vue组件封装方式"><a href="#vue组件封装方式" class="headerlink" title="vue组件封装方式"></a>vue组件封装方式</h2><h2 id="全局price价格显示处理方式"><a href="#全局price价格显示处理方式" class="headerlink" title="全局price价格显示处理方式"></a>全局price价格显示处理方式</h2><h2 id="vue单页应用spa理解，优缺点"><a href="#vue单页应用spa理解，优缺点" class="headerlink" title="vue单页应用spa理解，优缺点"></a>vue单页应用spa理解，优缺点</h2><div class="note "><p>SPA（ single-page application ）仅在 Web 页面初始化时加载相应的 HTML、JavaScript 和 CSS。一旦页面加载完成，SPA 不会因为用户的操作而进行页面的重新加载或跳转；取而代之的是利用路由机制实现 HTML 内容的变换，UI 与用户的交互，避免页面的重新加载。<br>优点：</p>
-<p>用户体验好、快，内容的改变不需要重新加载整个页面，避免了不必要的跳转和重复渲染；<br>基于上面一点，SPA 相对对服务器压力小；<br>前后端职责分离，架构清晰，前端进行交互逻辑，后端负责数据处理；</p>
-<p>缺点：</p>
-<p>初次加载耗时多：为实现单页 Web 应用功能及显示效果，需要在加载页面的时候将 JavaScript、CSS 统一加载，部分页面按需加载；<br>前进后退路由管理：由于单页应用在一个页面中显示所有的内容，所以不能使用浏览器的前进后退功能，所有的页面切换需要自己建立堆栈管理；<br>SEO 难度较大：由于所有的内容都在一个页面中动态替换显示，所以在 SEO 上其有着天然的弱势。</p></div>
-<h2 id="怎么监听对象某个属性更改"><a href="#怎么监听对象某个属性更改" class="headerlink" title="怎么监听对象某个属性更改"></a>怎么监听对象某个属性更改</h2><ul>
-<li><p>深度监测</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    count: 10，</span><br><span class="line">    blog:&#123;</span><br><span class="line">        title:&apos;my-blog&apos;,</span><br><span class="line">        categories:[]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    blog:&#123;</span><br><span class="line">        handler(newVal,oldVal)&#123;</span><br><span class="line">            console.log(`new: $&#123;newVal&#125;, old: $&#123;oldVal&#125;`);</span><br><span class="line">        &#125;,</span><br><span class="line">        deep:true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-  <div class="note "><p>里面的deep设为了true，这样的话，如果修改了这个blog中的任何一个属性，都会执行handler这个方法。不过这样会造成更多的性能开销，尤其是对象里面属性过多，结构嵌套过深的时候。而且有时候我们就只想关心这个对象中的某个特定属性，这个时候可以这样</p></div>
-</li>
-<li><p>用字符串来表示对象的属性调用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    count: 10，</span><br><span class="line">    blog:&#123;</span><br><span class="line">        title:&apos;my-blog&apos;,</span><br><span class="line">        categories:[]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    &apos;blog.categories&apos;(newVal, oldVal) &#123;</span><br><span class="line">        console.log(`new:$&#123;newVal&#125;, old:$&#123;oldVal&#125;`);</span><br><span class="line">    &#125;, </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用computed计算属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    count: 10，</span><br><span class="line">    blog:&#123;</span><br><span class="line">        title:&apos;my-blog&apos;,</span><br><span class="line">        categories:[]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    categories() &#123;</span><br><span class="line">      return this.blog.categories;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    categories(newVal, oldVal) &#123;</span><br><span class="line">      console.log(`new:$&#123;newVal&#125;, old:$&#123;oldVal&#125;`);</span><br><span class="line">    &#125;, </span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="computed-和-watch-的区别和运用的场景？"><a href="#computed-和-watch-的区别和运用的场景？" class="headerlink" title="computed 和 watch 的区别和运用的场景？"></a>computed 和 watch 的区别和运用的场景？</h2><div class="note "><p>computed： 是计算属性，依赖其它属性值，并且 computed 的值有缓存，只有它依赖的属性值发生改变，下一次获取 computed 的值时才会重新计算 computed  的值；<br>watch： 更多的是「观察」的作用，类似于某些数据的监听回调 ，每当监听的数据变化时都会执行回调进行后续操作；<br>运用场景：</p>
-<p>当我们需要进行数值计算，并且依赖于其它数据时，应该使用 computed，因为可以利用 computed 的缓存特性，避免每次获取值时，都要重新计算；</p>
-<p>当我们需要在数据变化时执行异步或开销较大的操作时，应该使用 watch，使用 watch 选项允许我们执行异步操作 ( 访问一个 API )，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。</p></div>
-<h2 id="Vue-获取初始化数据是放在created还是mounted"><a href="#Vue-获取初始化数据是放在created还是mounted" class="headerlink" title="Vue 获取初始化数据是放在created还是mounted"></a>Vue 获取初始化数据是放在created还是mounted</h2><div class="note "><p>一般来说，可以在，created，mounted中都可以发送数据请求，但是，大部分时候，会在created发送请求。<br>Created的使用场景：如果页面首次渲染的就来自后端数据。因为，此时data已经挂载到vue实例了。<br>在 created（如果希望首次选的数据来自于后端，就在此处发请求）（只发了异步请求，渲染是在后端响应之后才进行的）、beforeMount、mounted（在mounted中发请求会进行二次渲染） 这三个钩子函数中进行调用。<br>因为在这三个钩子函数中，data 已经创建，可以将服务端端返回的数据进行赋值。但是最常用的是在 created 钩子函数中调用异步请求，因为在 created 钩子函数中调用异步请求</p>
-<p>有两个优点：<br>第一点：能更快获取到服务端数据，减少页面 loading 时间；<br>第二点：放在 created 中有助于一致性，因为ssr 不支持 beforeMount 、mounted 钩子函数。</p></div>
-<div class="note "><p>也就是说Vue实例中的data和methods已经可以使用了。但是还没有挂载到页面上。可以在created里面去后端获取数据。</p>
-<p>当进入mounted这个生命周期函数。此时页面已经渲染出来，可以进行dom操作。</p>
-<p>总而言之。created生命周期函数，可以去后端异步获取数据，并保存到data里面。<br>mounted的话，如果需要在页面上操作dom，就要在这个函数执行。但是注意 mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，那就需要使用到vm.$nextTick</p></div>
-<h2 id="组件中-data-为什么是一个函数？"><a href="#组件中-data-为什么是一个函数？" class="headerlink" title="组件中 data 为什么是一个函数？"></a>组件中 data 为什么是一个函数？</h2><div class="note "><p>因为组件是用来复用的，且 JS 里对象是引用关系，如果组件中 data 是一个对象，那么这样作用域没有隔离，子组件中的 data 属性值会相互影响，如果组件中 data 选项是一个函数，那么每个实例可以维护一份被返回对象的独立的拷贝，组件实例之间的 data 属性值不会互相影响；而 new Vue 的实例，是不会被复用的，因此不存在引用对象的问题。</p></div>
-<h2 id="v-model-的原理？"><a href="#v-model-的原理？" class="headerlink" title="v-model 的原理？"></a>v-model 的原理？</h2><div class="note "><p>我们在 vue 项目中主要使用 v-model 指令在表单 input、textarea、select 等元素上创建双向数据绑定，我们知道 v-model 本质上不过是语法糖，v-model 在内部为不同的输入元素使用不同的属性并抛出不同的事件：</p>
-<p>text 和 textarea 元素使用 value 属性和 input 事件；<br>checkbox 和 radio 使用 checked 属性和 change 事件；<br>select 字段将 value 作为 prop 并将 change 作为事件。</p></div>
-<p><a href="https://codepen.io/lcj-minya/pen/NWXYwLL" target="_blank" rel="noopener">自定义实现v-model示例</a></p>
-<h2 id="vue-router-路由模式有几种？"><a href="#vue-router-路由模式有几种？" class="headerlink" title="vue-router 路由模式有几种？"></a>vue-router 路由模式有几种？</h2><div class="note "><p>hash:  使用 URL hash 值来作路由。支持所有浏览器，包括不支持 HTML5 History Api 的浏览器；</p>
-<p>history :  依赖 HTML5 History API 和服务器配置。具体可以查看 HTML5 History 模式；</p>
-<p>abstract :  支持所有 JavaScript 运行环境，如 Node.js 服务器端。如果发现没有浏览器的 API，路由会自动强制进入这个模式.</p></div>
-<h2 id="能说下-vue-router-中常用的-hash-和-history-路由模式实现原理吗？"><a href="#能说下-vue-router-中常用的-hash-和-history-路由模式实现原理吗？" class="headerlink" title="能说下 vue-router 中常用的 hash 和 history 路由模式实现原理吗？"></a>能说下 vue-router 中常用的 hash 和 history 路由模式实现原理吗？</h2><div class="note "><p>（1）hash 模式的实现原理<br>早期的前端路由的实现就是基于 location.hash 来实现的。其实现原理很简单，location.hash 的值就是 URL 中 # 后面的内容。比如下面这个网站，它的 location.hash 的值为 ‘#search’：<br><a href="https://www.word.com#search" target="_blank" rel="noopener">https://www.word.com#search</a><br>复制代码hash  路由模式的实现主要是基于下面几个特性：</p>
-<p>URL 中 hash 值只是客户端的一种状态，也就是说当向服务器端发出请求时，hash 部分不会被发送；<br>hash 值的改变，都会在浏览器的访问历史中增加一个记录。因此我们能通过浏览器的回退、前进按钮控制hash 的切换；<br>可以通过 a 标签，并设置 href 属性，当用户点击这个标签后，URL 的 hash 值会发生改变；或者使用  JavaScript 来对 loaction.hash 进行赋值，改变 URL 的 hash 值；<br>我们可以使用 hashchange 事件来监听 hash 值的变化，从而对页面进行跳转（渲染）。</p>
-<p>（2）history 模式的实现原理<br>HTML5 提供了 History API 来实现 URL 的变化。其中做最主要的 API 有以下两个：history.pushState() 和 history.repalceState()。这两个 API 可以在不进行刷新的情况下，操作浏览器的历史纪录。唯一不同的是，前者是新增一个历史记录，后者是直接替换当前的历史记录，如下所示：<br>window.history.pushState(null, null, path);<br>window.history.replaceState(null, null, path);<br>复制代码history 路由模式的实现主要基于存在下面几个特性：</p>
-<p>pushState 和 repalceState 两个 API 来操作实现 URL 的变化 ；<br>我们可以使用 popstate  事件来监听 url 的变化，从而对页面进行跳转（渲染）；<br>history.pushState() 或 history.replaceState() 不会触发 popstate 事件，这时我们需要手动触发页面跳转（渲染）。</p></div>
-<h2 id="Vue-框架怎么实现对象和数组的监听？"><a href="#Vue-框架怎么实现对象和数组的监听？" class="headerlink" title="Vue 框架怎么实现对象和数组的监听？"></a>Vue 框架怎么实现对象和数组的监听？</h2><div class="note "><p>如果被问到 Vue 怎么实现数据双向绑定，大家肯定都会回答 通过 Object.defineProperty() 对数据进行劫持，但是  Object.defineProperty() 只能对属性进行数据劫持，不能对整个对象进行劫持，同理无法对数组进行劫持，但是我们在使用 Vue 框架中都知道，Vue 能检测到对象和数组（部分方法的操作）的变化，那它是怎么实现的呢？我们查看相关代码如下：<br>复制代码通过以上 Vue 源码部分查看，我们就能知道 Vue 框架是通过遍历数组 和递归遍历对象，从而达到利用  Object.defineProperty() 也能对对象和数组（部分方法的操作）进行监听。</p></div>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Observe a list of Array items.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">observeArray (items: <span class="built_in">Array</span>&lt;any&gt;) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, l = items.length; i &lt; l; i++) &#123;</span><br><span class="line">        observe(items[i])  <span class="comment">// observe 功能为监测数据的变化</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 对属性进行递归遍历</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">let</span> childOb = !shallow &amp;&amp; observe(val) <span class="comment">// observe 功能为监测数据的变化</span></span><br></pre></td></tr></table></figure>
-<h2 id="Proxy-与-Object-defineProperty-优劣对比"><a href="#Proxy-与-Object-defineProperty-优劣对比" class="headerlink" title="Proxy 与 Object.defineProperty 优劣对比"></a>Proxy 与 Object.defineProperty 优劣对比</h2><div class="note "><p>Proxy 的优势如下:</p>
-<p>Proxy 可以直接监听对象而非属性；<br>Proxy 可以直接监听数组的变化；<br>Proxy 有多达 13 种拦截方法,不限于 apply、ownKeys、deleteProperty、has 等等是 Object.defineProperty 不具备的；<br>Proxy 返回的是一个新对象,我们可以只操作新的对象达到目的,而 Object.defineProperty 只能遍历对象属性直接修改；<br>Proxy 作为新标准将受到浏览器厂商重点持续的性能优化，也就是传说中的新标准的性能红利；</p>
-<p>Object.defineProperty 的优势如下:</p>
-<p>兼容性好，支持 IE9，而 Proxy 的存在浏览器兼容性问题,而且无法用 polyfill 磨平，因此 Vue 的作者才声明需要等到下个大版本( 3.0 )才能用 Proxy 重写。</p></div>
-<h2 id="异步路由"><a href="#异步路由" class="headerlink" title="异步路由"></a>异步路由</h2><h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h1><h2 id="跨端开发框架，及优劣势"><a href="#跨端开发框架，及优劣势" class="headerlink" title="跨端开发框架，及优劣势"></a>跨端开发框架，及优劣势</h2><h2 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h2><h2 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h2><h2 id="git命令"><a href="#git命令" class="headerlink" title="git命令"></a>git命令</h2><h2 id="一般项目结构怎么划分，自行拓展过什么"><a href="#一般项目结构怎么划分，自行拓展过什么" class="headerlink" title="一般项目结构怎么划分，自行拓展过什么"></a>一般项目结构怎么划分，自行拓展过什么</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2020/08/14/JS/wepy使用问题/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2020/08/14/JS/wepy使用问题/" itemprop="url">微信小程序日常技巧</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-14T15:50:45+08:00">
-                2020-08-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="wepy保存没有实时编译"><a href="#wepy保存没有实时编译" class="headerlink" title="wepy保存没有实时编译"></a>wepy保存没有实时编译</h2><ul>
-<li>wepy中除了页面的其他组件，必须放在components文件夹下面，才能触发实时编译，否则每次都需要在引入组件的页面保存一次才能编译。</li>
-</ul>
-<h2 id="hidden不生效"><a href="#hidden不生效" class="headerlink" title="hidden不生效"></a>hidden不生效</h2><ul>
-<li>hidden不生效问题，其节点必须是块级元素display:block</li>
-</ul>
-<h2 id="组件循环"><a href="#组件循环" class="headerlink" title="组件循环"></a>组件循环</h2><ul>
-<li>循环子组件时，页面源码应该能看到具体的循环个数，如果只有一个，要检查是否用repeat循环，而不是用微信原生的循环方式</li>
-</ul>
-<h2 id="原生循环拿不到item数据问题"><a href="#原生循环拿不到item数据问题" class="headerlink" title="原生循环拿不到item数据问题"></a>原生循环拿不到item数据问题</h2><ul>
-<li>repeat已成功渲染子组件，子组件再循环渲染数据，无论怎样都不显示，检查页面是否有微信原生循环渲染，导致子组件内item无法识别的问题</li>
-</ul>
-<h2 id="wepy中"><a href="#wepy中" class="headerlink" title="wepy中"></a>wepy中</h2><h2 id="借鉴网址"><a href="#借鉴网址" class="headerlink" title="借鉴网址"></a>借鉴网址</h2><p><a href="https://www.cnblogs.com/auto123-num/p/11163862.html" target="_blank" rel="noopener">hidden不生效问题</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2392,7 +1955,7 @@
               
                 <a href="/blog/archives">
               
-                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-count">147</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

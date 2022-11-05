@@ -405,6 +405,464 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/MacOS/mac下PATH环境变量配置/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2018/12/07/MacOS/mac下PATH环境变量配置/" itemprop="url">mac下PATH环境变量配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T23:31:55+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/macos/" itemprop="url" rel="index">
+                    <span itemprop="name">macos</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="PATH环境变量"><a href="#PATH环境变量" class="headerlink" title="PATH环境变量"></a>PATH环境变量</h1><ul>
+<li>配置文件优先级/etc/profile /etc/paths ~/.bash_profile ~/.bash_login ~/.profile ~/.bashrc</li>
+<li>1./etc/profile全局环境变量，所有用户都会生效（不建议修改）</li>
+<li>2./etc/bashrc （一般在这个文件中添加系统级环境变量） 全局（公有）配置，bash shell执行时，不管是何种方式，都会读取此文件。</li>
+<li>3.~/.bash_profile （一般在这个文件中添加用户级环境变量） 每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export ANDROID_HOME=/Users/minya/Library/Android/sdk</span><br><span class="line">export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home</span><br><span class="line">export NDK_HOME=/Users/minya/android-ndk-r10d</span><br><span class="line">export ANDROID_NDK_ROOT=/Users/minya/Library/Android/sdk/ndk-bundle</span><br><span class="line">export PUB_HOSTED_URL=https://pub.flutter-io.cn</span><br><span class="line">export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</span><br><span class="line">export FLUTTER_HOME=/Users/minya/flutter</span><br><span class="line">export PATH=$NDK_HOME:$FLUTTER_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：export PATH只能导出一次，如果有多个环境变量需要添加进PATH中，格式$JAVA_HOME:$NDK_HOME:$FLUTTER_HOME:$PATH<br>$PATH跟在最后，中间用:连接</p>
+</blockquote>
+<h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><ul>
+<li>echo $PATH (查看所有PATH环境变量)</li>
+<li>echo $ANDROID_HOME (查看安卓环境变量)</li>
+<li>sourch .bash_pro (重新生效环境变量配置)</li>
+<li>cd /Users/minya (当前用户名minya)</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/MacOS/MacOS技巧/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2018/12/07/MacOS/MacOS技巧/" itemprop="url">MacOS技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T23:31:26+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/macos/" itemprop="url" rel="index">
+                    <span itemprop="name">macos</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="MacOS-Sierra之前的系统"><a href="#MacOS-Sierra之前的系统" class="headerlink" title="MacOS Sierra之前的系统"></a>MacOS Sierra之前的系统</h2><ul>
+<li>如果在App Store上下载的：直接在Launchpad鼠标长按图标点击删除即可。</li>
+<li>如果不在App Store上下载的：推荐使用AppZapper, AppCleaner等第三方软件来卸载应用。</li>
+</ul>
+<h2 id="MacOS-Sierra以及High-Sierra"><a href="#MacOS-Sierra以及High-Sierra" class="headerlink" title="MacOS Sierra以及High Sierra"></a>MacOS Sierra以及High Sierra</h2><ul>
+<li>一律通过 关于本机 - 储存空间 - 管理 - 检查文件 - 左边栏中的应用程序按钮来进行删除，比原来版本方便许多且免费。</li>
+</ul>
+<h2 id="MacOS-打开多个模拟器关闭当前选中模拟器"><a href="#MacOS-打开多个模拟器关闭当前选中模拟器" class="headerlink" title="MacOS 打开多个模拟器关闭当前选中模拟器"></a>MacOS 打开多个模拟器关闭当前选中模拟器</h2><ul>
+<li><code>cmd + w</code>关闭当前选中模拟器</li>
+</ul>
+<h2 id="MacOS-左右方向键切换查看图片"><a href="#MacOS-左右方向键切换查看图片" class="headerlink" title="MacOS 左右方向键切换查看图片"></a>MacOS 左右方向键切换查看图片</h2><ul>
+<li>不要双击打开图片，选中图片，然后点击空格键打开就可以左右切换了</li>
+</ul>
+<h2 id="切换隐藏文件的显示状态"><a href="#切换隐藏文件的显示状态" class="headerlink" title="切换隐藏文件的显示状态"></a>切换隐藏文件的显示状态</h2><ul>
+<li><code>shift + cmd + .</code>即可切换</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/Git/gitlab和sourcetree的配合使用/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiChaoJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinYa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2018/12/07/Git/gitlab和sourcetree的配合使用/" itemprop="url">gitlab和sourcetree的配合使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T23:30:21+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="gitlab和sourcetree的配合使用"><a href="#gitlab和sourcetree的配合使用" class="headerlink" title="gitlab和sourcetree的配合使用"></a>gitlab和sourcetree的配合使用</h2><ul>
+<li>本地创建密钥，生成ssh key<br>  1.在终端中输入ssh-keygen -t rsa -C “开通git的邮箱”,连续回车完成创建<br>  2.登录gitlab服务器，将本地ssh key值上传<br>  3.ssh key的值获取方式: cat ssh key的位置<br>  4.安装sourcetree，远程拉取代码即可.  </li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/JS/单体-单例模式/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1398,457 +1856,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/IOS/自定义底部个别tab按钮/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2018/12/07/IOS/自定义底部个别tab按钮/" itemprop="url">自定义底部个别tab按钮</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T23:16:28+08:00">
-                2018-12-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/ios/" itemprop="url" rel="index">
-                    <span itemprop="name">ios</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="占位方法"><a href="#占位方法" class="headerlink" title="占位方法"></a>占位方法</h2><pre><code>* 设置5个相同的tabBaritem,将中间的tabBaritem设置为不显示内容。[self creatNav:[[UIViewController alloc] init] image:[UIImage imageNamed:@&quot;&quot;] selectImage:[UIImage imageNamed:@&quot;&quot;] title:nil];
-* 并且在viewWillAppear中增加发布按钮。
-</code></pre><h2 id="重新自定义布局子空间UITabBar"><a href="#重新自定义布局子空间UITabBar" class="headerlink" title="重新自定义布局子空间UITabBar"></a>重新自定义布局子空间UITabBar</h2><ul>
-<li>新增UITabBar类并且继承自UITabBar</li>
-<li>在UITabBar.m中实现自定义布局原始的4个tabBar，并且添加自身创建的UIButton</li>
-<li>采用KVC来替换TabBar[self setValue:[[LCJTabBar alloc] init] forKeyPath:@”tabBar”];</li>
-</ul>
-<h2 id="优势"><a href="#优势" class="headerlink" title="优势:"></a>优势:</h2><pre><code>1.第二组不会有系统的UITabBar的内存占用浪费。
-2.灵活性更高，可定制性更高，位置和内容可以自行设置.
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/IOS/综合知识点/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2018/12/07/IOS/综合知识点/" itemprop="url">综合知识点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T23:15:43+08:00">
-                2018-12-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/ios/" itemprop="url" rel="index">
-                    <span itemprop="name">ios</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="导航控制器视图懒加载-即，如果用户只在第一个页面，其他页面应用启动时不加载"><a href="#导航控制器视图懒加载-即，如果用户只在第一个页面，其他页面应用启动时不加载" class="headerlink" title="导航控制器视图懒加载(即，如果用户只在第一个页面，其他页面应用启动时不加载)"></a>导航控制器视图懒加载(即，如果用户只在第一个页面，其他页面应用启动时不加载)</h2><pre><code>统一不能设置背景色
-凡是调用子控制器的view都会触发viewDidLoad方法，导致渲染，不能懒加载每个视图（即点击那个视图才显示哪个视图）viewController.view.backgroundColor = LCJCommonBgColor;
-解决办法:
-创建一个继承于UIViewController的类，然后其他视图所有继承这个类，在此类中定义统一背景
-特殊页面也可以自行重写背景颜色
-</code></pre><p>## </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lcj-minya.github.io/blog/blog/2018/12/07/IOS/宏相关设置/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiChaoJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MinYa">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2018/12/07/IOS/宏相关设置/" itemprop="url">宏相关设置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T23:14:43+08:00">
-                2018-12-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/ios/" itemprop="url" rel="index">
-                    <span itemprop="name">ios</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="PCH文件可能引发的错误"><a href="#PCH文件可能引发的错误" class="headerlink" title="PCH文件可能引发的错误"></a>PCH文件可能引发的错误</h2><p><img src="/blog/images/ios/Snip20151105_8.png" alt="image"></p>
-<ul>
-<li>解决方案</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#ifndef PrefixHeader_pch</span></span><br><span class="line"><span class="meta">#define PrefixHeader_pch</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*** 如果希望某些内容能拷贝到任何源代码文件(OC\C\C++等), 那么就不要写在#ifdef __OBJC__和#endif之间 ***/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></span><br><span class="line"><span class="meta">#ifdef __OBJC__</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#endif</span></span><br></pre></td></tr></table></figure>
-<h2 id="在Build-Setting中配置宏"><a href="#在Build-Setting中配置宏" class="headerlink" title="在Build Setting中配置宏"></a>在Build Setting中配置宏</h2><ul>
-<li><p>如果项目中有些宏找不到, 可能是配置在Build Setting中<br><img src="/blog/images/ios/Snip20151105_9.png" alt="image"></p>
-</li>
-<li><p>注意点:宏的名字不能全部是小写字母</p>
-</li>
-<li><p>如果宏的名字全部是小写, 会出现以下错误<br><img src="/blog/images/ios/Snip20151105_10.png" alt="image"></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1899,7 +1906,7 @@
               
                 <a href="/blog/archives">
               
-                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-count">147</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
