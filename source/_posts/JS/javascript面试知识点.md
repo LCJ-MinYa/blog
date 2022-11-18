@@ -1058,6 +1058,21 @@ slot 又名插槽，是 Vue 的内容分发机制，组件内部的模板引擎�
 实现原理：当子组件 vm 实例化时，获取到父组件传入的 slot 标签的 内容，存放在 vm.$slot 中，默认插槽为 vm.$slot.default，具名插 槽为 vm.$slot.xxx，xxx 为插槽名，当组件执行渲染函数时候，遇 到 slot 标签，使用$slot 中的内容进行替换，此时可以为插槽传递 数据，若存在数据，则可称该插槽为作用域插槽。
 {% endnote %}
 
+## axios封装相关
+{% note %}
+axios请求分类，get请求只支持params,post请求支持params和data两种参数形式。
+```js
+/* get */
+axios({ url: 'xxx', method: 'get', params: { /* 请求参数 */ } }); // 后端通过ctx.request.query 获取请求参数
+
+/* post */
+axios({ url: 'xxx', method: 'post', data: { /* 请求参数 */ } }); 
+// 方式一data, 使用data传递的是一个对象, 在控制台中看到的话是 Request Payload,后端通过ctx.request.body 获取请求参数
+axios({ url: 'xxx', method: 'post', params: { /* 请求参数 */ } }); 
+// 方式二params, 浏览器中请求参数会跟在Request Url后面，类似https://127.0.0.1:8000/api/getList?page=1&pageSize=10, 同时能在Query String Parameters中看到字符串参数, 后端通过ctx.request.query 获取请求参数
+```
+{% endnote %}
+
 # 扩展
 
 ## 跨端开发框架，及优劣势
