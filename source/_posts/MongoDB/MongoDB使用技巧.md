@@ -57,6 +57,16 @@ db.dropUser("root")
 * `db.hotel.find()` 查看hotel数据库hotel集合下所有数据
 * `db.hotel.find().count()` 查看hotel数据库hotel集合下所有数据条数
 
+## mongodb导入json到数据库（包含密码验证）
+* <code>mongoimport --port 9000 --username root --password 123456 --authenticationDatabase admin --db bill --collection bill --file bill.json</code>
+* <code>--port</code> 指定端口号
+* <code>--username</code> 指定用户名
+* <code>--password</code> 指定密码
+* <code>--authenticationDatabase</code> 指定用户和密码所存储的数据库
+* <code>--db</code> 指定数据库名称
+* <code>--collection</code> 指定集合名称
+* <code>--file</code> 指定导入的json文件路径
+
 ## 查看mongo内存占用
 ```
 top -p $(pidof mongod)
