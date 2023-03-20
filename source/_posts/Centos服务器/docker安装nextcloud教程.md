@@ -73,5 +73,10 @@ vi /etc/nginx/nginx.conf 在http{...}块中加入 =>
 client_max_body_size 10G;
 ```
 
+## docker面板portainer
+* <code>docker search portainer</code>
+* <code>docker pull docker.io/portainer/portainer</code>
+* <code>docker run -d -\-restart=always -\-name prtainer -p 8085:80 -v /var/run/docker.sock:/var/run/docker.sock docker.io/portainer/portainer</code>
+
 ## 借鉴网址
 [Docker+Nextcloud快速部署个人网盘](https://www.cnblogs.com/Timesi/p/9688463.html)
